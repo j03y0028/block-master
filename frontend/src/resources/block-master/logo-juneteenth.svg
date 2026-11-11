@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-labelledby="t">
+  <title id="t">Block Master - Juneteenth</title>
+  
+  <g stroke="#16182a" stroke-width="2.6" stroke-linejoin="round">
+    <path d="M30,67 L64,84 L64,122 L30,105 Z" fill="#1d4ed8"/>
+    <path d="M64,84 L98,67 L98,105 L64,122 Z" fill="#dc2626"/>
+    <path d="M64,50 L98,67 L64,84 L30,67 Z" fill="#f8fafc"/>
+  </g>
+  <g stroke="#16182a" stroke-opacity="0.22" stroke-width="1.4" fill="none">
+    <path d="M47,58.5 L81,75.5 M81,58.5 L47,75.5"/>
+    <path d="M47,75.5 L47,113.5 M30,86 L64,103"/>
+    <path d="M81,75.5 L81,113.5 M64,103 L98,86"/>
+  </g>
+  <polygon points="47,83 48.93,87.81 53,84.61 52.26,89.74 57.39,89 54.19,93.07 59,95 54.19,96.93 57.39,101 52.26,100.26 53,105.39 48.93,102.19 47,107 45.07,102.19 41,105.39 41.74,100.26 36.61,101 39.81,96.93 35,95 39.81,93.07 36.61,89 41.74,89.74 41,84.61 45.07,87.81" fill="none" stroke="#ffffff" stroke-width="1.8"/>
+      <polygon points="47,88.5 48.6,92.79 53.18,92.99 49.6,95.84 50.82,100.26 47,97.73 43.18,100.26 44.4,95.84 40.82,92.99 45.4,92.79" fill="#ffffff"/>
+      <path d="M64,104 Q80,88 98,92" stroke="#ffffff" stroke-width="2.4" fill="none" opacity="0.9"/>
+  <path d="M64,50 L98,67 L64,84 L30,67 Z M30,67 L64,84 L64,122 L30,105 Z M64,84 L98,67 L98,105 L64,122 Z" fill="none" stroke="#16182a" stroke-width="2.6" stroke-linejoin="round"/>
+  <g transform="translate(0 6)"><g stroke="#16182a" stroke-width="2.4" stroke-linejoin="round">
+    <path d="M43,47 L39,21 L52.5,33 L64,11 L75.5,33 L89,21 L85,47 Z" fill="#fcd34d"/>
+    <rect x="42" y="41" width="44" height="8" rx="2.5" fill="#fcd34d"/>
+    <circle cx="39" cy="21" r="3.6" fill="#ffffff"/>
+    <circle cx="64" cy="11" r="3.8" fill="#ffffff"/>
+    <circle cx="89" cy="21" r="3.6" fill="#ffffff"/>
+  </g>
+  <circle cx="64" cy="45" r="2.3" fill="#ffffff" stroke="#16182a" stroke-width="1.4"/></g>
+</svg>

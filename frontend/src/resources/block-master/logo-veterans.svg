@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-labelledby="t">
+  <title id="t">Block Master - Veterans Day</title>
+  
+  <g stroke="#16182a" stroke-width="2.6" stroke-linejoin="round">
+    <path d="M30,67 L64,84 L64,122 L30,105 Z" fill="#4b5d3a"/>
+    <path d="M64,84 L98,67 L98,105 L64,122 Z" fill="#1e3a8a"/>
+    <path d="M64,50 L98,67 L64,84 L30,67 Z" fill="#b5c39a"/>
+  </g>
+  <g stroke="#16182a" stroke-opacity="0.22" stroke-width="1.4" fill="none">
+    <path d="M47,58.5 L81,75.5 M81,58.5 L47,75.5"/>
+    <path d="M47,75.5 L47,113.5 M30,86 L64,103"/>
+    <path d="M81,75.5 L81,113.5 M64,103 L98,86"/>
+  </g>
+  <circle cx="47" cy="95" r="10" fill="none" stroke="#ffffff" stroke-width="2"/>
+      <polygon points="47,87.3 49.02,92.71 54.8,92.97 50.28,96.56 51.82,102.13 47,98.94 42.18,102.13 43.72,96.56 39.2,92.97 44.98,92.71" fill="#ffffff"/>
+      <g stroke="#fcd34d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none">
+        <path d="M71,94 L81,84 L91,86"/><path d="M71,102 L81,92 L91,94"/><path d="M71,110 L81,100 L91,102"/>
+      </g>
+  <path d="M64,50 L98,67 L64,84 L30,67 Z M30,67 L64,84 L64,122 L30,105 Z M64,84 L98,67 L98,105 L64,122 Z" fill="none" stroke="#16182a" stroke-width="2.6" stroke-linejoin="round"/>
+  <g transform="translate(0 6)"><g stroke="#16182a" stroke-width="2.4" stroke-linejoin="round">
+    <path d="M43,47 L39,21 L52.5,33 L64,11 L75.5,33 L89,21 L85,47 Z" fill="#fcd34d"/>
+    <rect x="42" y="41" width="44" height="8" rx="2.5" fill="#fcd34d"/>
+    <circle cx="39" cy="21" r="3.6" fill="#ffffff"/>
+    <circle cx="64" cy="11" r="3.8" fill="#ffffff"/>
+    <circle cx="89" cy="21" r="3.6" fill="#ffffff"/>
+  </g>
+  <circle cx="64" cy="45" r="2.3" fill="#ffffff" stroke="#16182a" stroke-width="1.4"/></g>
+</svg>

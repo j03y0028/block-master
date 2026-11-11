@@ -1,22 +1,23 @@
 {
-  "name": "mempool-frontend",
+  "name": "block-master-frontend",
   "version": "3.3.2",
-  "description": "Bitcoin mempool visualizer and blockchain explorer backend",
+  "description": "Block Master: a friendly, holiday-themed Bitcoin explorer for your own node (fork of The Mempool Open Source Project)",
   "license": "GNU Affero General Public License v3.0",
-  "homepage": "https://mempool.space",
+  "homepage": "https://github.com/j03y0028/block-master",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mempool/mempool"
+    "url": "git+https://github.com/j03y0028/block-master"
   },
   "bugs": {
-    "url": "https://github.com/mempool/mempool/issues"
+    "url": "https://github.com/j03y0028/block-master/issues"
   },
   "keywords": [
     "bitcoin",
     "mempool",
     "blockchain",
     "explorer",
-    "liquid"
+    "mynode",
+    "block-master"
   ],
   "main": "index.ts",
   "scripts": {
@@ -35,7 +36,7 @@
     "build": "npm run generate-themes && npm run generate-config && npm run ng -- build --configuration production --localize && npm run sync-assets-dev && npm run sync-assets",
     "generate-themes": "node generate-themes.js",
     "copy-themes": "node generate-themes.js copy",
-    "sync-assets": "npm run copy-themes && rsync -av ./src/resources ./dist/mempool/browser && node sync-assets.js 'dist/mempool/browser/resources/'",
+    "sync-assets": "npm run copy-themes && node -e \"require('fs').cpSync('./src/resources','./dist/mempool/browser/resources',{recursive:true})\" && node sync-assets.js 'dist/mempool/browser/resources/'",
     "sync-assets-dev": "node sync-assets.js 'src/resources/'",
     "generate-config": "node generate-config.js",
     "test": "npm run ng -- test",
@@ -56,7 +57,9 @@
     "cypress:open:ci": "node update-config.js TESTNET_ENABLED=true TESTNET4_ENABLED=true SIGNET_ENABLED=true LIQUID_ENABLED=true ITEMS_PER_PAGE=25 && npm run generate-config && start-server-and-test serve:local-prod 4200 cypress:open",
     "cypress:run:ci": "node update-config.js TESTNET_ENABLED=true TESTNET4_ENABLED=true SIGNET_ENABLED=true LIQUID_ENABLED=true ITEMS_PER_PAGE=25 && npm run generate-config && start-server-and-test serve:local-prod 4200 cypress:run:record",
     "cypress:open:ci:parameterized": "node update-config.js TESTNET_ENABLED=true TESTNET4_ENABLED=true SIGNET_ENABLED=true LIQUID_ENABLED=true ITEMS_PER_PAGE=25 && npm run generate-config && start-server-and-test serve:parameterized 4200 cypress:open",
-    "cypress:run:ci:parameterized": "node update-config.js TESTNET_ENABLED=true TESTNET4_ENABLED=true SIGNET_ENABLED=true LIQUID_ENABLED=true ITEMS_PER_PAGE=25 && npm run generate-config && start-server-and-test serve:parameterized 4200 cypress:run:record"
+    "cypress:run:ci:parameterized": "node update-config.js TESTNET_ENABLED=true TESTNET4_ENABLED=true SIGNET_ENABLED=true LIQUID_ENABLED=true ITEMS_PER_PAGE=25 && npm run generate-config && start-server-and-test serve:parameterized 4200 cypress:run:record",
+    "test:holidays": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test tests/holidays.test.mts",
+    "logos": "node ../branding/build-logos.mjs"
   },
   "dependencies": {
     "@angular-devkit/build-angular": "^20.3.20",

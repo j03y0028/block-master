@@ -1,0 +1,62 @@
+# Block Master on myNode (used by run.sh). Compose-file format 3.7 so it also works with myNode's docker-compose v1.
+# Settings come from /mnt/hdd/mynode/blockmaster/blockmaster.env (written by install-mynode.sh / pre_blockmaster.sh).
+version: "3.7"
+
+services:
+  web:
+    image: blockmaster/frontend:latest
+    environment:
+      FRONTEND_HTTP_PORT: "8080"
+      BACKEND_MAINNET_HTTP_HOST: "api"
+      LIGHTNING: "false"
+      ACCELERATOR: "false"
+    command: "./wait-for db:3306 --timeout=720 -- nginx -g 'daemon off;'"
+    ports:
+      - "${BLOCKMASTER_BIND:-0.0.0.0}:${BLOCKMASTER_PORT:-4090}:8080"
+    restart: on-failure
+    stop_grace_period: 1m
+  api:
+    image: ${BLOCKMASTER_BACKEND_IMAGE}
+    user: "1000:1000"
+    environment:
+      MEMPOOL_BACKEND: "electrum"
+      CORE_RPC_HOST: "172.29.0.1"
+      CORE_RPC_PORT: "8332"
+      CORE_RPC_USERNAME: "mynode"
+      CORE_RPC_PASSWORD: "${CORE_RPC_PASSWORD}"
+      ELECTRUM_HOST: "172.29.0.1"
+      ELECTRUM_PORT: "50001"
+      ELECTRUM_TLS_ENABLED: "false"
+      DATABASE_ENABLED: "true"
+      DATABASE_HOST: "db"
+      DATABASE_DATABASE: "mempool"
+      DATABASE_USERNAME: "mempool"
+      DATABASE_PASSWORD: "${DB_PASSWORD}"
+      STATISTICS_ENABLED: "true"
+    command: "./wait-for-it.sh db:3306 --timeout=720 --strict -- ./start.sh"
+    volumes:
+      - /mnt/hdd/mynode/blockmaster/cache:/backend/cache
+    restart: on-failure
+    stop_grace_period: 1m
+  db:
+    image: ${BLOCKMASTER_DB_IMAGE}
+    user: "1000:1000"
+    environment:
+      MYSQL_DATABASE: "mempool"
+      MYSQL_USER: "mempool"
+      MYSQL_PASSWORD: "${DB_PASSWORD}"
+      MYSQL_ROOT_PASSWORD: "${DB_ROOT_PASSWORD}"
+      MARIADB_AUTO_UPGRADE: "1"
+    volumes:
+      - /mnt/hdd/mynode/blockmaster/mysql:/var/lib/mysql
+    restart: on-failure
+    stop_grace_period: 1m
+
+networks:
+  default:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: "172.29.0.0/24"
+          gateway: "172.29.0.1"

@@ -39,6 +39,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LanguageSelectorComponent } from '@components/language-selector/language-selector.component';
 import { FiatSelectorComponent } from '@components/fiat-selector/fiat-selector.component';
 import { RateUnitSelectorComponent } from '@components/rate-unit-selector/rate-unit-selector.component';
+import { BlockMasterLogoComponent } from '@components/block-master/block-master-logo.component';
+import { HolidaySelectorComponent } from '@components/block-master/holiday-selector.component';
+import { HolidayBannerComponent } from '@components/block-master/holiday-banner.component';
+import { FeeHelperComponent } from '@components/block-master/fee-helper.component';
+import { BlockMasterExplainerComponent } from '@components/block-master/explainer.component';
 import { ThemeSelectorComponent } from '@components/theme-selector/theme-selector.component';
 import { AmountSelectorComponent } from '@components/amount-selector/amount-selector.component';
 import { TimezoneSelectorComponent } from '@components/timezone-selector/timezone-selector.component';
@@ -135,6 +140,11 @@ import { GithubLogin } from '@components/github-login.component/github-login.com
 
 @NgModule({
   declarations: [
+    BlockMasterLogoComponent,
+    HolidaySelectorComponent,
+    HolidayBannerComponent,
+    FeeHelperComponent,
+    BlockMasterExplainerComponent,
     ClipboardComponent,
     TimeComponent,
     QrcodeComponent,
@@ -282,6 +292,11 @@ import { GithubLogin } from '@components/github-login.component/github-login.com
     FeeRoundingPipe,
   ],
   exports: [
+    BlockMasterLogoComponent,
+    HolidaySelectorComponent,
+    HolidayBannerComponent,
+    FeeHelperComponent,
+    BlockMasterExplainerComponent,
     MenuComponent,
     RouterModule,
     ReactiveFormsModule,

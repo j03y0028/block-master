@@ -1,0 +1,76 @@
+{
+    "name": "Block Master",
+    "short_name": "blockmaster",
+    "author": {
+        "name": "Block Master contributors",
+        "link": "https://github.com/j03y0028/block-master"
+    },
+    "website": {
+        "name": "GitHub",
+        "link": "https://github.com/j03y0028/block-master"
+    },
+    "category": "bitcoin_app",
+    "short_description": "Friendly block explorer (beta)",
+    "description": [
+        "A friendly, self-hosted Bitcoin mempool and block explorer for your node: plain-language fee advice ('What fee should I pay?'), tooltips that explain blocks, fees and the mempool, and a logo that dresses up for U.S. holidays.",
+        "Block Master is an independent fork of The Mempool Open Source Project (AGPL-3.0). It is not affiliated with mempool.space. It reads from your own Bitcoin Core and Electrum server: no third-party servers.",
+        "Runs alongside myNode's built-in Mempool app (different port and data folder)."
+    ],
+    "latest_version": "v1.0.0",
+    "linux_user": "blockmaster",
+    "supported_archs": [
+        "aarch64",
+        "x86_64"
+    ],
+    "download_skip": true,
+    "download_type": "source",
+    "download_source_url": "not_required",
+    "download_binary_url": {
+        "aarch64": "not_required",
+        "x86_64": "not_required"
+    },
+    "install_env_vars": {},
+    "supports_app_page": true,
+    "supports_testnet": false,
+    "http_port": "4090",
+    "https_port": "4091",
+    "requires_bitcoin": true,
+    "requires_docker_image_installation": true,
+    "requires_electrs": true,
+    "requires_lightning": false,
+    "show_on_application_page": true,
+    "show_on_homepage": true,
+    "show_on_status_page": true,
+    "hide_status_icon": false,
+    "journalctl_log_name": "blockmaster",
+    "app_tile_name": "Block Master",
+    "app_tile_running_status_text": "Running",
+    "app_tile_button_text": "Open",
+    "app_tile_button_href": "/app/blockmaster/info",
+    "app_page_show_open_button": true,
+    "app_page_content": [
+        {
+            "heading": "First run",
+            "content": [
+                "Block Master needs Electrs (myNode's Electrum server) for address pages. Enable Electrs and let it finish syncing.",
+                "The first start builds a local database of recent blocks and fee statistics. The dashboard fills in within a few minutes, and mining graphs take longer."
+            ]
+        },
+        {
+            "heading": "Holiday themes",
+            "content": [
+                "The logo and accent colours follow U.S. holidays automatically. Change it or turn it off with the 'Holiday theme' menu at the bottom of any page."
+            ]
+        }
+    ],
+    "can_uninstall": true,
+    "can_reinstall": true,
+    "can_enable_disable": true,
+    "data_manageable": false,
+    "is_beta": true,
+    "is_premium": false,
+    "homepage_section": "apps",
+    "homepage_order": 92,
+    "app_type": "custom",
+    "sdk_version": 2
+}

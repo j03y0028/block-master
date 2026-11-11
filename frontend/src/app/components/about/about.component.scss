@@ -275,3 +275,14 @@
     max-width: 1050px;
   }
 }
+
+// ---- Block Master about page ----
+.about-page .intro { flex-direction: column; align-items: center; gap: 8px; }
+.bm-cards { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; }
+.bm-card {
+  flex: 1 1 220px; max-width: 320px; padding: 16px; border-radius: 10px; text-align: left;
+  background: var(--box-bg); border-top: 3px solid var(--bm-accent, #f7931a);
+}
+.holiday-strip { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 12px; }
+.attribution { max-width: 800px; margin-left: auto; margin-right: auto; }
+.footer-links { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 40px 0 20px; }

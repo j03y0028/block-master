@@ -1,0 +1,68 @@
+# Block Master - generic Docker host / myNode-by-hand alternative to mynode/install-mynode.sh.
+#   cp .env.example .env        # set CORE_RPC_PASSWORD (and DB passwords)
+#   docker compose up -d        # then open http://<host>:4090
+# Talks to YOUR Bitcoin Core (RPC, read-only use) and Electrum server (address lookups) on the Docker host.
+name: blockmaster
+
+services:
+  web:
+    image: ${BLOCKMASTER_IMAGE:-blockmaster/frontend:1.0.0}
+    build: .
+    user: "1000:1000"
+    environment:
+      FRONTEND_HTTP_PORT: "8080"
+      BACKEND_MAINNET_HTTP_HOST: "api"
+      MINING_DASHBOARD: ${MINING_DASHBOARD:-true}
+      LIGHTNING: "false"
+      ACCELERATOR: "false"
+      HISTORICAL_PRICE: ${HISTORICAL_PRICE:-true}
+    command: "./wait-for db:3306 --timeout=720 -- nginx -g 'daemon off;'"
+    ports:
+      - "${BLOCKMASTER_BIND:-0.0.0.0}:${BLOCKMASTER_PORT:-4090}:8080"
+    depends_on: [api]
+    restart: on-failure
+    stop_grace_period: 1m
+
+  api:
+    # Unmodified upstream mempool backend (AGPL-3.0), pinned by digest. Build it from source instead with
+    #   docker build -f docker/backend/Dockerfile ...   (see docker/README.md)
+    image: ${BLOCKMASTER_BACKEND_IMAGE:-mempool/backend:v3.3.2@sha256:c358a20591285f77fb11e6f2502441e6b15bc7dd8282433e09bfd948b8ab0aa8}
+    user: "${BLOCKMASTER_UID:-1000}:${BLOCKMASTER_GID:-1000}"
+    environment:
+      MEMPOOL_BACKEND: ${MEMPOOL_BACKEND:-electrum}
+      CORE_RPC_HOST: ${CORE_RPC_HOST:-host.docker.internal}
+      CORE_RPC_PORT: ${CORE_RPC_PORT:-8332}
+      CORE_RPC_USERNAME: ${CORE_RPC_USERNAME:-mynode}
+      CORE_RPC_PASSWORD: ${CORE_RPC_PASSWORD:?set CORE_RPC_PASSWORD in .env}
+      ELECTRUM_HOST: ${ELECTRUM_HOST:-host.docker.internal}
+      ELECTRUM_PORT: ${ELECTRUM_PORT:-50001}
+      ELECTRUM_TLS_ENABLED: ${ELECTRUM_TLS_ENABLED:-false}
+      DATABASE_ENABLED: "true"
+      DATABASE_HOST: "db"
+      DATABASE_DATABASE: "mempool"
+      DATABASE_USERNAME: "mempool"
+      DATABASE_PASSWORD: ${DB_PASSWORD:?set DB_PASSWORD in .env}
+      STATISTICS_ENABLED: "true"
+      MEMPOOL_ENABLED: "true"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    command: "./wait-for-it.sh db:3306 --timeout=720 --strict -- ./start.sh"
+    volumes:
+      - ${BLOCKMASTER_DATA:-./data-docker}/cache:/backend/cache
+    depends_on: [db]
+    restart: on-failure
+    stop_grace_period: 1m
+
+  db:
+    image: ${MARIADB_IMAGE:-mariadb:10.11.10@sha256:41d89394db8e777d96058d4cf5cf4daf1ed87f76192154f3d89572676f1e2327}
+    user: "${BLOCKMASTER_UID:-1000}:${BLOCKMASTER_GID:-1000}"
+    environment:
+      MYSQL_DATABASE: "mempool"
+      MYSQL_USER: "mempool"
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:?set DB_ROOT_PASSWORD in .env}
+      MARIADB_AUTO_UPGRADE: "1"
+    volumes:
+      - ${BLOCKMASTER_DATA:-./data-docker}/mysql:/var/lib/mysql
+    restart: on-failure
+    stop_grace_period: 1m

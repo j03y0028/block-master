@@ -19,8 +19,8 @@ export class TrademarkPolicyComponent {
   ) { }
 
   ngOnInit(): void {
-    this.seoService.setTitle('Trademark Policy');
-    this.seoService.setDescription('An overview of the trademarks registered by Mempool Holdings S.A. de C.V. and The Mempool Open Source Project® and what we consider to be lawful usage of those trademarks.');
-    this.ogService.setManualOgImage('trademark-policy.jpg');
+    this.seoService.setTitle('Trademarks & Attribution');
+    this.seoService.setDescription('Block Master is an independent fork of The Mempool Open Source Project (AGPL-3.0) and is not affiliated with mempool.space.');
+    this.ogService.setManualOgImage('block-master-preview.png');
   }
 }

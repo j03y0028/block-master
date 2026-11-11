@@ -1,9 +1,14 @@
 sitemap
 data
-docker-compose.yml
 backend/mempool-config.json
 *.swp
 frontend/src/resources/config.template.js
 frontend/src/resources/config.js
 target
 docker/backend/start_ci.sh
+# Block Master
+.env
+data-docker/
+build/
+mynode/blockmaster/app_data/*.tar.gz
+mynode/blockmaster/app_data/*.tar.gz.sha256

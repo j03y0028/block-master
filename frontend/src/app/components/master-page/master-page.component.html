@@ -26,8 +26,8 @@
         }
       }
       @if (!enterpriseInfo || enterpriseInfo.dualLogo) {
-        <app-svg-images *ngIf="!officialMempoolSpace" name="mempoolSpace" viewBox="0 0 500 126" class="mempool-logo" [ngStyle]="{'opacity': connectionState.val === 2 ? 1 : 0.5 }"></app-svg-images>
-        <app-svg-images *ngIf="officialMempoolSpace" name="officialMempoolSpace" viewBox="0 0 500 126"></app-svg-images>
+        <app-block-master-logo [iconSize]="40" [ngStyle]="{'opacity': connectionState.val === 2 ? 1 : 0.5 }"></app-block-master-logo>
+        
       }
       <div class="connection-badge">
         <div class="badge badge-warning" *ngIf="connectionState.val === 0" i18n="master-page.offline">Offline</div>
@@ -47,8 +47,8 @@
         }
       }
       @if (!enterpriseInfo || enterpriseInfo.dualLogo) {
-        <app-svg-images *ngIf="!officialMempoolSpace" name="mempoolSpace" viewBox="0 0 500 126" class="mempool-logo" [ngStyle]="{'opacity': connectionState.val === 2 ? 1 : 0.5 }"></app-svg-images>
-        <app-svg-images *ngIf="officialMempoolSpace" name="officialMempoolSpace" viewBox="0 0 500 126"></app-svg-images>
+        <app-block-master-logo [iconSize]="40" [ngStyle]="{'opacity': connectionState.val === 2 ? 1 : 0.5 }"></app-block-master-logo>
+        
       }
       <div class="connection-badge">
         <div class="badge badge-warning" *ngIf="connectionState.val === 0" i18n="master-page.offline">Offline</div>

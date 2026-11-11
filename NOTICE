@@ -1,0 +1,22 @@
+Block Master
+Copyright (C) 2026 the Block Master contributors
+
+This product is a modified version of The Mempool Open Source Project(R)
+  https://github.com/mempool/mempool
+  imported at v3.3.2, commit 9b75f724f8002fdb78d6e6e5ba004cc75b06bf51
+  Copyright (C) 2019-2026 The Mempool Open Source Project developers
+and is distributed under the GNU Affero General Public License v3.0
+(see LICENSE and COPYING.md). The source code of this version is available at
+  https://github.com/j03y0028/block-master
+
+Block Master is an independent fork and is NOT affiliated with, endorsed by,
+or supported by mempool.space, Mempool Space K.K. or The Mempool Open Source
+Project. "Mempool", "mempool.space" and the Mempool logos are trademarks of
+their respective owners and are not used in Block Master's user interface.
+The Block Master name, logo family (including the holiday variants), favicons
+and artwork were created for this project.
+
+Modifications (summary): rebranding, holiday theme engine and logos, fee
+helper and explainer cards, plain-language tooltips, rewritten About / Terms /
+Privacy / Trademark pages, removal of mempool.space services and promotional
+assets, Docker and myNode packaging. Full history: git log.

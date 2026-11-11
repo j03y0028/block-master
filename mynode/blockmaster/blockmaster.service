@@ -1,0 +1,32 @@
+# blockmaster service
+# /etc/systemd/system/blockmaster.service
+
+[Unit]
+Description=blockmaster
+Wants=www.service docker_images.service
+After=www.service docker_images.service
+
+[Service]
+WorkingDirectory=/opt/mynode/blockmaster
+
+ExecStartPre=/usr/bin/is_not_shutting_down.sh
+ExecStartPre=/usr/bin/wait_on_bitcoin.sh
+ExecStartPre=/usr/bin/wait_on_docker_image_install.sh
+# "+" = runs as root: reads myNode's RPC password and prepares the data folders
+ExecStartPre=+/bin/bash -c 'if [ -f /usr/bin/service_scripts/pre_blockmaster.sh ]; then /bin/bash /usr/bin/service_scripts/pre_blockmaster.sh; fi'
+ExecStart=/bin/bash /opt/mynode/blockmaster/app_data/run.sh start
+ExecStartPost=/bin/bash -c 'if [ -f /usr/bin/service_scripts/post_blockmaster.sh ]; then /bin/bash /usr/bin/service_scripts/post_blockmaster.sh; fi'
+ExecStop=/bin/bash /opt/mynode/blockmaster/app_data/run.sh stop
+
+User=blockmaster
+Group=blockmaster
+Type=simple
+TimeoutSec=180
+Restart=always
+RestartSec=60
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=blockmaster
+
+[Install]
+WantedBy=multi-user.target

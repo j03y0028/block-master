@@ -1451,3 +1451,21 @@ a {
 button {
   touch-action: manipulation;
 }
+
+// ---- Block Master ----
+// Plain-language hints: anything with a dotted underline has a tooltip.
+.bm-tip {
+  cursor: help;
+  text-decoration: underline dotted;
+  text-decoration-color: var(--transparent-fg);
+  text-underline-offset: 4px;
+}
+// Thin festive accent line under the header, coloured by the active holiday theme (orange/gold by default).
+.sticky-header::after {
+  content: '';
+  display: block;
+  height: 3px;
+  background: linear-gradient(90deg, var(--bm-accent, #f7931a), var(--bm-accent-2, #ffd35c), var(--bm-accent, #f7931a));
+  opacity: 0.85;
+}
+body.bm-holiday-none .sticky-header::after { opacity: 0.45; }

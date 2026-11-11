@@ -1,9 +1,23 @@
 
 <div class="container-xl dashboard-container" *ngIf="(network$ | async) !== 'liquid'; else liquidDashboard">
+  <app-holiday-banner></app-holiday-banner>
+  <div class="block-legend" aria-hidden="true">
+    <span class="legend-waiting bm-tip" ngbTooltip="Predicted next blocks, built from transactions still waiting in the mempool. Lower fee rate = further left." placement="bottom">&larr; Waiting to be mined</span>
+    <span class="legend-divider"></span>
+    <span class="legend-mined bm-tip" ngbTooltip="Blocks miners have already added to the blockchain. Newest is closest to the middle." placement="bottom">Already mined &rarr;</span>
+  </div>
+  <div class="row row-cols-1 row-cols-md-2 bm-first-row">
+    <div class="col card-wrapper">
+      <app-fee-helper></app-fee-helper>
+    </div>
+    <div class="col card-wrapper">
+      <app-bm-explainer></app-bm-explainer>
+    </div>
+  </div>
   <div class="row row-cols-1 row-cols-md-2" *ngIf="{ value: (mempoolInfoData$ | async) } as mempoolInfoData">
     <ng-container>
       <div class="col card-wrapper">
-        <div class="main-title" i18n="fees-box.transaction-fees">Transaction Fees</div>
+        <div class="main-title"><span i18n="fees-box.transaction-fees">Transaction Fees</span> <span class="bm-info" ngbTooltip="Live fee rates in sats per virtual byte (sat/vB). Higher priority = more likely to be in the next block. The dollar amount is for a typical 140 vB payment." placement="bottom">?</span></div>
         <div class="card">
           <div class="card-body less-padding">
             <app-fees-box class="d-block"></app-fees-box>
@@ -18,7 +32,7 @@
       <div class="card graph-card">
         <div class="card-body pl-lg-3 pr-lg-3 pl-2 pr-2">
           <a class="title-link mb-0" style="margin-top: -2px" href="" [routerLink]="['/mempool-block/0' | relativeUrl]">
-            <h5 class="card-title d-inline"><span>Mempool Goggles&trade;</span> : {{ goggleCycle[goggleIndex].name }}</h5>
+            <h5 class="card-title d-inline bm-tip" ngbTooltip="A picture of the next block: every square is a waiting transaction, bigger squares are bigger transactions. Use the buttons to highlight types." placement="bottom"><span>Next Block Preview</span> : {{ goggleCycle[goggleIndex].name }}</h5>
             <span>&nbsp;</span>
             <fa-icon [icon]="['fas', 'external-link-alt']" [fixedWidth]="true" style="vertical-align: text-top; font-size: 13px; color: var(--title-fg)"></fa-icon>
           </a>
@@ -45,7 +59,7 @@
       <div class="card graph-card">
         <div class="card-body">
           <ng-container *ngTemplateOutlet="mempoolTable; context: { $implicit: mempoolInfoData }"></ng-container>
-            <h5 class="card-title mt-3" i18n="dashboard.incoming-transactions">Incoming Transactions</h5>
+            <h5 class="card-title mt-3 bm-tip" i18n="dashboard.incoming-transactions" ngbTooltip="How much new transaction data arrives per second. Above the red line means the waiting room is filling faster than blocks can empty it." placement="bottom">Incoming Transactions</h5>
             <div class="mempool-graph" *ngIf="(mempoolStats$ | async) as mempoolStats">
               <app-incoming-transactions-graph
                 [height]="incomingGraphHeight"
@@ -59,7 +73,7 @@
       </div>
     </div>
     <div class="col" style="max-height: 410px">
-      <div class="card" *ngIf="(network$ | async) !== 'liquidtestnet'; else latestBlocks">
+      <div class="card" *ngIf="false; else latestBlocks">
         <div class="card-body">
           <a class="title-link" href="" [routerLink]="['/rbf' | relativeUrl]">
             <h5 class="card-title d-inline" i18n="dashboard.recent-rbf-replacements">Recent Replacements</h5>
@@ -96,7 +110,7 @@
         <div class="card">
           <div class="card-body">
             <a class="title-link" href="" [routerLink]="['/blocks' | relativeUrl]">
-              <h5 class="card-title d-inline" i18n="dashboard.recent-blocks">Recent Blocks</h5>
+              <h5 class="card-title d-inline bm-tip" i18n="dashboard.recent-blocks" ngbTooltip="The newest blocks. Height is the block's number in the chain; TXs is how many transactions it holds." placement="bottom">Recent Blocks</h5>
               <span>&nbsp;</span>
               <fa-icon [icon]="['fas', 'external-link-alt']" [fixedWidth]="true" style="vertical-align: text-top; font-size: 13px; color: var(--title-fg)"></fa-icon>
             </a>
@@ -128,7 +142,7 @@
     <div class="col" style="max-height: 410px">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title" i18n="dashboard.recent-transactions">Recent Transactions</h5>
+          <h5 class="card-title bm-tip" i18n="dashboard.recent-transactions" ngbTooltip="Transactions that just arrived in the mempool. They are waiting to be mined." placement="bottom">Recent Transactions</h5>
           <table class="table latest-transactions">
             <thead>
               <th class="table-cell-txid" i18n="dashboard.latest-transactions.txid">TXID</th>
@@ -272,20 +286,20 @@
 <ng-template #mempoolTable let-mempoolInfoData>
   <div class="mempool-info-data">
     <div class="item">
-      <h5 *ngIf="!mempoolInfoData.value || mempoolInfoData.value.memPoolInfo.mempoolminfee === mempoolInfoData.value.memPoolInfo.minrelaytxfee || (stateService.env.BASE_MODULE === 'liquid' && mempoolInfoData.value.memPoolInfo.mempoolminfee === 0.000001) else purgingText" class="card-title" i18n="dashboard.minimum-fee|Minimum mempool fee">Minimum fee</h5>
+      <h5 *ngIf="!mempoolInfoData.value || mempoolInfoData.value.memPoolInfo.mempoolminfee === mempoolInfoData.value.memPoolInfo.minrelaytxfee || (stateService.env.BASE_MODULE === 'liquid' && mempoolInfoData.value.memPoolInfo.mempoolminfee === 0.000001) else purgingText" class="card-title" i18n="dashboard.minimum-fee|Minimum mempool fee" ngbTooltip="The lowest fee rate nodes will accept right now. Pay less and your transaction will not even enter the waiting room." placement="bottom">Minimum fee</h5>
       <ng-template #purgingText><h5 class="card-title" i18n="dashboard.purging|Purgin below fee">Purging</h5></ng-template>
       <p class="card-text" *ngIf="(isLoadingWebSocket$ | async) === false && mempoolInfoData.value; else loading">
         <ng-template [ngIf]="mempoolInfoData.value.memPoolInfo.mempoolminfee !== mempoolInfoData.value.memPoolInfo.minrelaytxfee">&lt; </ng-template><app-fee-rate [fee]="mempoolInfoData.value.memPoolInfo.mempoolminfee * 100000"></app-fee-rate>
       </p>
     </div>
     <div class="item">
-      <h5 class="card-title" i18n="dashboard.unconfirmed|Unconfirmed count">Unconfirmed</h5>
+      <h5 class="card-title bm-tip" i18n="dashboard.unconfirmed|Unconfirmed count" ngbTooltip="Transactions waiting in the mempool that are not in a block yet." placement="bottom">Unconfirmed</h5>
       <p class="card-text" *ngIf="(isLoadingWebSocket$ | async) === false && mempoolInfoData.value; else loading">
         {{ mempoolInfoData.value.memPoolInfo.size | number }} <span i18n="dashboard.txs">TXs</span>
       </p>
     </div>
     <div class="item bar">
-      <h5 class="card-title" i18n="dashboard.memory-usage|Memory usage">Memory Usage</h5>
+      <h5 class="card-title bm-tip" i18n="dashboard.memory-usage|Memory usage" ngbTooltip="How full this node's waiting room is. When it is full, the lowest-fee transactions get dropped." placement="bottom">Memory Usage</h5>
       <div class="card-text" *ngIf="(isLoadingWebSocket$ | async) === false && mempoolInfoData.value; else loadingbig">
         <div class="progress">
           <div class="progress-bar {{ mempoolInfoData.value.mempoolSizeProgress }}" role="progressbar" [ngStyle]="{'width': (mempoolInfoData.value.memPoolInfo.usage / mempoolInfoData.value.memPoolInfo.maxmempool * 100) + '%' }">&nbsp;</div>

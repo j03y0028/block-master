@@ -3,8 +3,8 @@
     <fa-icon [icon]="['fas', 'info-circle']" [fixedWidth]="true" size="lg"></fa-icon>
   </a>
   <div class="filter-bar">
-    <button class="menu-toggle" (click)="menuOpen = !menuOpen" title="Mempool Goggles&trade;">
-      <app-svg-images name="goggles" width="100%" height="100%"></app-svg-images>
+    <button class="menu-toggle" (click)="menuOpen = !menuOpen" title="Highlight transaction types">
+      <fa-icon [icon]="['fas', 'filter']" [fixedWidth]="true" style="font-size: 20px; color: var(--fg)"></fa-icon>
     </button>
     <div class="active-tags">
       <ng-container *ngFor="let filter of activeFilters;">

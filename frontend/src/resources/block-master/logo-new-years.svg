@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-labelledby="t">
+  <title id="t">Block Master - New Year's Day</title>
+  
+  <g stroke="#16182a" stroke-width="2.6" stroke-linejoin="round">
+    <path d="M30,67 L64,84 L64,122 L30,105 Z" fill="#2b3050"/>
+    <path d="M64,84 L98,67 L98,105 L64,122 Z" fill="#1c1f35"/>
+    <path d="M64,50 L98,67 L64,84 L30,67 Z" fill="#4b5170"/>
+  </g>
+  <g stroke="#16182a" stroke-opacity="0.22" stroke-width="1.4" fill="none">
+    <path d="M47,58.5 L81,75.5 M81,58.5 L47,75.5"/>
+    <path d="M47,75.5 L47,113.5 M30,86 L64,103"/>
+    <path d="M81,75.5 L81,113.5 M64,103 L98,86"/>
+  </g>
+  <path d="M16,25 Q17.62,32.38 25,34 Q17.62,35.62 16,43 Q14.38,35.62 7,34 Q14.38,32.38 16,25 Z" fill="#ffd35c"/><path d="M112,33 Q113.26,38.74 119,40 Q113.26,41.26 112,47 Q110.74,41.26 105,40 Q110.74,38.74 112,33 Z" fill="#e5e7eb"/><path d="M110,87 Q111.62,94.38 119,96 Q111.62,97.62 110,105 Q108.38,97.62 101,96 Q108.38,94.38 110,87 Z" fill="#ffd35c"/><path d="M16,86 Q17.08,90.92 22,92 Q17.08,93.08 16,98 Q14.92,93.08 10,92 Q14.92,90.92 16,86 Z" fill="#e5e7eb"/><rect x="22" y="56" width="4" height="4" fill="#f472b6" transform="rotate(20 24 58)"/><rect x="102" y="62" width="4" height="4" fill="#60a5fa" transform="rotate(-25 104 64)"/><rect x="100" y="16" width="4" height="4" fill="#4ade80" transform="rotate(35 102 18)"/>
+  <path d="M64,50 L98,67 L64,84 L30,67 Z M30,67 L64,84 L64,122 L30,105 Z M64,84 L98,67 L98,105 L64,122 Z" fill="none" stroke="#16182a" stroke-width="2.6" stroke-linejoin="round"/>
+  <g transform="translate(0 6)"><g stroke="#16182a" stroke-width="2.4" stroke-linejoin="round">
+    <path d="M43,47 L39,21 L52.5,33 L64,11 L75.5,33 L89,21 L85,47 Z" fill="#ffd35c"/>
+    <rect x="42" y="41" width="44" height="8" rx="2.5" fill="#ffd35c"/>
+    <circle cx="39" cy="21" r="3.6" fill="#e5e7eb"/>
+    <circle cx="64" cy="11" r="3.8" fill="#e5e7eb"/>
+    <circle cx="89" cy="21" r="3.6" fill="#e5e7eb"/>
+  </g>
+  <circle cx="64" cy="45" r="2.3" fill="#e5e7eb" stroke="#16182a" stroke-width="1.4"/></g>
+</svg>

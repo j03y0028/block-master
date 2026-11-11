@@ -26,7 +26,7 @@ export class OpenGraphService {
   ) {
     // save og:image tag from original template
     const initialOgImageTag = metaService.getTag('property=\'og:image\'');
-    this.defaultImageUrl = initialOgImageTag?.content || 'https://mempool.space/resources/previews/mempool-space-preview.jpg';
+    this.defaultImageUrl = initialOgImageTag?.content || '/resources/previews/block-master-preview.png';
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd),
       map(() => this.activatedRoute),
@@ -67,7 +67,8 @@ export class OpenGraphService {
   }
 
   setManualOgImage(imageFilename) {
-    const ogImage = `${window.location.protocol}//${window.location.host}/resources/previews/${imageFilename}`;
+    // Block Master ships one neutral preview image instead of the upstream (trademarked) per-page previews.
+    const ogImage = `${window.location.protocol}//${window.location.host}/resources/previews/block-master-preview.png`;
     this.metaService.updateTag({ property: 'og:image', content: ogImage });
     this.metaService.updateTag({ property: 'og:image:width', content: '2000' });
     this.metaService.updateTag({ property: 'og:image:height', content: '1000' });

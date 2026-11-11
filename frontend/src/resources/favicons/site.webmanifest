@@ -1,6 +1,7 @@
 {
-    "name": "mempool",
-    "short_name": "mempool",
+    "name": "Block Master",
+    "short_name": "Block Master",
+    "description": "A friendly, self-hosted Bitcoin explorer for your own node",
     "icons": [
         {
             "src": "/resources/favicons/android-chrome-192x192.png",
@@ -11,9 +12,14 @@
             "src": "/resources/favicons/android-chrome-512x512.png",
             "sizes": "512x512",
             "type": "image/png"
+        },
+        {
+            "src": "/resources/block-master/logo-default.svg",
+            "sizes": "any",
+            "type": "image/svg+xml"
         }
     ],
-    "theme_color": "#000000",
-    "background_color": "#000000",
+    "theme_color": "#1d1f31",
+    "background_color": "#11131f",
     "display": "standalone"
 }

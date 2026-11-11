@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-labelledby="t">
+  <title id="t">Block Master - Christmas Day</title>
+  
+  <g stroke="#16182a" stroke-width="2.6" stroke-linejoin="round">
+    <path d="M30,67 L64,84 L64,122 L30,105 Z" fill="#dc2626"/>
+    <path d="M64,84 L98,67 L98,105 L64,122 Z" fill="#15803d"/>
+    <path d="M64,50 L98,67 L64,84 L30,67 Z" fill="#f8fafc"/>
+  </g>
+  
+  <path d="M30,67 L64,84 L98,67 L98,71 Q92,76 88,73 Q84,80 78,76 Q72,85 64,88 Q56,85 50,76 Q44,80 40,73 Q36,76 30,71 Z" fill="#f8fafc"/>
+      <path d="M47,75.5 L47,113.5" stroke="#fcd34d" stroke-width="5"/>
+      <path d="M81,75.5 L81,113.5" stroke="#fcd34d" stroke-width="5"/>
+      <path d="M47,58.5 L81,75.5" stroke="#fcd34d" stroke-width="4" opacity="0.95"/><line x1="9" y1="34" x2="23" y2="34" stroke="#e0f2fe" stroke-width="1.8" stroke-linecap="round"/><line x1="12.5" y1="27.94" x2="19.5" y2="40.06" stroke="#e0f2fe" stroke-width="1.8" stroke-linecap="round"/><line x1="19.5" y1="27.94" x2="12.5" y2="40.06" stroke="#e0f2fe" stroke-width="1.8" stroke-linecap="round"/><line x1="106" y1="40" x2="118" y2="40" stroke="#e0f2fe" stroke-width="1.8" stroke-linecap="round"/><line x1="109" y1="34.8" x2="115" y2="45.2" stroke="#e0f2fe" stroke-width="1.8" stroke-linecap="round"/><line x1="115" y1="34.8" x2="109" y2="45.2" stroke="#e0f2fe" stroke-width="1.8" stroke-linecap="round"/><line x1="103" y1="98" x2="117" y2="98" stroke="#e0f2fe" stroke-width="1.8" stroke-linecap="round"/><line x1="106.5" y1="91.94" x2="113.5" y2="104.06" stroke="#e0f2fe" stroke-width="1.8" stroke-linecap="round"/><line x1="113.5" y1="91.94" x2="106.5" y2="104.06" stroke="#e0f2fe" stroke-width="1.8" stroke-linecap="round"/><line x1="13" y1="96" x2="23" y2="96" stroke="#e0f2fe" stroke-width="1.8" stroke-linecap="round"/><line x1="15.5" y1="91.67" x2="20.5" y2="100.33" stroke="#e0f2fe" stroke-width="1.8" stroke-linecap="round"/><line x1="20.5" y1="91.67" x2="15.5" y2="100.33" stroke="#e0f2fe" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M64,50 L98,67 L64,84 L30,67 Z M30,67 L64,84 L64,122 L30,105 Z M64,84 L98,67 L98,105 L64,122 Z" fill="none" stroke="#16182a" stroke-width="2.6" stroke-linejoin="round"/>
+  <g transform="translate(0 6)"><g stroke="#16182a" stroke-width="2.4" stroke-linejoin="round">
+    <path d="M43,47 L39,21 L52.5,33 L64,11 L75.5,33 L89,21 L85,47 Z" fill="#fcd34d"/>
+    <rect x="42" y="41" width="44" height="8" rx="2.5" fill="#fcd34d"/>
+    <circle cx="39" cy="21" r="3.6" fill="#ef4444"/>
+    <circle cx="64" cy="11" r="3.8" fill="#ef4444"/>
+    <circle cx="89" cy="21" r="3.6" fill="#ef4444"/>
+  </g>
+  <circle cx="64" cy="45" r="2.3" fill="#ef4444" stroke="#16182a" stroke-width="1.4"/></g>
+</svg>

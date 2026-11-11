@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-labelledby="t">
+  <title id="t">Block Master - Thanksgiving</title>
+  
+  <g stroke="#16182a" stroke-width="2.6" stroke-linejoin="round">
+    <path d="M30,67 L64,84 L64,122 L30,105 Z" fill="#d97706"/>
+    <path d="M64,84 L98,67 L98,105 L64,122 Z" fill="#92400e"/>
+    <path d="M64,50 L98,67 L64,84 L30,67 Z" fill="#fcd34d"/>
+  </g>
+  <g stroke="#16182a" stroke-opacity="0.22" stroke-width="1.4" fill="none">
+    <path d="M47,58.5 L81,75.5 M81,58.5 L47,75.5"/>
+    <path d="M47,75.5 L47,113.5 M30,86 L64,103"/>
+    <path d="M81,75.5 L81,113.5 M64,103 L98,86"/>
+  </g>
+  <g transform="translate(16 40) rotate(-30) scale(1.1)"><path d="M0,-10 C6,-6 7,2 0,10 C-7,2 -6,-6 0,-10 Z" fill="#ea580c" stroke="#16182a" stroke-width="1"/><line x1="0" y1="-7" x2="0" y2="13" stroke="#16182a" stroke-width="1.1"/></g><g transform="translate(112 36) rotate(25) scale(1)"><path d="M0,-10 C6,-6 7,2 0,10 C-7,2 -6,-6 0,-10 Z" fill="#dc2626" stroke="#16182a" stroke-width="1"/><line x1="0" y1="-7" x2="0" y2="13" stroke="#16182a" stroke-width="1.1"/></g><g transform="translate(110 98) rotate(60) scale(1.2)"><path d="M0,-10 C6,-6 7,2 0,10 C-7,2 -6,-6 0,-10 Z" fill="#facc15" stroke="#16182a" stroke-width="1"/><line x1="0" y1="-7" x2="0" y2="13" stroke="#16182a" stroke-width="1.1"/></g><g transform="translate(18 96) rotate(-70) scale(0.9)"><path d="M0,-10 C6,-6 7,2 0,10 C-7,2 -6,-6 0,-10 Z" fill="#b91c1c" stroke="#16182a" stroke-width="1"/><line x1="0" y1="-7" x2="0" y2="13" stroke="#16182a" stroke-width="1.1"/></g><g transform="translate(81 96)"><ellipse rx="9" ry="7" fill="#f97316" stroke="#16182a" stroke-width="1.3"/>
+      <ellipse rx="3.5" ry="7" fill="none" stroke="#16182a" stroke-width="1"/><path d="M0,-7 q1,-4 4,-5" stroke="#166534" stroke-width="2" fill="none"/></g>
+  <path d="M64,50 L98,67 L64,84 L30,67 Z M30,67 L64,84 L64,122 L30,105 Z M64,84 L98,67 L98,105 L64,122 Z" fill="none" stroke="#16182a" stroke-width="2.6" stroke-linejoin="round"/>
+  <g transform="translate(0 6)"><g stroke="#16182a" stroke-width="2.4" stroke-linejoin="round">
+    <path d="M43,47 L39,21 L52.5,33 L64,11 L75.5,33 L89,21 L85,47 Z" fill="#f59e0b"/>
+    <rect x="42" y="41" width="44" height="8" rx="2.5" fill="#b45309"/>
+    <circle cx="39" cy="21" r="3.6" fill="#fef3c7"/>
+    <circle cx="64" cy="11" r="3.8" fill="#fef3c7"/>
+    <circle cx="89" cy="21" r="3.6" fill="#fef3c7"/>
+  </g>
+  <circle cx="64" cy="45" r="2.3" fill="#fef3c7" stroke="#16182a" stroke-width="1.4"/></g>
+</svg>

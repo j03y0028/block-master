@@ -9,9 +9,9 @@ import { StateService } from '@app/services/state.service';
 })
 export class SeoService {
   network = '';
-  baseTitle = 'mempool';
-  baseDescription = 'Explore the full Bitcoin ecosystem&reg; with The Mempool Open Source Project&reg;.';
-  baseDomain = 'mempool.space';
+  baseTitle = 'Block Master';
+  baseDescription = 'Block Master: a friendly, self-hosted Bitcoin explorer for your own node.';
+  baseDomain = typeof window !== 'undefined' ? window.location.host : 'localhost';
 
   canonicalLink: HTMLLinkElement = document.getElementById('canonical') as HTMLLinkElement;
 
@@ -26,8 +26,8 @@ export class SeoService {
     this.baseDescription = metaService.getTag('name=\'description\'')?.content || this.baseDescription;
     this.baseTitle = titleService.getTitle()?.split(' - ')?.[0] || this.baseTitle;
     try {
-      const canonicalUrl = new URL(this.canonicalLink?.href || '');
-      this.baseDomain = canonicalUrl?.host;
+      const canonicalUrl = new URL(this.canonicalLink?.getAttribute('href') || '');
+      this.baseDomain = canonicalUrl?.host || this.baseDomain;
     } catch (e) {
       // leave as default
     }
@@ -83,7 +83,7 @@ export class SeoService {
   }
 
   updateCanonical(path) {
-    this.canonicalLink.setAttribute('href', 'https://' + this.baseDomain + path);
+    this.canonicalLink?.setAttribute('href', window.location.protocol + '//' + this.baseDomain + path);
   }
 
   getTitle(): string {

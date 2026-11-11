@@ -257,72 +257,6 @@ const downloadMiningPoolLogos = async () => {
     throw new Error(`Unable to download mining pool logos. Trying again at next restart. Reason: ${e instanceof Error ? e.message : e}`);
   }
 };
-
-// Main: Download promo video subtitles
-const downloadPromoVideoSubtitles = async () => {
-  console.log(`${LOG_TAG} \tChecking if promo video subtitles needs downloading or updating...`);
-
-  try {
-    const subtitles = await fetchGitHubContents('/repos/mempool/mempool-promo/contents/subtitles', !!config.githubToken);
-
-    let downloadedCount = 0;
-    const validFiles = subtitles.filter(item => item.type === 'file' && item.download_url);
-
-    for (const subtitle of validFiles) {
-      if (config.verbose) {
-        console.log(`${LOG_TAG} Processing ${subtitle.name}`);
-      }
-
-      const downloaded = await processFileItem(subtitle, {
-        filePath: `${ASSETS_PATH}/promo-video/${subtitle.name}`,
-        remoteHash: subtitle.sha,
-        downloadUrl: subtitle.download_url,
-        cdnPattern: {
-          from: "raw.githubusercontent.com/mempool/mempool-promo/master/subtitles",
-          to: "mempool.space/resources/promo-video"
-        },
-        itemName: subtitle.name,
-        downloadDir: `${ASSETS_PATH}/promo-video/`
-      });
-
-      if (downloaded) downloadedCount++;
-    }
-
-    console.log(`${LOG_TAG} Downloaded ${downloadedCount} and skipped ${validFiles.length - downloadedCount} existing video subtitles`);
-  } catch (e) {
-    throw new Error(`Unable to download video subtitles. Trying again at next restart. Reason: ${e instanceof Error ? e.message : e}`);
-  }
-};
-
-// Main: Download promo video
-const downloadPromoVideo = async () => {
-  console.log(`${LOG_TAG} \tChecking if promo video needs downloading or updating...`);
-
-  try {
-    const contents = await fetchGitHubContents('/repos/mempool/mempool-promo/contents', !!config.githubToken);
-
-    const videoItem = contents.find(item => item.name === 'promo.mp4');
-    if (!videoItem) {
-      console.log(`${LOG_TAG} \tpromo.mp4 not found in repository`);
-      return;
-    }
-
-    await processFileItem(videoItem, {
-      filePath: `${ASSETS_PATH}/promo-video/mempool-promo.mp4`,
-      remoteHash: videoItem.sha,
-      downloadUrl: videoItem.download_url,
-      cdnPattern: {
-        from: "raw.githubusercontent.com/mempool/mempool-promo/master/promo.mp4",
-        to: "mempool.space/resources/promo-video/mempool-promo.mp4"
-      },
-      itemName: 'mempool-promo.mp4',
-      downloadDir: `${ASSETS_PATH}/promo-video/`
-    });
-  } catch (e) {
-    throw new Error(`Unable to download video. Trying again at next restart. Reason: ${e instanceof Error ? e.message : e}`);
-  }
-};
-
 // Download Liquid assets if configured
 const downloadLiquidAssets = () => {
   if (configContent.BASE_MODULE !== 'liquid') {
@@ -359,15 +293,7 @@ const downloadLiquidAssets = () => {
     }
     await downloadMiningPoolLogos();
 
-    if (config.verbose) {
-      console.log(`${LOG_TAG} Downloading promo video subtitles`);
-    }
-    await downloadPromoVideoSubtitles();
-
-    if (config.verbose) {
-      console.log(`${LOG_TAG} Downloading promo video`);
-    }
-    await downloadPromoVideo();
+    // Block Master: the upstream promo video is mempool.space branding, so it is not downloaded or shipped.
 
     console.log(`${LOG_TAG} Asset synchronization complete`);
   } catch (error) {
