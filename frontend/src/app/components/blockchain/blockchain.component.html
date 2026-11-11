@@ -10,6 +10,8 @@
         </ng-container>
       </div>
       <div id="divider" [hidden]="pageIndex > 0">
+        <span class="bm-strip-label bm-forming" aria-hidden="true">Forming</span>
+        <span class="bm-strip-label bm-sealed" aria-hidden="true">Sealed</span>
         <button class="block-display-toggle" (click)="toggleBlockDisplayMode()"><fa-icon [icon]="['fas', 'exchange-alt']" [fixedWidth]="true"></fa-icon></button>
         <button class="time-toggle" (click)="toggleTimeDirection()"><fa-icon [icon]="['fas', 'exchange-alt']" [fixedWidth]="true"></fa-icon></button>
       </div>

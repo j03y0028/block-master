@@ -1,12 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="Block Master, Thanksgiving">
   <title>Block Master: Thanksgiving</title>
   <defs>
-    <linearGradient id="thanksgiving-top" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6c46e"/><stop offset="1" stop-color="#e79a3a"/></linearGradient><linearGradient id="thanksgiving-left" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c4612a"/><stop offset="1" stop-color="#96441a"/></linearGradient><linearGradient id="thanksgiving-right" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8a3a17"/><stop offset="1" stop-color="#5e260e"/></linearGradient><linearGradient id="thanksgiving-crown" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff0c0"/><stop offset="1" stop-color="#e5a92d"/></linearGradient>
-    <linearGradient id="thanksgiving-sheen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity="0.45"/><stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/></linearGradient>
-    <mask id="thanksgiving-cube" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128">
+    <linearGradient id="thanksgiving-top" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6c46e"/><stop offset="1" stop-color="#e79a3a"/></linearGradient><linearGradient id="thanksgiving-left" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c4612a"/><stop offset="1" stop-color="#96441a"/></linearGradient><linearGradient id="thanksgiving-right" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8a3a17"/><stop offset="1" stop-color="#5e260e"/></linearGradient><linearGradient id="thanksgiving-crown" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff0c0"/><stop offset="1" stop-color="#e5a92d"/></linearGradient>
+    <linearGradient id="thanksgiving-table" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c4612a"/><stop offset="1" stop-color="#96441a"/></linearGradient>
+    <linearGradient id="thanksgiving-sheen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity="0.5"/><stop offset="0.55" stop-color="#ffffff" stop-opacity="0"/></linearGradient>
+    <clipPath id="thanksgiving-tablec"><path d="M42.84,66.7 L85.16,66.7 L91.84,87 L85.16,107.3 L42.84,107.3 L36.16,87 Z"/></clipPath>
+    <clipPath id="thanksgiving-gemc"><path d="M27.52,52 L100.48,52 L112,87 L100.48,122 L27.52,122 L16,87 Z"/></clipPath>
+    <mask id="thanksgiving-gem" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128">
       <rect width="128" height="128" fill="white"/>
-      <path d="M32,68 L64,84 L96,68 M64,84 L64,120" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-      
+      <path d="M27.52,52 L42.84,66.7 M100.48,52 L85.16,66.7 M112,87 L91.84,87 M100.48,122 L85.16,107.3 M27.52,122 L42.84,107.3 M16,87 L36.16,87 M42.84,66.7 L85.16,66.7 L91.84,87 L85.16,107.3 L42.84,107.3 L36.16,87 Z" stroke="black" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <g clip-path="url(#thanksgiving-tablec)"></g>
     </mask>
     <mask id="thanksgiving-crownm" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128">
       <rect width="128" height="128" fill="white"/>
@@ -18,12 +21,19 @@
       <linearGradient id="thanksgiving-lf3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d9b44a"/><stop offset="1" stop-color="#8a6a17"/></linearGradient>
   </defs>
   <g transform="translate(18 34) rotate(-30) scale(1.05)"><path d="M0,-11 C7,-6 8,3 0,11 C-8,3 -7,-6 0,-11 Z" fill="url(#thanksgiving-lf2)"/><path d="M0,-7 L0,13" stroke="#7a2e0e" stroke-width="1.1" stroke-linecap="round" opacity="0.9"/></g><g transform="translate(110 30) rotate(35) scale(0.85)"><path d="M0,-11 C7,-6 8,3 0,11 C-8,3 -7,-6 0,-11 Z" fill="url(#thanksgiving-lf1)"/><path d="M0,-7 L0,13" stroke="#7a3e0e" stroke-width="1.1" stroke-linecap="round" opacity="0.9"/></g><g transform="translate(108 98) rotate(120) scale(0.95)"><path d="M0,-11 C7,-6 8,3 0,11 C-8,3 -7,-6 0,-11 Z" fill="url(#thanksgiving-lf3)"/><path d="M0,-7 L0,13" stroke="#5f4a0f" stroke-width="1.1" stroke-linecap="round" opacity="0.9"/></g><g transform="translate(20 96) rotate(-110) scale(0.7)"><path d="M0,-11 C7,-6 8,3 0,11 C-8,3 -7,-6 0,-11 Z" fill="url(#thanksgiving-lf1)"/><path d="M0,-7 L0,13" stroke="#7a3e0e" stroke-width="1.1" stroke-linecap="round" opacity="0.9"/></g>
-  <g mask="url(#thanksgiving-cube)" stroke-linejoin="round">
-    <path d="M32,68 L64,52 L96,68 L64,84 Z" fill="url(#thanksgiving-top)" stroke="url(#thanksgiving-top)" stroke-width="3"/>
-    <path d="M32,68 L64,84 L64,120 L32,104 Z" fill="url(#thanksgiving-left)" stroke="url(#thanksgiving-left)" stroke-width="3"/>
-    <path d="M64,84 L96,68 L96,104 L64,120 Z" fill="url(#thanksgiving-right)" stroke="url(#thanksgiving-right)" stroke-width="3"/>
-    
-    <path d="M44,62 L64,52 L84,62 L64,72 Z" fill="url(#thanksgiving-sheen)"/>
+  <g mask="url(#thanksgiving-gem)" stroke-linejoin="round">
+    <path d="M27.52,52 L100.48,52 L85.16,66.7 L42.84,66.7 Z" fill="url(#thanksgiving-top)" stroke="url(#thanksgiving-top)" stroke-width="1.2"/><path d="M27.52,52 L100.48,52 L85.16,66.7 L42.84,66.7 Z" fill="#ffffff" opacity="0.16"/>
+    <path d="M16,87 L27.52,52 L42.84,66.7 L36.16,87 Z" fill="url(#thanksgiving-top)" stroke="url(#thanksgiving-top)" stroke-width="1.2"/><path d="M16,87 L27.52,52 L42.84,66.7 L36.16,87 Z" fill="#ffffff" opacity="0.04"/>
+    <path d="M100.48,52 L112,87 L91.84,87 L85.16,66.7 Z" fill="url(#thanksgiving-left)" stroke="url(#thanksgiving-left)" stroke-width="1.2"/><path d="M100.48,52 L112,87 L91.84,87 L85.16,66.7 Z" fill="#ffffff" opacity="0.1"/>
+    <path d="M27.52,122 L16,87 L36.16,87 L42.84,107.3 Z" fill="url(#thanksgiving-left)" stroke="url(#thanksgiving-left)" stroke-width="1.2"/><path d="M27.52,122 L16,87 L36.16,87 L42.84,107.3 Z" fill="#000000" opacity="0.04"/>
+    <path d="M112,87 L100.48,122 L85.16,107.3 L91.84,87 Z" fill="url(#thanksgiving-right)" stroke="url(#thanksgiving-right)" stroke-width="1.2"/>
+    <path d="M100.48,122 L27.52,122 L42.84,107.3 L85.16,107.3 Z" fill="url(#thanksgiving-right)" stroke="url(#thanksgiving-right)" stroke-width="1.2"/><path d="M100.48,122 L27.52,122 L42.84,107.3 L85.16,107.3 Z" fill="#000000" opacity="0.2"/>
+    <g clip-path="url(#thanksgiving-gemc)"></g>
+    <path d="M42.84,66.7 L85.16,66.7 L91.84,87 L85.16,107.3 L42.84,107.3 L36.16,87 Z" fill="url(#thanksgiving-table)"/>
+    <g clip-path="url(#thanksgiving-tablec)">
+      <g transform="matrix(0.56 0 0 0.56 36.16 66.7)"><g transform="translate(50 38) rotate(20) scale(2.6)"><path d="M0,-11 C7,-6 8,3 0,11 C-8,3 -7,-6 0,-11 Z" fill="url(#thanksgiving-lf3)"/><path d="M0,-7 L0,13" stroke="#7a2e0e" stroke-width="1.1" stroke-linecap="round" opacity="0.9"/></g></g>
+      <path d="M42.84,66.7 L68.84,66.7 L50.16,107.3 L36.16,107.3 Z" fill="url(#thanksgiving-sheen)" opacity="0.55"/>
+    </g>
   </g>
   <g mask="url(#thanksgiving-crownm)" stroke-linejoin="round">
     <path d="M42,47 L37,21 L52,33 L64,9 L76,33 L91,21 L86,47 Z" fill="url(#thanksgiving-crown)" stroke="url(#thanksgiving-crown)" stroke-width="2.4"/>

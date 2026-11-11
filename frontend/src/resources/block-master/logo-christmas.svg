@@ -1,12 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="Block Master, Christmas">
   <title>Block Master: Christmas</title>
   <defs>
-    <linearGradient id="christmas-top" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2fae6a"/><stop offset="1" stop-color="#1a8a4e"/></linearGradient><linearGradient id="christmas-left" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#16774a"/><stop offset="1" stop-color="#0e5434"/></linearGradient><linearGradient id="christmas-right" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0e5434"/><stop offset="1" stop-color="#083a23"/></linearGradient><linearGradient id="christmas-crown" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff1c1"/><stop offset="1" stop-color="#e2ad35"/></linearGradient>
-    <linearGradient id="christmas-sheen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity="0.45"/><stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/></linearGradient>
-    <mask id="christmas-cube" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128">
+    <linearGradient id="christmas-top" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2fae6a"/><stop offset="1" stop-color="#1a8a4e"/></linearGradient><linearGradient id="christmas-left" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#16774a"/><stop offset="1" stop-color="#0e5434"/></linearGradient><linearGradient id="christmas-right" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0e5434"/><stop offset="1" stop-color="#083a23"/></linearGradient><linearGradient id="christmas-crown" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff1c1"/><stop offset="1" stop-color="#e2ad35"/></linearGradient>
+    <linearGradient id="christmas-table" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#16774a"/><stop offset="1" stop-color="#0e5434"/></linearGradient>
+    <linearGradient id="christmas-sheen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity="0.5"/><stop offset="0.55" stop-color="#ffffff" stop-opacity="0"/></linearGradient>
+    <clipPath id="christmas-tablec"><path d="M42.84,66.7 L85.16,66.7 L91.84,87 L85.16,107.3 L42.84,107.3 L36.16,87 Z"/></clipPath>
+    <clipPath id="christmas-gemc"><path d="M27.52,52 L100.48,52 L112,87 L100.48,122 L27.52,122 L16,87 Z"/></clipPath>
+    <mask id="christmas-gem" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128">
       <rect width="128" height="128" fill="white"/>
-      <path d="M32,68 L64,84 L96,68 M64,84 L64,120" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-      
+      <path d="M27.52,52 L42.84,66.7 M100.48,52 L85.16,66.7 M112,87 L91.84,87 M100.48,122 L85.16,107.3 M27.52,122 L42.84,107.3 M16,87 L36.16,87 M42.84,66.7 L85.16,66.7 L91.84,87 L85.16,107.3 L42.84,107.3 L36.16,87 Z" stroke="black" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <g clip-path="url(#christmas-tablec)"></g>
     </mask>
     <mask id="christmas-crownm" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128">
       <rect width="128" height="128" fill="white"/>
@@ -16,12 +19,19 @@
     
   </defs>
   <g stroke="#7cc0e8" stroke-width="1.3" stroke-linecap="round" fill="none"><path d="M17,32 L26,32 M21.95,32 L23.88,33.62 M21.95,32 L23.88,30.38"/><path d="M17,32 L21.5,39.79 M19.48,36.29 L19.03,38.77 M19.48,36.29 L21.84,37.14"/><path d="M17,32 L12.5,39.79 M14.53,36.29 L12.16,37.14 M14.53,36.29 L14.97,38.77"/><path d="M17,32 L8,32 M12.05,32 L10.12,30.38 M12.05,32 L10.12,33.62"/><path d="M17,32 L12.5,24.21 M14.52,27.71 L14.97,25.23 M14.52,27.71 L12.16,26.86"/><path d="M17,32 L21.5,24.21 M19.48,27.71 L21.84,26.86 M19.48,27.71 L19.03,25.23"/></g><g stroke="#7cc0e8" stroke-width="1.3" stroke-linecap="round" fill="none"><path d="M111,36 L118,36 M114.85,36 L116.35,37.26 M114.85,36 L116.35,34.74"/><path d="M111,36 L114.5,42.06 M112.92,39.33 L112.58,41.26 M112.92,39.33 L114.77,40"/><path d="M111,36 L107.5,42.06 M109.08,39.33 L107.23,40 M109.08,39.33 L109.42,41.26"/><path d="M111,36 L104,36 M107.15,36 L105.65,34.74 M107.15,36 L105.65,37.26"/><path d="M111,36 L107.5,29.94 M109.08,32.67 L109.42,30.74 M109.08,32.67 L107.23,32"/><path d="M111,36 L114.5,29.94 M112.92,32.67 L114.77,32 M112.92,32.67 L112.58,30.74"/></g><g stroke="#7cc0e8" stroke-width="1.3" stroke-linecap="round" fill="none"><path d="M110,98 L116,98 M113.3,98 L114.58,99.08 M113.3,98 L114.58,96.92"/><path d="M110,98 L113,103.2 M111.65,100.86 L111.36,102.51 M111.65,100.86 L113.23,101.43"/><path d="M110,98 L107,103.2 M108.35,100.86 L106.77,101.43 M108.35,100.86 L108.64,102.51"/><path d="M110,98 L104,98 M106.7,98 L105.42,96.92 M106.7,98 L105.42,99.08"/><path d="M110,98 L107,92.8 M108.35,95.14 L108.64,93.49 M108.35,95.14 L106.77,94.57"/><path d="M110,98 L113,92.8 M111.65,95.14 L113.23,94.57 M111.65,95.14 L111.36,93.49"/></g><circle cx="22" cy="92" r="1.6" fill="#7cc0e8"/><circle cx="102" cy="16" r="1.4" fill="#7cc0e8"/>
-  <g mask="url(#christmas-cube)" stroke-linejoin="round">
-    <path d="M32,68 L64,52 L96,68 L64,84 Z" fill="url(#christmas-top)" stroke="url(#christmas-top)" stroke-width="3"/>
-    <path d="M32,68 L64,84 L64,120 L32,104 Z" fill="url(#christmas-left)" stroke="url(#christmas-left)" stroke-width="3"/>
-    <path d="M64,84 L96,68 L96,104 L64,120 Z" fill="url(#christmas-right)" stroke="url(#christmas-right)" stroke-width="3"/>
-    <g transform="matrix(0.32 -0.16 0.32 0.16 32 68)" fill="#e23b3b"><rect x="42" y="0" width="16" height="100"/><rect x="0" y="42" width="100" height="16"/></g><g transform="matrix(0.32 0.16 0 0.36 32 68)" fill="#c92a2a"><rect x="42" y="0" width="16" height="100"/></g><g transform="matrix(0.32 -0.16 0 0.36 64 84)" fill="#a61e1e"><rect x="42" y="0" width="16" height="100"/></g>
-    <path d="M44,62 L64,52 L84,62 L64,72 Z" fill="url(#christmas-sheen)"/>
+  <g mask="url(#christmas-gem)" stroke-linejoin="round">
+    <path d="M27.52,52 L100.48,52 L85.16,66.7 L42.84,66.7 Z" fill="url(#christmas-top)" stroke="url(#christmas-top)" stroke-width="1.2"/><path d="M27.52,52 L100.48,52 L85.16,66.7 L42.84,66.7 Z" fill="#ffffff" opacity="0.16"/>
+    <path d="M16,87 L27.52,52 L42.84,66.7 L36.16,87 Z" fill="url(#christmas-top)" stroke="url(#christmas-top)" stroke-width="1.2"/><path d="M16,87 L27.52,52 L42.84,66.7 L36.16,87 Z" fill="#ffffff" opacity="0.04"/>
+    <path d="M100.48,52 L112,87 L91.84,87 L85.16,66.7 Z" fill="url(#christmas-left)" stroke="url(#christmas-left)" stroke-width="1.2"/><path d="M100.48,52 L112,87 L91.84,87 L85.16,66.7 Z" fill="#ffffff" opacity="0.1"/>
+    <path d="M27.52,122 L16,87 L36.16,87 L42.84,107.3 Z" fill="url(#christmas-left)" stroke="url(#christmas-left)" stroke-width="1.2"/><path d="M27.52,122 L16,87 L36.16,87 L42.84,107.3 Z" fill="#000000" opacity="0.04"/>
+    <path d="M112,87 L100.48,122 L85.16,107.3 L91.84,87 Z" fill="url(#christmas-right)" stroke="url(#christmas-right)" stroke-width="1.2"/>
+    <path d="M100.48,122 L27.52,122 L42.84,107.3 L85.16,107.3 Z" fill="url(#christmas-right)" stroke="url(#christmas-right)" stroke-width="1.2"/><path d="M100.48,122 L27.52,122 L42.84,107.3 L85.16,107.3 Z" fill="#000000" opacity="0.2"/>
+    <g clip-path="url(#christmas-gemc)"><rect x="57" y="40" width="14" height="90" fill="#c92a2a"/></g>
+    <path d="M42.84,66.7 L85.16,66.7 L91.84,87 L85.16,107.3 L42.84,107.3 L36.16,87 Z" fill="url(#christmas-table)"/>
+    <g clip-path="url(#christmas-tablec)">
+      <g transform="matrix(0.56 0 0 0.56 36.16 66.7)" fill="#e23b3b"><rect x="40" y="0" width="20" height="73"/><rect x="0" y="27.5" width="100" height="18"/></g>
+      <path d="M42.84,66.7 L68.84,66.7 L50.16,107.3 L36.16,107.3 Z" fill="url(#christmas-sheen)" opacity="0.55"/>
+    </g>
   </g>
   <g mask="url(#christmas-crownm)" stroke-linejoin="round">
     <path d="M42,47 L37,21 L52,33 L64,9 L76,33 L91,21 L86,47 Z" fill="url(#christmas-crown)" stroke="url(#christmas-crown)" stroke-width="2.4"/>

@@ -190,6 +190,17 @@ export function onColor(bg: string): string {
 
 const rgbList = (hex: string): string => parseHex(hex).join(', ');
 
+/** Tinted glass behind the liquid fill of projected (waiting) blocks. Always dark so white labels stay readable. */
+export function blockGlass(p: PaletteDef): string {
+  return p.scheme === 'dark' ? mix(p.surface, p.primary, 0.3) : mix('#232842', p.primary, 0.28);
+}
+
+/** Unused space inside a mined block gem. Always dark so white labels stay readable. */
+export function gemEmpty(p: PaletteDef): string {
+  return p.scheme === 'dark' ? mix(p.blockTop, p.blockA, 0.22) : mix('#262b47', p.blockA, 0.3);
+}
+
+
 /** CSS custom properties for a palette (mempool's own variables, Bootstrap's, and Block Master's --bm-*). */
 export function paletteVars(p: PaletteDef, holiday?: { accent: string; accent2: string } | null): Record<string, string> {
   const { accent, accent2 } = layeredAccents(p, holiday);
@@ -268,6 +279,9 @@ export function paletteVars(p: PaletteDef, holiday?: { accent: string; accent2: 
     '--bm-pblock-top': dark ? mix(p.blockTop, '#6b5a4a', 0.45) : '#d9d3c9',
     '--bm-pblock-side': dark ? mix(p.blockSide, '#4a3d33', 0.45) : '#c3bbae',
     '--bm-block-empty': dark ? mix(p.blockTop, '#ffffff', 0.14) : '#5d6380',
+    '--bm-glass': blockGlass(p),
+    '--bm-gem-empty': gemEmpty(p),
+    '--bm-rim': accent,
     '--bm-shadow': dark ? '0 1px 0 rgba(255,255,255,0.04) inset, 0 10px 30px -12px rgba(0,0,0,0.65)'
       : '0 1px 2px rgba(20,24,43,0.06), 0 8px 24px -12px rgba(20,24,43,0.18)',
     '--bm-scheme': p.scheme,

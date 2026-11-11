@@ -351,20 +351,21 @@ export class BlockchainBlocksComponent implements OnInit, OnChanges, OnDestroy {
 
     return {
       left: addLeft + this.blockOffset * index + 'px',
-      background: `repeating-linear-gradient(
-        var(--secondary),
-        var(--secondary) ${greenBackgroundHeight}%,
-        ${this.gradientColors[this.network][0]} ${Math.max(greenBackgroundHeight, 0)}%,
-        ${this.gradientColors[this.network][1]} 100%
+      // Block Master 2.0: mined blocks are faceted gems; the fill (how full the block was) rises from the bottom.
+      '--bm-fill': `linear-gradient(to top,
+        ${this.gradientColors[this.network][1]} 0%,
+        ${this.gradientColors[this.network][0]} ${Math.min(100 - greenBackgroundHeight, 100)}%,
+        var(--bm-gem-empty) ${Math.min(100 - greenBackgroundHeight, 100)}%,
+        var(--bm-gem-empty) 100%
       )`,
-      transition: animateEnterFrom ? 'background 2s, transform 1s' : null,
+      transition: animateEnterFrom ? 'transform 1s' : null,
     };
   }
 
   convertStyleForLoadingBlock(style) {
     return {
       ...style,
-      background: 'var(--secondary)',
+      '--bm-fill': 'var(--bm-gem-empty)',
     };
   }
 
@@ -373,7 +374,7 @@ export class BlockchainBlocksComponent implements OnInit, OnChanges, OnDestroy {
 
     return {
       left: addLeft + (this.blockOffset * index) + 'px',
-      background: 'var(--secondary)',
+      '--bm-fill': 'var(--bm-gem-empty)',
     };
   }
 
@@ -389,7 +390,7 @@ export class BlockchainBlocksComponent implements OnInit, OnChanges, OnDestroy {
 
     return {
       left: addLeft + this.blockOffset * this.emptyBlocks.indexOf(block) + 'px',
-      background: 'var(--secondary)',
+      '--bm-fill': 'var(--bm-gem-empty)',
     };
   }
 

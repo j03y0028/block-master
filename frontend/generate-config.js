@@ -65,7 +65,7 @@ try {
 try {
   const packageJson = fs.readFileSync('package.json');
   packetJsonVersion = JSON.parse(packageJson).version;
-  console.log(`mempool version ${packetJsonVersion}`);
+  console.log(`Block Master version ${packetJsonVersion}`);
 } catch (e) {
   throw new Error(e);
 }

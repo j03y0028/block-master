@@ -1,12 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="Block Master, Juneteenth">
   <title>Block Master: Juneteenth</title>
   <defs>
-    <linearGradient id="juneteenth-top" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4f7ff0"/><stop offset="1" stop-color="#2c5ad6"/></linearGradient><linearGradient id="juneteenth-left" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d73232"/><stop offset="1" stop-color="#a31d1d"/></linearGradient><linearGradient id="juneteenth-right" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a31d1d"/><stop offset="1" stop-color="#701313"/></linearGradient><linearGradient id="juneteenth-crown" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff1c1"/><stop offset="1" stop-color="#e7b53b"/></linearGradient>
-    <linearGradient id="juneteenth-sheen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity="0.45"/><stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/></linearGradient>
-    <mask id="juneteenth-cube" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128">
+    <linearGradient id="juneteenth-top" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4f7ff0"/><stop offset="1" stop-color="#2c5ad6"/></linearGradient><linearGradient id="juneteenth-left" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d73232"/><stop offset="1" stop-color="#a31d1d"/></linearGradient><linearGradient id="juneteenth-right" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a31d1d"/><stop offset="1" stop-color="#701313"/></linearGradient><linearGradient id="juneteenth-crown" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff1c1"/><stop offset="1" stop-color="#e7b53b"/></linearGradient>
+    <linearGradient id="juneteenth-table" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d73232"/><stop offset="1" stop-color="#a31d1d"/></linearGradient>
+    <linearGradient id="juneteenth-sheen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity="0.5"/><stop offset="0.55" stop-color="#ffffff" stop-opacity="0"/></linearGradient>
+    <clipPath id="juneteenth-tablec"><path d="M42.84,66.7 L85.16,66.7 L91.84,87 L85.16,107.3 L42.84,107.3 L36.16,87 Z"/></clipPath>
+    <clipPath id="juneteenth-gemc"><path d="M27.52,52 L100.48,52 L112,87 L100.48,122 L27.52,122 L16,87 Z"/></clipPath>
+    <mask id="juneteenth-gem" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128">
       <rect width="128" height="128" fill="white"/>
-      <path d="M32,68 L64,84 L96,68 M64,84 L64,120" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-      
+      <path d="M27.52,52 L42.84,66.7 M100.48,52 L85.16,66.7 M112,87 L91.84,87 M100.48,122 L85.16,107.3 M27.52,122 L42.84,107.3 M16,87 L36.16,87 M42.84,66.7 L85.16,66.7 L91.84,87 L85.16,107.3 L42.84,107.3 L36.16,87 Z" stroke="black" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <g clip-path="url(#juneteenth-tablec)"></g>
     </mask>
     <mask id="juneteenth-crownm" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128">
       <rect width="128" height="128" fill="white"/>
@@ -16,12 +19,19 @@
     
   </defs>
   <path d="M8,98 Q30,84 22,62" fill="none" stroke="#7f9cf0" stroke-width="1.8" stroke-linecap="round" opacity="0.9"/><path d="M110,26 C110.72,31.28 110.72,31.28 116,32 C110.72,32.72 110.72,32.72 110,38 C109.28,32.72 109.28,32.72 104,32 C109.28,31.28 109.28,31.28 110,26 Z" fill="#7f9cf0" opacity="1"/>
-  <g mask="url(#juneteenth-cube)" stroke-linejoin="round">
-    <path d="M32,68 L64,52 L96,68 L64,84 Z" fill="url(#juneteenth-top)" stroke="url(#juneteenth-top)" stroke-width="3"/>
-    <path d="M32,68 L64,84 L64,120 L32,104 Z" fill="url(#juneteenth-left)" stroke="url(#juneteenth-left)" stroke-width="3"/>
-    <path d="M64,84 L96,68 L96,104 L64,120 Z" fill="url(#juneteenth-right)" stroke="url(#juneteenth-right)" stroke-width="3"/>
-    <g transform="matrix(0.32 -0.16 0.32 0.16 32 68)"><polygon points="50,16 55.46,29.64 67,20.56 64.91,35.09 79.44,33 70.36,44.54 84,50 70.36,55.46 79.44,67 64.91,64.91 67,79.44 55.46,70.36 50,84 44.54,70.36 33,79.44 35.09,64.91 20.56,67 29.64,55.46 16,50 29.64,44.54 20.56,33 35.09,35.09 33,20.56 44.54,29.64" fill="none" stroke="#ffffff" stroke-width="3.2"/><polygon points="50,33 54.2,44.22 66.17,44.75 56.79,52.21 59.99,63.75 50,57.14 40.01,63.75 43.21,52.21 33.83,44.75 45.8,44.22" fill="#ffffff"/></g>
-    <path d="M44,62 L64,52 L84,62 L64,72 Z" fill="url(#juneteenth-sheen)"/>
+  <g mask="url(#juneteenth-gem)" stroke-linejoin="round">
+    <path d="M27.52,52 L100.48,52 L85.16,66.7 L42.84,66.7 Z" fill="url(#juneteenth-top)" stroke="url(#juneteenth-top)" stroke-width="1.2"/><path d="M27.52,52 L100.48,52 L85.16,66.7 L42.84,66.7 Z" fill="#ffffff" opacity="0.16"/>
+    <path d="M16,87 L27.52,52 L42.84,66.7 L36.16,87 Z" fill="url(#juneteenth-top)" stroke="url(#juneteenth-top)" stroke-width="1.2"/><path d="M16,87 L27.52,52 L42.84,66.7 L36.16,87 Z" fill="#ffffff" opacity="0.04"/>
+    <path d="M100.48,52 L112,87 L91.84,87 L85.16,66.7 Z" fill="url(#juneteenth-left)" stroke="url(#juneteenth-left)" stroke-width="1.2"/><path d="M100.48,52 L112,87 L91.84,87 L85.16,66.7 Z" fill="#ffffff" opacity="0.1"/>
+    <path d="M27.52,122 L16,87 L36.16,87 L42.84,107.3 Z" fill="url(#juneteenth-left)" stroke="url(#juneteenth-left)" stroke-width="1.2"/><path d="M27.52,122 L16,87 L36.16,87 L42.84,107.3 Z" fill="#000000" opacity="0.04"/>
+    <path d="M112,87 L100.48,122 L85.16,107.3 L91.84,87 Z" fill="url(#juneteenth-right)" stroke="url(#juneteenth-right)" stroke-width="1.2"/>
+    <path d="M100.48,122 L27.52,122 L42.84,107.3 L85.16,107.3 Z" fill="url(#juneteenth-right)" stroke="url(#juneteenth-right)" stroke-width="1.2"/><path d="M100.48,122 L27.52,122 L42.84,107.3 L85.16,107.3 Z" fill="#000000" opacity="0.2"/>
+    <g clip-path="url(#juneteenth-gemc)"></g>
+    <path d="M42.84,66.7 L85.16,66.7 L91.84,87 L85.16,107.3 L42.84,107.3 L36.16,87 Z" fill="url(#juneteenth-table)"/>
+    <g clip-path="url(#juneteenth-tablec)">
+      <g transform="matrix(0.56 0 0 0.56 36.16 66.7)"><rect x="0" y="0" width="100" height="36.5" fill="#2c5ad6"/><path d="M0,36.5 Q50,26 100,36.5" fill="#2c5ad6"/><polygon points="50,6.5 54.81,18.53 65,10.52 63.15,23.35 75.98,21.5 67.97,31.69 80,36.5 67.97,41.31 75.98,51.5 63.15,49.65 65,62.48 54.81,54.47 50,66.5 45.19,54.47 35,62.48 36.85,49.65 24.02,51.5 32.03,41.31 20,36.5 32.03,31.69 24.02,21.5 36.85,23.35 35,10.52 45.19,18.53" fill="none" stroke="#ffffff" stroke-width="3.4"/><polygon points="50,21.5 53.7,31.4 64.27,31.86 55.99,38.45 58.82,48.64 50,42.8 41.18,48.64 44.01,38.45 35.73,31.86 46.3,31.4" fill="#ffffff"/></g>
+      <path d="M42.84,66.7 L68.84,66.7 L50.16,107.3 L36.16,107.3 Z" fill="url(#juneteenth-sheen)" opacity="0.55"/>
+    </g>
   </g>
   <g mask="url(#juneteenth-crownm)" stroke-linejoin="round">
     <path d="M42,47 L37,21 L52,33 L64,9 L76,33 L91,21 L86,47 Z" fill="url(#juneteenth-crown)" stroke="url(#juneteenth-crown)" stroke-width="2.4"/>

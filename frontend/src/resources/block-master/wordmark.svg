@@ -2,12 +2,15 @@
   <title>Block Master</title>
   <defs><linearGradient id="wm" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff0b8"/><stop offset="1" stop-color="#f7931a"/></linearGradient></defs>
   <g transform="translate(4 4) scale(0.94)"><defs>
-    <linearGradient id="wm-default-top" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffcf70"/><stop offset="1" stop-color="#ffa43a"/></linearGradient><linearGradient id="wm-default-left" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7931a"/><stop offset="1" stop-color="#d9700a"/></linearGradient><linearGradient id="wm-default-right" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c25f06"/><stop offset="1" stop-color="#8f3f02"/></linearGradient><linearGradient id="wm-default-crown" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff0b8"/><stop offset="1" stop-color="#f5b829"/></linearGradient>
-    <linearGradient id="wm-default-sheen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity="0.45"/><stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/></linearGradient>
-    <mask id="wm-default-cube" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128">
+    <linearGradient id="wm-default-top" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffcf70"/><stop offset="1" stop-color="#ffa43a"/></linearGradient><linearGradient id="wm-default-left" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f7931a"/><stop offset="1" stop-color="#d9700a"/></linearGradient><linearGradient id="wm-default-right" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c25f06"/><stop offset="1" stop-color="#8f3f02"/></linearGradient><linearGradient id="wm-default-crown" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff0b8"/><stop offset="1" stop-color="#f5b829"/></linearGradient>
+    <linearGradient id="wm-default-table" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f7931a"/><stop offset="1" stop-color="#d9700a"/></linearGradient>
+    <linearGradient id="wm-default-sheen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity="0.5"/><stop offset="0.55" stop-color="#ffffff" stop-opacity="0"/></linearGradient>
+    <clipPath id="wm-default-tablec"><path d="M42.84,66.7 L85.16,66.7 L91.84,87 L85.16,107.3 L42.84,107.3 L36.16,87 Z"/></clipPath>
+    <clipPath id="wm-default-gemc"><path d="M27.52,52 L100.48,52 L112,87 L100.48,122 L27.52,122 L16,87 Z"/></clipPath>
+    <mask id="wm-default-gem" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128">
       <rect width="128" height="128" fill="white"/>
-      <path d="M32,68 L64,84 L96,68 M64,84 L64,120" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-      
+      <path d="M27.52,52 L42.84,66.7 M100.48,52 L85.16,66.7 M112,87 L91.84,87 M100.48,122 L85.16,107.3 M27.52,122 L42.84,107.3 M16,87 L36.16,87 M42.84,66.7 L85.16,66.7 L91.84,87 L85.16,107.3 L42.84,107.3 L36.16,87 Z" stroke="black" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <g clip-path="url(#wm-default-tablec)"></g>
     </mask>
     <mask id="wm-default-crownm" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128">
       <rect width="128" height="128" fill="white"/>
@@ -17,12 +20,19 @@
     
   </defs>
   
-  <g mask="url(#wm-default-cube)" stroke-linejoin="round">
-    <path d="M32,68 L64,52 L96,68 L64,84 Z" fill="url(#wm-default-top)" stroke="url(#wm-default-top)" stroke-width="3"/>
-    <path d="M32,68 L64,84 L64,120 L32,104 Z" fill="url(#wm-default-left)" stroke="url(#wm-default-left)" stroke-width="3"/>
-    <path d="M64,84 L96,68 L96,104 L64,120 Z" fill="url(#wm-default-right)" stroke="url(#wm-default-right)" stroke-width="3"/>
-    
-    <path d="M44,62 L64,52 L84,62 L64,72 Z" fill="url(#wm-default-sheen)"/>
+  <g mask="url(#wm-default-gem)" stroke-linejoin="round">
+    <path d="M27.52,52 L100.48,52 L85.16,66.7 L42.84,66.7 Z" fill="url(#wm-default-top)" stroke="url(#wm-default-top)" stroke-width="1.2"/><path d="M27.52,52 L100.48,52 L85.16,66.7 L42.84,66.7 Z" fill="#ffffff" opacity="0.16"/>
+    <path d="M16,87 L27.52,52 L42.84,66.7 L36.16,87 Z" fill="url(#wm-default-top)" stroke="url(#wm-default-top)" stroke-width="1.2"/><path d="M16,87 L27.52,52 L42.84,66.7 L36.16,87 Z" fill="#ffffff" opacity="0.04"/>
+    <path d="M100.48,52 L112,87 L91.84,87 L85.16,66.7 Z" fill="url(#wm-default-left)" stroke="url(#wm-default-left)" stroke-width="1.2"/><path d="M100.48,52 L112,87 L91.84,87 L85.16,66.7 Z" fill="#ffffff" opacity="0.1"/>
+    <path d="M27.52,122 L16,87 L36.16,87 L42.84,107.3 Z" fill="url(#wm-default-left)" stroke="url(#wm-default-left)" stroke-width="1.2"/><path d="M27.52,122 L16,87 L36.16,87 L42.84,107.3 Z" fill="#000000" opacity="0.04"/>
+    <path d="M112,87 L100.48,122 L85.16,107.3 L91.84,87 Z" fill="url(#wm-default-right)" stroke="url(#wm-default-right)" stroke-width="1.2"/>
+    <path d="M100.48,122 L27.52,122 L42.84,107.3 L85.16,107.3 Z" fill="url(#wm-default-right)" stroke="url(#wm-default-right)" stroke-width="1.2"/><path d="M100.48,122 L27.52,122 L42.84,107.3 L85.16,107.3 Z" fill="#000000" opacity="0.2"/>
+    <g clip-path="url(#wm-default-gemc)"></g>
+    <path d="M42.84,66.7 L85.16,66.7 L91.84,87 L85.16,107.3 L42.84,107.3 L36.16,87 Z" fill="url(#wm-default-table)"/>
+    <g clip-path="url(#wm-default-tablec)">
+      
+      <path d="M42.84,66.7 L68.84,66.7 L50.16,107.3 L36.16,107.3 Z" fill="url(#wm-default-sheen)" opacity="0.55"/>
+    </g>
   </g>
   <g mask="url(#wm-default-crownm)" stroke-linejoin="round">
     <path d="M42,47 L37,21 L52,33 L64,9 L76,33 L91,21 L86,47 Z" fill="url(#wm-default-crown)" stroke="url(#wm-default-crown)" stroke-width="2.4"/>

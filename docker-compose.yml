@@ -6,7 +6,7 @@ name: blockmaster
 
 services:
   web:
-    image: ${BLOCKMASTER_IMAGE:-blockmaster/frontend:1.1.0}
+    image: ${BLOCKMASTER_IMAGE:-blockmaster/frontend:2.0.0}
     build: .
     user: "1000:1000"
     environment:

@@ -1,8 +1,8 @@
 # syntax=docker/dockerfile:1
 # Block Master web image (amd64 + arm64): the rebranded Angular frontend served by nginx, which also proxies /api to
 # the mempool backend container. The backend itself is the unmodified upstream mempool backend (see docker-compose.yml).
-# Build:  docker build -t blockmaster/frontend:1.1.0 .
-#         docker buildx build --platform linux/amd64,linux/arm64 -t blockmaster/frontend:1.1.0 .
+# Build:  docker build -t blockmaster/frontend:2.0.0 .
+#         docker buildx build --platform linux/amd64,linux/arm64 -t blockmaster/frontend:2.0.0 .
 
 ARG NODE_IMAGE=node:24.13-bookworm-slim@sha256:a81a03dd965b4052269a57fac857004022b522a4bf06e7a739e25e18bce45af2
 ARG NGINX_IMAGE=nginx:1.27.0-alpine@sha256:208b70eefac13ee9be00e486f79c695b15cef861c680527171a27d253d834be9
@@ -33,7 +33,7 @@ LABEL org.opencontainers.image.title="Block Master" \
       org.opencontainers.image.description="Friendly, holiday-themed Bitcoin explorer for your own node (fork of The Mempool Open Source Project)" \
       org.opencontainers.image.source="https://github.com/j03y0028/block-master" \
       org.opencontainers.image.licenses="AGPL-3.0-or-later" \
-      org.opencontainers.image.version="1.1.0"
+      org.opencontainers.image.version="2.0.0"
 WORKDIR /patch
 COPY --from=build /build/entrypoint.sh /build/wait-for ./
 COPY --from=build /build/dist/mempool /var/www/mempool

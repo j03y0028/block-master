@@ -1,12 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="Block Master, Presidents' Day">
   <title>Block Master: Presidents' Day</title>
   <defs>
-    <linearGradient id="presidents-top" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f8fafc"/><stop offset="1" stop-color="#d5dceb"/></linearGradient><linearGradient id="presidents-left" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2747a8"/><stop offset="1" stop-color="#1a2f74"/></linearGradient><linearGradient id="presidents-right" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c0262d"/><stop offset="1" stop-color="#8a161c"/></linearGradient><linearGradient id="presidents-crown" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fde68a"/><stop offset="1" stop-color="#d9a521"/></linearGradient>
-    <linearGradient id="presidents-sheen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity="0.45"/><stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/></linearGradient>
-    <mask id="presidents-cube" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128">
+    <linearGradient id="presidents-top" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f8fafc"/><stop offset="1" stop-color="#d5dceb"/></linearGradient><linearGradient id="presidents-left" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2747a8"/><stop offset="1" stop-color="#1a2f74"/></linearGradient><linearGradient id="presidents-right" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c0262d"/><stop offset="1" stop-color="#8a161c"/></linearGradient><linearGradient id="presidents-crown" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fde68a"/><stop offset="1" stop-color="#d9a521"/></linearGradient>
+    <linearGradient id="presidents-table" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2747a8"/><stop offset="1" stop-color="#1a2f74"/></linearGradient>
+    <linearGradient id="presidents-sheen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity="0.5"/><stop offset="0.55" stop-color="#ffffff" stop-opacity="0"/></linearGradient>
+    <clipPath id="presidents-tablec"><path d="M42.84,66.7 L85.16,66.7 L91.84,87 L85.16,107.3 L42.84,107.3 L36.16,87 Z"/></clipPath>
+    <clipPath id="presidents-gemc"><path d="M27.52,52 L100.48,52 L112,87 L100.48,122 L27.52,122 L16,87 Z"/></clipPath>
+    <mask id="presidents-gem" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128">
       <rect width="128" height="128" fill="white"/>
-      <path d="M32,68 L64,84 L96,68 M64,84 L64,120" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-      <g transform="matrix(0.32 -0.16 0 0.36 64 84)"><path d="M0,30 L100,30 M0,55 L100,55 M0,80 L100,80" stroke="black" stroke-width="7"/></g>
+      <path d="M27.52,52 L42.84,66.7 M100.48,52 L85.16,66.7 M112,87 L91.84,87 M100.48,122 L85.16,107.3 M27.52,122 L42.84,107.3 M16,87 L36.16,87 M42.84,66.7 L85.16,66.7 L91.84,87 L85.16,107.3 L42.84,107.3 L36.16,87 Z" stroke="black" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <g clip-path="url(#presidents-tablec)"></g>
     </mask>
     <mask id="presidents-crownm" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128">
       <rect width="128" height="128" fill="white"/>
@@ -16,12 +19,19 @@
     
   </defs>
   
-  <g mask="url(#presidents-cube)" stroke-linejoin="round">
-    <path d="M32,68 L64,52 L96,68 L64,84 Z" fill="url(#presidents-top)" stroke="url(#presidents-top)" stroke-width="3"/>
-    <path d="M32,68 L64,84 L64,120 L32,104 Z" fill="url(#presidents-left)" stroke="url(#presidents-left)" stroke-width="3"/>
-    <path d="M64,84 L96,68 L96,104 L64,120 Z" fill="url(#presidents-right)" stroke="url(#presidents-right)" stroke-width="3"/>
-    <g transform="matrix(0.32 0.16 0 0.36 32 68)"><polygon points="30,17 33.21,25.58 42.36,25.98 35.19,31.69 37.64,40.52 30,35.46 22.36,40.52 24.81,31.69 17.64,25.98 26.79,25.58" fill="#ffffff"/><polygon points="70,17 73.21,25.58 82.36,25.98 75.19,31.69 77.64,40.52 70,35.46 62.36,40.52 64.81,31.69 57.64,25.98 66.79,25.58" fill="#ffffff"/><polygon points="50,49 53.21,57.58 62.36,57.98 55.19,63.69 57.64,72.52 50,67.46 42.36,72.52 44.81,63.69 37.64,57.98 46.79,57.58" fill="#ffffff"/></g>
-    <path d="M44,62 L64,52 L84,62 L64,72 Z" fill="url(#presidents-sheen)"/>
+  <g mask="url(#presidents-gem)" stroke-linejoin="round">
+    <path d="M27.52,52 L100.48,52 L85.16,66.7 L42.84,66.7 Z" fill="url(#presidents-top)" stroke="url(#presidents-top)" stroke-width="1.2"/><path d="M27.52,52 L100.48,52 L85.16,66.7 L42.84,66.7 Z" fill="#ffffff" opacity="0.16"/>
+    <path d="M16,87 L27.52,52 L42.84,66.7 L36.16,87 Z" fill="url(#presidents-top)" stroke="url(#presidents-top)" stroke-width="1.2"/><path d="M16,87 L27.52,52 L42.84,66.7 L36.16,87 Z" fill="#ffffff" opacity="0.04"/>
+    <path d="M100.48,52 L112,87 L91.84,87 L85.16,66.7 Z" fill="url(#presidents-left)" stroke="url(#presidents-left)" stroke-width="1.2"/><path d="M100.48,52 L112,87 L91.84,87 L85.16,66.7 Z" fill="#ffffff" opacity="0.1"/>
+    <path d="M27.52,122 L16,87 L36.16,87 L42.84,107.3 Z" fill="url(#presidents-left)" stroke="url(#presidents-left)" stroke-width="1.2"/><path d="M27.52,122 L16,87 L36.16,87 L42.84,107.3 Z" fill="#000000" opacity="0.04"/>
+    <path d="M112,87 L100.48,122 L85.16,107.3 L91.84,87 Z" fill="url(#presidents-right)" stroke="url(#presidents-right)" stroke-width="1.2"/>
+    <path d="M100.48,122 L27.52,122 L42.84,107.3 L85.16,107.3 Z" fill="url(#presidents-right)" stroke="url(#presidents-right)" stroke-width="1.2"/><path d="M100.48,122 L27.52,122 L42.84,107.3 L85.16,107.3 Z" fill="#000000" opacity="0.2"/>
+    <g clip-path="url(#presidents-gemc)"></g>
+    <path d="M42.84,66.7 L85.16,66.7 L91.84,87 L85.16,107.3 L42.84,107.3 L36.16,87 Z" fill="url(#presidents-table)"/>
+    <g clip-path="url(#presidents-tablec)">
+      <g transform="matrix(0.56 0 0 0.56 36.16 66.7)"><polygon points="28,23.5 31.21,32.08 40.36,32.48 33.19,38.19 35.64,47.02 28,41.96 20.36,47.02 22.81,38.19 15.64,32.48 24.79,32.08" fill="#ffffff"/><polygon points="50,18 53.95,28.56 65.22,29.06 56.39,36.08 59.4,46.94 50,40.72 40.6,46.94 43.61,36.08 34.78,29.06 46.05,28.56" fill="#ffffff"/><polygon points="72,23.5 75.21,32.08 84.36,32.48 77.19,38.19 79.64,47.02 72,41.96 64.36,47.02 66.81,38.19 59.64,32.48 68.79,32.08" fill="#ffffff"/><rect x="0" y="58" width="100" height="5" fill="#c0262d"/></g>
+      <path d="M42.84,66.7 L68.84,66.7 L50.16,107.3 L36.16,107.3 Z" fill="url(#presidents-sheen)" opacity="0.55"/>
+    </g>
   </g>
   <g mask="url(#presidents-crownm)" stroke-linejoin="round">
     <path d="M42,47 L37,21 L52,33 L64,9 L76,33 L91,21 L86,47 Z" fill="url(#presidents-crown)" stroke="url(#presidents-crown)" stroke-width="2.4"/>

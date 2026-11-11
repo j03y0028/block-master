@@ -1,12 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="Block Master, Martin Luther King Jr. Day">
   <title>Block Master: Martin Luther King Jr. Day</title>
   <defs>
-    <linearGradient id="mlk-top" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a78bfa"/><stop offset="1" stop-color="#7c5ce0"/></linearGradient><linearGradient id="mlk-left" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5b3fc4"/><stop offset="1" stop-color="#3f2a92"/></linearGradient><linearGradient id="mlk-right" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a2780"/><stop offset="1" stop-color="#24185a"/></linearGradient><linearGradient id="mlk-crown" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fde9a8"/><stop offset="1" stop-color="#e8b13a"/></linearGradient>
-    <linearGradient id="mlk-sheen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity="0.45"/><stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/></linearGradient>
-    <mask id="mlk-cube" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128">
+    <linearGradient id="mlk-top" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a78bfa"/><stop offset="1" stop-color="#7c5ce0"/></linearGradient><linearGradient id="mlk-left" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5b3fc4"/><stop offset="1" stop-color="#3f2a92"/></linearGradient><linearGradient id="mlk-right" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a2780"/><stop offset="1" stop-color="#24185a"/></linearGradient><linearGradient id="mlk-crown" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fde9a8"/><stop offset="1" stop-color="#e8b13a"/></linearGradient>
+    <linearGradient id="mlk-table" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5b3fc4"/><stop offset="1" stop-color="#3f2a92"/></linearGradient>
+    <linearGradient id="mlk-sheen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity="0.5"/><stop offset="0.55" stop-color="#ffffff" stop-opacity="0"/></linearGradient>
+    <clipPath id="mlk-tablec"><path d="M42.84,66.7 L85.16,66.7 L91.84,87 L85.16,107.3 L42.84,107.3 L36.16,87 Z"/></clipPath>
+    <clipPath id="mlk-gemc"><path d="M27.52,52 L100.48,52 L112,87 L100.48,122 L27.52,122 L16,87 Z"/></clipPath>
+    <mask id="mlk-gem" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128">
       <rect width="128" height="128" fill="white"/>
-      <path d="M32,68 L64,84 L96,68 M64,84 L64,120" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-      
+      <path d="M27.52,52 L42.84,66.7 M100.48,52 L85.16,66.7 M112,87 L91.84,87 M100.48,122 L85.16,107.3 M27.52,122 L42.84,107.3 M16,87 L36.16,87 M42.84,66.7 L85.16,66.7 L91.84,87 L85.16,107.3 L42.84,107.3 L36.16,87 Z" stroke="black" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <g clip-path="url(#mlk-tablec)"></g>
     </mask>
     <mask id="mlk-crownm" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128">
       <rect width="128" height="128" fill="white"/>
@@ -16,12 +19,19 @@
     
   </defs>
   <path d="M22.65,62.95 A44,44 0 0 1 105.35,62.95" fill="none" stroke="#f0b94a" stroke-width="2.2" stroke-linecap="round" opacity="0.85"/><path d="M15.14,60.21 A52,52 0 0 1 112.86,60.21" fill="none" stroke="#f0b94a" stroke-width="1.7000000000000002" stroke-linecap="round" opacity="0.6"/><path d="M7.62,57.48 A60,60 0 0 1 120.38,57.48" fill="none" stroke="#f0b94a" stroke-width="1.2000000000000002" stroke-linecap="round" opacity="0.35"/>
-  <g mask="url(#mlk-cube)" stroke-linejoin="round">
-    <path d="M32,68 L64,52 L96,68 L64,84 Z" fill="url(#mlk-top)" stroke="url(#mlk-top)" stroke-width="3"/>
-    <path d="M32,68 L64,84 L64,120 L32,104 Z" fill="url(#mlk-left)" stroke="url(#mlk-left)" stroke-width="3"/>
-    <path d="M64,84 L96,68 L96,104 L64,120 Z" fill="url(#mlk-right)" stroke="url(#mlk-right)" stroke-width="3"/>
-    
-    <path d="M44,62 L64,52 L84,62 L64,72 Z" fill="url(#mlk-sheen)"/>
+  <g mask="url(#mlk-gem)" stroke-linejoin="round">
+    <path d="M27.52,52 L100.48,52 L85.16,66.7 L42.84,66.7 Z" fill="url(#mlk-top)" stroke="url(#mlk-top)" stroke-width="1.2"/><path d="M27.52,52 L100.48,52 L85.16,66.7 L42.84,66.7 Z" fill="#ffffff" opacity="0.16"/>
+    <path d="M16,87 L27.52,52 L42.84,66.7 L36.16,87 Z" fill="url(#mlk-top)" stroke="url(#mlk-top)" stroke-width="1.2"/><path d="M16,87 L27.52,52 L42.84,66.7 L36.16,87 Z" fill="#ffffff" opacity="0.04"/>
+    <path d="M100.48,52 L112,87 L91.84,87 L85.16,66.7 Z" fill="url(#mlk-left)" stroke="url(#mlk-left)" stroke-width="1.2"/><path d="M100.48,52 L112,87 L91.84,87 L85.16,66.7 Z" fill="#ffffff" opacity="0.1"/>
+    <path d="M27.52,122 L16,87 L36.16,87 L42.84,107.3 Z" fill="url(#mlk-left)" stroke="url(#mlk-left)" stroke-width="1.2"/><path d="M27.52,122 L16,87 L36.16,87 L42.84,107.3 Z" fill="#000000" opacity="0.04"/>
+    <path d="M112,87 L100.48,122 L85.16,107.3 L91.84,87 Z" fill="url(#mlk-right)" stroke="url(#mlk-right)" stroke-width="1.2"/>
+    <path d="M100.48,122 L27.52,122 L42.84,107.3 L85.16,107.3 Z" fill="url(#mlk-right)" stroke="url(#mlk-right)" stroke-width="1.2"/><path d="M100.48,122 L27.52,122 L42.84,107.3 L85.16,107.3 Z" fill="#000000" opacity="0.2"/>
+    <g clip-path="url(#mlk-gemc)"></g>
+    <path d="M42.84,66.7 L85.16,66.7 L91.84,87 L85.16,107.3 L42.84,107.3 L36.16,87 Z" fill="url(#mlk-table)"/>
+    <g clip-path="url(#mlk-tablec)">
+      <g transform="matrix(0.56 0 0 0.56 36.16 66.7)"><circle cx="50" cy="73" r="21" fill="#f0b94a"/><line x1="26.62" y1="59.5" x2="15.36" y2="53" stroke="#f0b94a" stroke-width="4.5" stroke-linecap="round"/><line x1="36.5" y1="49.62" x2="30" y2="38.36" stroke="#f0b94a" stroke-width="4.5" stroke-linecap="round"/><line x1="50" y1="46" x2="50" y2="33" stroke="#f0b94a" stroke-width="4.5" stroke-linecap="round"/><line x1="63.5" y1="49.62" x2="70" y2="38.36" stroke="#f0b94a" stroke-width="4.5" stroke-linecap="round"/><line x1="73.38" y1="59.5" x2="84.64" y2="53" stroke="#f0b94a" stroke-width="4.5" stroke-linecap="round"/></g>
+      <path d="M42.84,66.7 L68.84,66.7 L50.16,107.3 L36.16,107.3 Z" fill="url(#mlk-sheen)" opacity="0.55"/>
+    </g>
   </g>
   <g mask="url(#mlk-crownm)" stroke-linejoin="round">
     <path d="M42,47 L37,21 L52,33 L64,9 L76,33 L91,21 L86,47 Z" fill="url(#mlk-crown)" stroke="url(#mlk-crown)" stroke-width="2.4"/>

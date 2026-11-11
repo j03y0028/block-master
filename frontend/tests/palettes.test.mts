@@ -2,7 +2,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { readableFeeColors, PALETTES, onColor, contrast, layeredAccents, paletteVars, textBackgrounds, ensureContrast, getPalette, isPaletteId } from '../src/app/shared/palettes.ts';
+import { readableFeeColors, blockGlass, gemEmpty, PALETTES, onColor, contrast, layeredAccents, paletteVars, textBackgrounds, ensureContrast, getPalette, isPaletteId } from '../src/app/shared/palettes.ts';
 import { HOLIDAYS } from '../src/app/shared/holidays.ts';
 
 const AA = 4.5;
@@ -28,6 +28,18 @@ for (const p of PALETTES) {
     for (const [name, c] of Object.entries({ primary: p.primary, blockA: p.blockA, blockB: p.blockB })) {
       const r = contrast('#ffffff', c);
       assert.ok(r >= AA, `${p.id} white on ${name} ${c}: ${r.toFixed(2)}`);
+    }
+  });
+  test(`${p.name}: 2.0 hex blocks: white labels on projected glass and empty gem space meet AA`, () => {
+    for (const [name, c] of Object.entries({ glass: blockGlass(p), gemEmpty: gemEmpty(p) })) {
+      const r = contrast('#ffffff', c);
+      assert.ok(r >= AA, `${p.id} white on ${name} ${c}: ${r.toFixed(2)}`);
+    }
+  });
+  test(`${p.name}: 2.0 projected-block rim (accent, every holiday) is visible against the page (>= 3:1)`, () => {
+    for (const h of [null, ...HOLIDAYS.map((x) => x.palette)]) {
+      const rim = layeredAccents(p, h).accent;
+      assert.ok(contrast(rim, p.bg) >= 3, `${p.id} rim ${rim} on ${p.bg}`);
     }
   });
   test(`${p.name}: own accents and every holiday accent layered on top meet AA`, () => {
@@ -60,7 +72,7 @@ test('ensureContrast keeps colors that already pass and fixes ones that do not',
 
 test('paletteVars sets the variables the app relies on', () => {
   const v = paletteVars(PALETTES[0]);
-  for (const k of ['--bg', '--fg', '--box-bg', '--stat-box-bg', '--transparent-fg', '--bs-body-bg', '--bs-body-color', '--bm-accent', '--bm-surface', '--mainnet-alt', '--primary']) {
+  for (const k of ['--bg', '--fg', '--box-bg', '--stat-box-bg', '--transparent-fg', '--bs-body-bg', '--bs-body-color', '--bm-accent', '--bm-surface', '--mainnet-alt', '--primary', '--bm-glass', '--bm-gem-empty', '--bm-rim']) {
     assert.ok(v[k], k);
   }
 });

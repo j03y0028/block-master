@@ -1,12 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="Block Master, Veterans Day">
   <title>Block Master: Veterans Day</title>
   <defs>
-    <linearGradient id="veterans-top" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5b74b8"/><stop offset="1" stop-color="#3a5394"/></linearGradient><linearGradient id="veterans-left" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#24376e"/><stop offset="1" stop-color="#17254d"/></linearGradient><linearGradient id="veterans-right" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5f6b3c"/><stop offset="1" stop-color="#414a27"/></linearGradient><linearGradient id="veterans-crown" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff1c1"/><stop offset="1" stop-color="#e2ad35"/></linearGradient>
-    <linearGradient id="veterans-sheen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity="0.45"/><stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/></linearGradient>
-    <mask id="veterans-cube" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128">
+    <linearGradient id="veterans-top" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5b74b8"/><stop offset="1" stop-color="#3a5394"/></linearGradient><linearGradient id="veterans-left" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#24376e"/><stop offset="1" stop-color="#17254d"/></linearGradient><linearGradient id="veterans-right" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5f6b3c"/><stop offset="1" stop-color="#414a27"/></linearGradient><linearGradient id="veterans-crown" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff1c1"/><stop offset="1" stop-color="#e2ad35"/></linearGradient>
+    <linearGradient id="veterans-table" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#24376e"/><stop offset="1" stop-color="#17254d"/></linearGradient>
+    <linearGradient id="veterans-sheen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity="0.5"/><stop offset="0.55" stop-color="#ffffff" stop-opacity="0"/></linearGradient>
+    <clipPath id="veterans-tablec"><path d="M42.84,66.7 L85.16,66.7 L91.84,87 L85.16,107.3 L42.84,107.3 L36.16,87 Z"/></clipPath>
+    <clipPath id="veterans-gemc"><path d="M27.52,52 L100.48,52 L112,87 L100.48,122 L27.52,122 L16,87 Z"/></clipPath>
+    <mask id="veterans-gem" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128">
       <rect width="128" height="128" fill="white"/>
-      <path d="M32,68 L64,84 L96,68 M64,84 L64,120" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-      
+      <path d="M27.52,52 L42.84,66.7 M100.48,52 L85.16,66.7 M112,87 L91.84,87 M100.48,122 L85.16,107.3 M27.52,122 L42.84,107.3 M16,87 L36.16,87 M42.84,66.7 L85.16,66.7 L91.84,87 L85.16,107.3 L42.84,107.3 L36.16,87 Z" stroke="black" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <g clip-path="url(#veterans-tablec)"></g>
     </mask>
     <mask id="veterans-crownm" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128">
       <rect width="128" height="128" fill="white"/>
@@ -16,12 +19,20 @@
     
   </defs>
   <g opacity="0.95"><polygon points="16,24 17.48,27.96 21.71,28.15 18.4,30.78 19.53,34.85 16,32.52 12.47,34.85 13.6,30.78 10.29,28.15 14.52,27.96" fill="#8fa3dc"/><polygon points="112,24 113.48,27.96 117.71,28.15 114.4,30.78 115.53,34.85 112,32.52 108.47,34.85 109.6,30.78 106.29,28.15 110.52,27.96" fill="#8fa3dc"/></g>
-  <g mask="url(#veterans-cube)" stroke-linejoin="round">
-    <path d="M32,68 L64,52 L96,68 L64,84 Z" fill="url(#veterans-top)" stroke="url(#veterans-top)" stroke-width="3"/>
-    <path d="M32,68 L64,84 L64,120 L32,104 Z" fill="url(#veterans-left)" stroke="url(#veterans-left)" stroke-width="3"/>
-    <path d="M64,84 L96,68 L96,104 L64,120 Z" fill="url(#veterans-right)" stroke="url(#veterans-right)" stroke-width="3"/>
-    <g transform="matrix(0.32 0.16 0 0.36 32 68)"><circle cx="50" cy="48" r="30" fill="#ffffff"/><polygon points="50,24 56.17,40.51 73.78,41.27 59.99,52.24 64.69,69.23 50,59.5 35.31,69.23 40.01,52.24 26.22,41.27 43.83,40.51" fill="#24376e"/></g><g transform="matrix(0.32 -0.16 0 0.36 64 84)" fill="none" stroke="#f5d27a" stroke-width="7" stroke-linejoin="round"><path d="M25,30 L50,48 L75,30"/><path d="M25,52 L50,70 L75,52"/></g>
-    <path d="M44,62 L64,52 L84,62 L64,72 Z" fill="url(#veterans-sheen)"/>
+  <g mask="url(#veterans-gem)" stroke-linejoin="round">
+    <path d="M27.52,52 L100.48,52 L85.16,66.7 L42.84,66.7 Z" fill="url(#veterans-top)" stroke="url(#veterans-top)" stroke-width="1.2"/><path d="M27.52,52 L100.48,52 L85.16,66.7 L42.84,66.7 Z" fill="#ffffff" opacity="0.16"/>
+    <path d="M16,87 L27.52,52 L42.84,66.7 L36.16,87 Z" fill="url(#veterans-top)" stroke="url(#veterans-top)" stroke-width="1.2"/><path d="M16,87 L27.52,52 L42.84,66.7 L36.16,87 Z" fill="#ffffff" opacity="0.04"/>
+    <path d="M100.48,52 L112,87 L91.84,87 L85.16,66.7 Z" fill="url(#veterans-left)" stroke="url(#veterans-left)" stroke-width="1.2"/><path d="M100.48,52 L112,87 L91.84,87 L85.16,66.7 Z" fill="#ffffff" opacity="0.1"/>
+    <path d="M27.52,122 L16,87 L36.16,87 L42.84,107.3 Z" fill="url(#veterans-left)" stroke="url(#veterans-left)" stroke-width="1.2"/><path d="M27.52,122 L16,87 L36.16,87 L42.84,107.3 Z" fill="#000000" opacity="0.04"/>
+    <path d="M112,87 L100.48,122 L85.16,107.3 L91.84,87 Z" fill="url(#veterans-right)" stroke="url(#veterans-right)" stroke-width="1.2"/>
+    <path d="M100.48,122 L27.52,122 L42.84,107.3 L85.16,107.3 Z" fill="url(#veterans-right)" stroke="url(#veterans-right)" stroke-width="1.2"/><path d="M100.48,122 L27.52,122 L42.84,107.3 L85.16,107.3 Z" fill="#000000" opacity="0.2"/>
+    <g clip-path="url(#veterans-gemc)"></g>
+    <path d="M42.84,66.7 L85.16,66.7 L91.84,87 L85.16,107.3 L42.84,107.3 L36.16,87 Z" fill="url(#veterans-table)"/>
+    <g clip-path="url(#veterans-tablec)">
+      <g transform="matrix(0.56 0 0 0.56 36.16 66.7)"><circle cx="34" cy="36.5" r="23" fill="#ffffff"/><polygon points="34,18.5 38.69,31.04 52.07,31.63 41.59,39.97 45.17,52.87 34,45.48 22.83,52.87 26.41,39.97 15.93,31.63 29.31,31.04" fill="#24376e"/>
+      <g fill="none" stroke="#f5d27a" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"><path d="M64,22 L76,32 L88,22"/><path d="M64,38 L76,48 L88,38"/></g></g>
+      <path d="M42.84,66.7 L68.84,66.7 L50.16,107.3 L36.16,107.3 Z" fill="url(#veterans-sheen)" opacity="0.55"/>
+    </g>
   </g>
   <g mask="url(#veterans-crownm)" stroke-linejoin="round">
     <path d="M42,47 L37,21 L52,33 L64,9 L76,33 L91,21 L86,47 Z" fill="url(#veterans-crown)" stroke="url(#veterans-crown)" stroke-width="2.4"/>

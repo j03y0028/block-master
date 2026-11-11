@@ -7,6 +7,47 @@
   margin-bottom: 120px;
 }
 
+// Block Master 2.0: the divider is a glowing seam between forming (glass) and sealed (gem) blocks.
+#divider {
+  background: linear-gradient(to bottom,
+    transparent 0%,
+    var(--bm-rim, #f7931a) 28%,
+    var(--bm-accent-2, #ffd35c) 72%,
+    transparent 100%) !important;
+  box-shadow: 0 0 10px color-mix(in srgb, var(--bm-rim, #f7931a) 45%, transparent);
+  border-radius: 2px;
+}
+
+.bm-strip-label {
+  position: absolute;
+  top: 112px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--bm-muted, #aab0cf);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.bm-forming {
+  right: 9px;
+  transform: translateY(-50%) rotate(-90deg) translateX(50%);
+  transform-origin: right center;
+}
+
+.bm-sealed {
+  left: 9px;
+  transform: translateY(-50%) rotate(90deg) translateX(-50%);
+  transform-origin: left center;
+}
+
+.blockchain-wrapper.time-ltr .bm-strip-label {
+  // the whole strip is mirrored in left-to-right time mode; un-mirror the words
+  transform: scaleX(-1);
+  display: none;
+}
+
 #divider > img {
   position: absolute;
   left: -100px;

@@ -1,0 +1,138 @@
+// Block Master 2.0 — hex crystal blocks.
+// Blocks are elongated flat-top hexagons painted on pseudo-elements, so the
+// labels around a block (height, pool badge) are never clipped.
+//  * Mined blocks: faceted gems (solid, bevelled, with an inner facet line).
+//  * Projected blocks: glass vials with a liquid fee fill rising from the bottom.
+// The fill comes from component code through --bm-fill / --bm-level.
+
+@function hex-at($s) {
+  $y0: 50% - 50% * $s;
+  $y1: 50% + 50% * $s;
+  $x0: 50% - 38% * $s;
+  $x1: 50% + 38% * $s;
+  $sx0: 50% - 50% * $s;
+  $sx1: 50% + 50% * $s;
+  @return ($x0 $y0, $x1 $y0, $sx1 50%, $x1 $y1, $x0 $y1, $sx0 50%);
+}
+
+$hex: polygon(hex-at(1));
+
+@mixin hex-layer {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: auto;
+  height: auto;
+  top: 0;
+  left: 0;
+  transform: none;
+  z-index: -1;
+  pointer-events: none;
+  clip-path: $hex;
+}
+
+// Gem: solid fill with light from the top-left, a bevelled rim and an inner facet line.
+@mixin mined-gem {
+  isolation: isolate;
+  background: transparent;
+  transition: filter 0.25s ease, left 2s, transform 1s, opacity 1s;
+
+  &::before {
+    @include hex-layer;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.24) 0 7%, rgba(255, 255, 255, 0) 7% 93%, rgba(0, 0, 0, 0.3) 93%),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.14) 0, rgba(255, 255, 255, 0) 16%, rgba(0, 0, 0, 0) 84%, rgba(0, 0, 0, 0.22) 100%),
+      linear-gradient(128deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0) 44%),
+      var(--bm-fill, var(--bm-gem-empty));
+  }
+
+  &::after {
+    @include hex-layer;
+    clip-path: polygon(evenodd, hex-at(0.9), hex-at(0.875));
+    background: rgba(255, 255, 255, 0.32);
+  }
+
+  &:hover {
+    filter: brightness(1.12) drop-shadow(0 6px 14px rgba(0, 0, 0, 0.45));
+  }
+}
+
+// Glass vial: a thin accent rim, a clear gap, then tinted glass with the liquid fee fill rising from the bottom.
+// The gap and the layered "liquid" lines make a waiting block read differently from a solid mined gem
+// even when the block is completely full.
+@mixin projected-glass {
+  isolation: isolate;
+  background: transparent;
+  transition: filter 0.25s ease, right 2s, transform 1s, opacity 1s;
+
+  &::before {
+    @include hex-layer;
+    clip-path: polygon(hex-at(0.9));
+    background:
+      linear-gradient(to top,
+        rgba(255, 255, 255, 0) calc(var(--bm-level, 0%) - 2px),
+        rgba(255, 255, 255, 0.55) calc(var(--bm-level, 0%) - 2px),
+        rgba(255, 255, 255, 0.55) var(--bm-level, 0%),
+        rgba(255, 255, 255, 0) var(--bm-level, 0%)),
+      repeating-linear-gradient(to top, rgba(255, 255, 255, 0) 0 7px, rgba(255, 255, 255, 0.07) 7px 8px),
+      linear-gradient(160deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 36%),
+      var(--bm-fill, var(--bm-glass));
+  }
+
+  &::after {
+    @include hex-layer;
+    clip-path: polygon(evenodd, hex-at(1), hex-at(0.955));
+    background: var(--bm-rim, #f7931a);
+    opacity: 0.95;
+  }
+
+  .bm-liquid-shimmer {
+    @include hex-layer;
+    clip-path: polygon(hex-at(0.9));
+    background: linear-gradient(100deg, rgba(255, 255, 255, 0) 38%, rgba(255, 255, 255, 0.18) 50%, rgba(255, 255, 255, 0) 62%);
+    background-size: 260% 100%;
+    -webkit-mask-image: linear-gradient(to top, #000 var(--bm-level, 0%), transparent var(--bm-level, 0%));
+    mask-image: linear-gradient(to top, #000 var(--bm-level, 0%), transparent var(--bm-level, 0%));
+    animation: bm-liquid-shimmer 7s linear infinite;
+  }
+
+  &:hover {
+    filter: brightness(1.1) drop-shadow(0 0 12px color-mix(in srgb, var(--bm-rim, #f7931a) 55%, transparent));
+  }
+}
+
+// Every label inside a block is white; a soft shadow keeps it crisp over fill boundaries.
+@mixin block-labels {
+  .block-body {
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+  }
+  .block-body .fee-span {
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+}
+
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    .bitcoin-block,
+    .bitcoin-block::before,
+    .bitcoin-block::after,
+    .block-body {
+      transition: none !important;
+    }
+    .bm-liquid-shimmer {
+      animation: none !important;
+      display: none;
+    }
+    .flashing {
+      animation: none !important;
+    }
+  }
+}
+
+@keyframes bm-liquid-shimmer {
+  from { background-position: 130% 0; }
+  to { background-position: -30% 0; }
+}

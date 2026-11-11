@@ -78,7 +78,7 @@ export class MempoolBlocksComponent implements OnInit, OnChanges, OnDestroy {
 
   maxArrowPosition = 0;
   rightPosition = 0;
-  transition = 'background 2s, right 2s, transform 1s';
+  transition = 'right 2s, transform 1s';
   @ViewChild('arrowUp')
   arrowElement: ElementRef<HTMLDivElement>;
   acceleratingArrow: boolean = false;
@@ -396,11 +396,14 @@ export class MempoolBlocksComponent implements OnInit, OnChanges, OnDestroy {
     this.mempoolBlocksFull.forEach((block, i) => this.mempoolBlockStyles.push(this.getStyleForMempoolBlock(block, i)));
   }
 
+  /**
+   * Block Master 2.0: projected blocks are glass hex "vials" that fill from the bottom.
+   * The fill is exposed as CSS variables (--bm-fill, --bm-level) that the hex pseudo-elements paint,
+   * so the hex shape can be clipped without clipping the labels around the block.
+   */
   getStyleForMempoolBlock(mempoolBlock: MempoolBlock, index: number) {
-    const emptyBackgroundSpacePercentage = Math.max(100 - mempoolBlock.blockVSize / this.stateService.blockVSize * 100, 0);
-    const usedBlockSpace = 100 - emptyBackgroundSpacePercentage;
-    const backgroundGradients = [`repeating-linear-gradient(to right,  var(--bm-block-empty, #554b45), var(--bm-block-empty, #554b45) ${emptyBackgroundSpacePercentage}%`];
-    const gradientColors = [];
+    const usedBlockSpace = Math.min(Math.max(mempoolBlock.blockVSize / this.stateService.blockVSize * 100, 0), 100);
+    const gradientColors: string[] = [];
 
     const trimmedFeeRange = index === 0 ? mempoolBlock.feeRange.slice(0, -1) : mempoolBlock.feeRange;
 
@@ -409,24 +412,32 @@ export class MempoolBlocksComponent implements OnInit, OnChanges, OnDestroy {
       feeLevelIndex = feeLevelIndex >= 0 ? feeLevels.length - feeLevelIndex : feeLevelIndex;
       gradientColors.push(this.themeService.mempoolFeeColors[feeLevelIndex - 1] || this.themeService.mempoolFeeColors[this.themeService.mempoolFeeColors.length - 1]);
     });
+    // Highest fees settle at the bottom of the vial.
+    gradientColors.reverse();
 
+    const stops: string[] = [];
     gradientColors.forEach((color, i, gc) => {
-      backgroundGradients.push(`
-        #${i === 0 ? color : gc[i - 1]} ${ i === 0 ? emptyBackgroundSpacePercentage : ((i / gradientColors.length) * 100) * usedBlockSpace / 100 + emptyBackgroundSpacePercentage }%,
-        #${color} ${Math.round(((i + 1) / gradientColors.length) * 100) * usedBlockSpace / 100 + emptyBackgroundSpacePercentage}%
-      `);
+      const from = (i / gc.length) * usedBlockSpace;
+      const to = ((i + 1) / gc.length) * usedBlockSpace;
+      stops.push(`#${color} ${from.toFixed(2)}%`, `#${color} ${to.toFixed(2)}%`);
     });
+    if (!stops.length) {
+      stops.push('var(--bm-glass) 0%');
+    }
+    stops.push(`var(--bm-glass) ${usedBlockSpace.toFixed(2)}%`, 'var(--bm-glass) 100%');
 
     return {
       'right': this.containerOffset + index * this.blockOffset + 'px',
-      'background': backgroundGradients.join(',') + ')'
+      '--bm-fill': `linear-gradient(to top, ${stops.join(', ')})`,
+      '--bm-level': usedBlockSpace.toFixed(2) + '%',
     };
   }
 
   getStyleForMempoolEmptyBlock(index: number) {
     return {
       'right': this.containerOffset + index * this.blockOffset + 'px',
-      'background': 'var(--bm-block-empty, #554b45)',
+      '--bm-fill': 'var(--bm-glass)',
+      '--bm-level': '0%',
     };
   }
 
@@ -441,7 +452,7 @@ export class MempoolBlocksComponent implements OnInit, OnChanges, OnDestroy {
       this.arrowVisible = true;
 
       this.resetTransitionTimeout = window.setTimeout(() => {
-        this.transition = 'background 2s, right 2s, transform 1s';
+        this.transition = 'right 2s, transform 1s';
         this.cd.markForCheck();
       }, 100);
       return;

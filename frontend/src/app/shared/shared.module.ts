@@ -45,6 +45,7 @@ import { PaletteSelectorComponent } from '@components/block-master/palette-selec
 import { HolidayBannerComponent } from '@components/block-master/holiday-banner.component';
 import { FeeHelperComponent } from '@components/block-master/fee-helper.component';
 import { BlockMasterExplainerComponent } from '@components/block-master/explainer.component';
+import { BlockMasterPulseComponent } from '@components/block-master/pulse.component';
 import { ThemeSelectorComponent } from '@components/theme-selector/theme-selector.component';
 import { AmountSelectorComponent } from '@components/amount-selector/amount-selector.component';
 import { TimezoneSelectorComponent } from '@components/timezone-selector/timezone-selector.component';
@@ -147,6 +148,7 @@ import { GithubLogin } from '@components/github-login.component/github-login.com
     HolidayBannerComponent,
     FeeHelperComponent,
     BlockMasterExplainerComponent,
+    BlockMasterPulseComponent,
     ClipboardComponent,
     TimeComponent,
     QrcodeComponent,
@@ -300,6 +302,7 @@ import { GithubLogin } from '@components/github-login.component/github-login.com
     HolidayBannerComponent,
     FeeHelperComponent,
     BlockMasterExplainerComponent,
+    BlockMasterPulseComponent,
     MenuComponent,
     RouterModule,
     ReactiveFormsModule,

@@ -1,12 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="Block Master, Memorial Day">
   <title>Block Master: Memorial Day</title>
   <defs>
-    <linearGradient id="memorial-top" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#dbe3ef"/><stop offset="1" stop-color="#aab6c9"/></linearGradient><linearGradient id="memorial-left" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2b3a67"/><stop offset="1" stop-color="#1b2546"/></linearGradient><linearGradient id="memorial-right" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3b4558"/><stop offset="1" stop-color="#252c3a"/></linearGradient><linearGradient id="memorial-crown" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f1d98a"/><stop offset="1" stop-color="#c79a2e"/></linearGradient>
-    <linearGradient id="memorial-sheen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity="0.45"/><stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/></linearGradient>
-    <mask id="memorial-cube" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128">
+    <linearGradient id="memorial-top" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#dbe3ef"/><stop offset="1" stop-color="#aab6c9"/></linearGradient><linearGradient id="memorial-left" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2b3a67"/><stop offset="1" stop-color="#1b2546"/></linearGradient><linearGradient id="memorial-right" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3b4558"/><stop offset="1" stop-color="#252c3a"/></linearGradient><linearGradient id="memorial-crown" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f1d98a"/><stop offset="1" stop-color="#c79a2e"/></linearGradient>
+    <linearGradient id="memorial-table" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2b3a67"/><stop offset="1" stop-color="#1b2546"/></linearGradient>
+    <linearGradient id="memorial-sheen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity="0.5"/><stop offset="0.55" stop-color="#ffffff" stop-opacity="0"/></linearGradient>
+    <clipPath id="memorial-tablec"><path d="M42.84,66.7 L85.16,66.7 L91.84,87 L85.16,107.3 L42.84,107.3 L36.16,87 Z"/></clipPath>
+    <clipPath id="memorial-gemc"><path d="M27.52,52 L100.48,52 L112,87 L100.48,122 L27.52,122 L16,87 Z"/></clipPath>
+    <mask id="memorial-gem" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128">
       <rect width="128" height="128" fill="white"/>
-      <path d="M32,68 L64,84 L96,68 M64,84 L64,120" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-      
+      <path d="M27.52,52 L42.84,66.7 M100.48,52 L85.16,66.7 M112,87 L91.84,87 M100.48,122 L85.16,107.3 M27.52,122 L42.84,107.3 M16,87 L36.16,87 M42.84,66.7 L85.16,66.7 L91.84,87 L85.16,107.3 L42.84,107.3 L36.16,87 Z" stroke="black" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <g clip-path="url(#memorial-tablec)"></g>
     </mask>
     <mask id="memorial-crownm" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128">
       <rect width="128" height="128" fill="white"/>
@@ -16,12 +19,19 @@
     <linearGradient id="memorial-poppy" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff5a4e"/><stop offset="1" stop-color="#c81e1e"/></linearGradient>
   </defs>
   
-  <g mask="url(#memorial-cube)" stroke-linejoin="round">
-    <path d="M32,68 L64,52 L96,68 L64,84 Z" fill="url(#memorial-top)" stroke="url(#memorial-top)" stroke-width="3"/>
-    <path d="M32,68 L64,84 L64,120 L32,104 Z" fill="url(#memorial-left)" stroke="url(#memorial-left)" stroke-width="3"/>
-    <path d="M64,84 L96,68 L96,104 L64,120 Z" fill="url(#memorial-right)" stroke="url(#memorial-right)" stroke-width="3"/>
-    <g transform="matrix(0.32 0.16 0 0.36 32 68)"><polygon points="50,26 55.43,40.52 70.92,41.2 58.79,50.86 62.93,65.8 50,57.24 37.07,65.8 41.21,50.86 29.08,41.2 44.57,40.52" fill="#ffffff" opacity="0.92"/></g>
-    <path d="M44,62 L64,52 L84,62 L64,72 Z" fill="url(#memorial-sheen)"/>
+  <g mask="url(#memorial-gem)" stroke-linejoin="round">
+    <path d="M27.52,52 L100.48,52 L85.16,66.7 L42.84,66.7 Z" fill="url(#memorial-top)" stroke="url(#memorial-top)" stroke-width="1.2"/><path d="M27.52,52 L100.48,52 L85.16,66.7 L42.84,66.7 Z" fill="#ffffff" opacity="0.16"/>
+    <path d="M16,87 L27.52,52 L42.84,66.7 L36.16,87 Z" fill="url(#memorial-top)" stroke="url(#memorial-top)" stroke-width="1.2"/><path d="M16,87 L27.52,52 L42.84,66.7 L36.16,87 Z" fill="#ffffff" opacity="0.04"/>
+    <path d="M100.48,52 L112,87 L91.84,87 L85.16,66.7 Z" fill="url(#memorial-left)" stroke="url(#memorial-left)" stroke-width="1.2"/><path d="M100.48,52 L112,87 L91.84,87 L85.16,66.7 Z" fill="#ffffff" opacity="0.1"/>
+    <path d="M27.52,122 L16,87 L36.16,87 L42.84,107.3 Z" fill="url(#memorial-left)" stroke="url(#memorial-left)" stroke-width="1.2"/><path d="M27.52,122 L16,87 L36.16,87 L42.84,107.3 Z" fill="#000000" opacity="0.04"/>
+    <path d="M112,87 L100.48,122 L85.16,107.3 L91.84,87 Z" fill="url(#memorial-right)" stroke="url(#memorial-right)" stroke-width="1.2"/>
+    <path d="M100.48,122 L27.52,122 L42.84,107.3 L85.16,107.3 Z" fill="url(#memorial-right)" stroke="url(#memorial-right)" stroke-width="1.2"/><path d="M100.48,122 L27.52,122 L42.84,107.3 L85.16,107.3 Z" fill="#000000" opacity="0.2"/>
+    <g clip-path="url(#memorial-gemc)"></g>
+    <path d="M42.84,66.7 L85.16,66.7 L91.84,87 L85.16,107.3 L42.84,107.3 L36.16,87 Z" fill="url(#memorial-table)"/>
+    <g clip-path="url(#memorial-tablec)">
+      <g transform="matrix(0.56 0 0 0.56 36.16 66.7)"><polygon points="50,12 56.42,29.17 74.73,29.97 60.39,41.37 65.28,59.03 50,48.92 34.72,59.03 39.61,41.37 25.27,29.97 43.58,29.17" fill="#ffffff" opacity="0.94"/></g>
+      <path d="M42.84,66.7 L68.84,66.7 L50.16,107.3 L36.16,107.3 Z" fill="url(#memorial-sheen)" opacity="0.55"/>
+    </g>
   </g>
   <g mask="url(#memorial-crownm)" stroke-linejoin="round">
     <path d="M42,47 L37,21 L52,33 L64,9 L76,33 L91,21 L86,47 Z" fill="url(#memorial-crown)" stroke="url(#memorial-crown)" stroke-width="2.4"/>
