@@ -1,0 +1,315 @@
+/* Block Master 3.0 art direction: "the chain as a living sculpture".
+   Editorial typography (Fraunces display over Inter text), the hero stage with the live chain scene, the
+   new-block celebration, numbered section heads and pointer-light micro-interactions.
+   Loaded after block-master.scss and block-master-2.scss. */
+
+:root {
+  --bm-display: 'Fraunces Variable', 'Fraunces', Georgia, 'Times New Roman', serif;
+  --bm-text: 'Inter Variable', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* ---------- editorial type ---------- */
+h1, .h1, h2, .h2 {
+  font-family: var(--bm-display);
+  font-variation-settings: 'opsz' 96, 'SOFT' 50, 'WONK' 0;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+h1, .h1 { font-size: clamp(1.9rem, 2.2vw + 1rem, 2.6rem); }
+.container-xl > .title-block h1, .title-block h1 { font-style: normal; }
+.title-block h1 .next-previous-blocks, .title-block h1 a { font-style: italic; }
+
+/* section heads: an index number, the title set in the display italic, and a hairline that runs to the edge */
+.bm-bento { counter-reset: bm-sec; }
+.main-title {
+  display: flex !important;
+  align-items: baseline;
+  gap: 10px;
+  font-family: var(--bm-display) !important;
+  font-style: italic;
+  font-weight: 600 !important;
+  font-size: 1.12rem !important;
+  letter-spacing: -0.005em !important;
+  text-transform: none !important;
+  text-align: left !important;
+  color: var(--fg) !important;
+  margin-bottom: 12px !important;
+  font-variation-settings: 'opsz' 48, 'SOFT' 100;
+}
+.main-title::after {
+  content: '';
+  flex: 1 1 auto;
+  height: 1px;
+  align-self: center;
+  background: linear-gradient(90deg, var(--bm-border), transparent);
+}
+.bm-bento .main-title::before {
+  counter-increment: bm-sec;
+  content: counter(bm-sec, decimal-leading-zero);
+  font-family: var(--bm-text);
+  font-style: normal;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--bm-accent);
+}
+.card-title, h5.card-title {
+  font-family: var(--bm-display);
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  font-variation-settings: 'opsz' 36, 'SOFT' 100;
+}
+
+/* ---------- the stage (hero) ---------- */
+.bm-stage {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(20px, 3vw, 44px);
+  align-items: center;
+  padding: clamp(8px, 1.5vw, 20px) 0 8px;
+  text-align: left;
+  color: var(--fg);
+}
+.bm-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--bm-muted);
+}
+.bm-kicker-sep { color: var(--bm-accent); }
+.bm-live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: bm-live 2.4s ease-out infinite;
+}
+@keyframes bm-live {
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--green) 55%, transparent); }
+  80%, 100% { box-shadow: 0 0 0 10px color-mix(in srgb, var(--green) 0%, transparent); }
+}
+.bm-display {
+  margin: 14px 0 16px;
+  font-family: var(--bm-display);
+  font-size: clamp(2.7rem, 4.6vw + 0.4rem, 5.1rem);
+  line-height: 0.94;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  font-variation-settings: 'opsz' 144, 'SOFT' 100, 'WONK' 1;
+  color: var(--fg);
+}
+.bm-display-num {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--bm-accent);
+  font-variation-settings: 'opsz' 144, 'SOFT' 100, 'WONK' 1;
+  font-variant-numeric: lining-nums;
+}
+.bm-display-dot { color: var(--bm-accent); }
+.bm-lede {
+  max-width: 34ch;
+  margin: 0 0 22px;
+  font-size: 1.08rem;
+  line-height: 1.5;
+  color: var(--bm-muted);
+  strong { color: var(--fg); font-weight: 650; }
+}
+.bm-stage-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, max-content));
+  gap: 14px 40px;
+  margin: 0 0 26px;
+  padding-top: 18px;
+  border-top: 1px solid var(--bm-border);
+  dt {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--bm-muted);
+    margin-bottom: 2px;
+    white-space: nowrap;
+  }
+  dd {
+    margin: 0;
+    font-family: var(--bm-display);
+    font-size: 1.7rem;
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    font-variant-numeric: lining-nums tabular-nums;
+    white-space: nowrap;
+    overflow: hidden;
+    small { font-family: var(--bm-text); font-size: 0.8rem; font-weight: 600; color: var(--bm-muted); letter-spacing: 0; }
+  }
+  app-time { font-size: 1.25rem; }
+}
+.bm-roll {
+  display: inline-block;
+  animation: bm-roll 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+@keyframes bm-roll {
+  from { transform: translateY(45%); opacity: 0; filter: blur(2px); }
+  to { transform: none; opacity: 1; filter: none; }
+}
+.bm-stage-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; }
+.bm-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  background: var(--bm-primary);
+  color: #fff !important;
+  font-weight: 650;
+  text-decoration: none !important;
+  box-shadow: 0 10px 30px -12px var(--bm-primary), inset 0 -2px 0 color-mix(in srgb, var(--bm-accent) 80%, transparent);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  span { transition: transform 0.2s ease; }
+  &:hover { transform: translateY(-1px); span { transform: translateX(4px); } }
+}
+.bm-cta-quiet {
+  background: none;
+  border: 0;
+  padding: 4px 0;
+  color: var(--bm-link);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+  cursor: pointer;
+  &:hover { color: var(--fg); }
+}
+
+/* the figure */
+.bm-stage-scene { display: block; min-width: 0; }
+.bm-scene { margin: 0; }
+.bm-scene-canvas {
+  position: relative;
+  height: clamp(300px, 34vw, 470px);
+  border-radius: 28px;
+  overflow: hidden;
+  border: 1px solid var(--bm-border);
+  background: var(--bm-bg);
+  box-shadow: var(--bm-shadow), 0 40px 80px -40px color-mix(in srgb, var(--bm-glow) 80%, transparent);
+  canvas { display: block; width: 100%; height: 100%; }
+}
+.bm-scene-caption {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  margin-top: 10px;
+  padding: 0 6px;
+  font-family: var(--bm-display);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--bm-muted);
+}
+.bm-fig {
+  font-family: var(--bm-text);
+  font-style: normal;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bm-accent);
+  white-space: nowrap;
+}
+.bm-scene-fallback .bm-scene-canvas {
+  background:
+    radial-gradient(60% 60% at 70% 70%, color-mix(in srgb, var(--bm-accent) 25%, transparent), transparent 70%),
+    linear-gradient(180deg, var(--bm-glow), var(--bm-bg));
+}
+
+/* ---------- the celebration toast ---------- */
+.bm-found {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: auto auto;
+  column-gap: 14px;
+  padding: 14px 18px 14px 20px;
+  max-width: calc(100% - 32px);
+  border-radius: 20px;
+  background: var(--bm-surface);
+  border: 1px solid color-mix(in srgb, var(--bm-accent) 60%, var(--bm-border));
+  box-shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.6), 0 0 0 6px color-mix(in srgb, var(--bm-accent) 14%, transparent);
+  color: var(--fg);
+  animation: bm-found-in 0.7s cubic-bezier(0.2, 0.9, 0.2, 1.2);
+}
+.bm-found-kicker {
+  grid-column: 1;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--bm-accent);
+}
+.bm-found-height {
+  grid-column: 1;
+  font-family: var(--bm-display);
+  font-style: italic;
+  font-size: 2.1rem;
+  line-height: 1.05;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  font-variation-settings: 'opsz' 144, 'SOFT' 100;
+  .bm-hash { color: var(--bm-accent); margin-right: 2px; }
+}
+.bm-found-meta { grid-column: 1; font-size: 0.85rem; color: var(--bm-muted); }
+.bm-found-close {
+  grid-column: 2;
+  grid-row: 1 / span 3;
+  align-self: start;
+  background: none;
+  border: 0;
+  color: var(--bm-muted);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  &:hover { color: var(--fg); }
+}
+@keyframes bm-found-in {
+  0% { transform: translateY(-14px) scale(0.92); opacity: 0; }
+  100% { transform: none; opacity: 1; }
+}
+
+/* ---------- micro-interactions ---------- */
+/* a soft light follows the pointer across cards (position set by HolidayThemeService) */
+.card {
+  background-image:
+    radial-gradient(420px circle at var(--bm-mx, -999px) var(--bm-my, -999px), color-mix(in srgb, var(--bm-accent) 8%, transparent), transparent 45%),
+    linear-gradient(180deg, color-mix(in srgb, var(--fg) 2.5%, transparent), transparent 120px);
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+.bm-bento .card:hover { border-color: color-mix(in srgb, var(--bm-accent) 35%, var(--bm-border)) !important; }
+.bm-attention { animation: bm-attention 1.4s ease-out; }
+@keyframes bm-attention {
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--bm-accent) 60%, transparent); }
+  100% { box-shadow: 0 0 0 18px color-mix(in srgb, var(--bm-accent) 0%, transparent); }
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 991px) {
+  .bm-stage { grid-template-columns: minmax(0, 1fr); }
+  .bm-stage-scene { order: -1; }
+  .bm-scene-canvas { height: clamp(260px, 56vw, 420px); border-radius: 22px; }
+}
+@media (max-width: 575px) {
+  .bm-display { font-size: 2.6rem; }
+  .bm-stage-stats { gap: 12px 26px; dd { font-size: 1.4rem; } }
+  .bm-found { top: 10px; left: 10px; padding: 10px 14px; }
+  .bm-found-height { font-size: 1.6rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bm-roll, .bm-found, .bm-live-dot, .bm-attention { animation: none !important; }
+  .bm-cta, .bm-cta span { transition: none !important; }
+}

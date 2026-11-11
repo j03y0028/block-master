@@ -1,6 +1,6 @@
 {
   "name": "block-master-frontend",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Block Master: a friendly, holiday-themed Bitcoin explorer for your own node (fork of The Mempool Open Source Project)",
   "license": "GNU Affero General Public License v3.0",
   "homepage": "https://github.com/j03y0028/block-master",
@@ -59,7 +59,7 @@
     "cypress:open:ci:parameterized": "node update-config.js TESTNET_ENABLED=true TESTNET4_ENABLED=true SIGNET_ENABLED=true LIQUID_ENABLED=true ITEMS_PER_PAGE=25 && npm run generate-config && start-server-and-test serve:parameterized 4200 cypress:open",
     "cypress:run:ci:parameterized": "node update-config.js TESTNET_ENABLED=true TESTNET4_ENABLED=true SIGNET_ENABLED=true LIQUID_ENABLED=true ITEMS_PER_PAGE=25 && npm run generate-config && start-server-and-test serve:parameterized 4200 cypress:run:record",
     "test:holidays": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test tests/holidays.test.mts",
-    "test:design": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test tests/holidays.test.mts tests/palettes.test.mts tests/version.test.mts",
+    "test:design": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test tests/holidays.test.mts tests/palettes.test.mts tests/version.test.mts tests/scene.test.mts",
     "logos": "node ../branding/build-logos.mjs"
   },
   "dependencies": {
@@ -76,6 +76,7 @@
     "@angular/platform-server": "^20.3.18",
     "@angular/router": "^20.3.18",
     "@angular/ssr": "^20.3.18",
+    "@fontsource-variable/fraunces": "^5.3.0",
     "@fontsource-variable/inter": "^5.3.0",
     "@fortawesome/angular-fontawesome": "^3.0.0",
     "@fortawesome/fontawesome-common-types": "~6.7.2",

@@ -20,55 +20,56 @@ export function etaMinutes(lastBlockTimeSec: number, adjustedTimeAvgMs: number, 
 }
 
 /**
- * Block Master 2.0 "pulse": the hero band at the top of the dashboard.
+ * Block Master 3.0 stage: the editorial hero at the top of the dashboard (display headline, live figures)
+ * next to the live chain sculpture (app-bm-chain-scene).
  * Answers the three questions people actually have: when is the next block, what does it cost to get in,
  * and how busy is the network. The big glass hex is the next block, filling up live.
  */
 @Component({
   selector: 'app-bm-pulse',
   template: `
-    <div class="main-title">Right now</div>
-    <section class="bm-pulse card" aria-label="Network pulse" *ngIf="view$ | async as v">
-      <div class="bm-pulse-copy">
-        <div class="bm-pulse-kicker"><span class="bm-live-dot" aria-hidden="true"></span>Live</div>
-        <h1 class="bm-pulse-title">
-          <ng-container *ngIf="v.etaMinutes !== null; else etaLoading">
-            <ng-container *ngIf="v.etaMinutes > 0; else anyMoment">Next block in <span class="bm-pulse-accent">~{{ v.etaMinutes }} min</span></ng-container>
-            <ng-template #anyMoment>Next block <span class="bm-pulse-accent">any moment now</span></ng-template>
+    <section class="bm-stage" aria-label="Network pulse" *ngIf="view$ | async as v">
+      <div class="bm-stage-copy">
+        <div class="bm-kicker"><span class="bm-live-dot" aria-hidden="true"></span>Live <span class="bm-kicker-sep">/</span> {{ today }}</div>
+        <h1 class="bm-display">
+          <ng-container *ngIf="v.tip !== null; else formingOnly">
+            Block <em class="bm-display-num"><span *ngFor="let n of [v.tip + 1]" class="bm-roll">{{ n | number }}</span></em><br>is forming<span class="bm-display-dot">.</span>
           </ng-container>
-          <ng-template #etaLoading>Next block <span class="bm-pulse-accent">forming&hellip;</span></ng-template>
+          <ng-template #formingOnly>The next block<br>is forming<span class="bm-display-dot">.</span></ng-template>
         </h1>
-        <p class="bm-pulse-sub" *ngIf="v.fastestFee !== null">
-          To get into it, pay about <strong>{{ v.fastestFee | number:'1.0-1' }} sat/vB</strong>.
+        <p class="bm-lede">
+          <ng-container *ngIf="v.etaMinutes !== null; else noEta">
+            <ng-container *ngIf="v.etaMinutes > 0; else anyMoment">Expected in about <strong>{{ v.etaMinutes }} min</strong>.</ng-container>
+            <ng-template #anyMoment>It could be found <strong>any moment now</strong>.</ng-template>
+          </ng-container>
+          <ng-template #noEta>Gathering live data from the node.</ng-template>
+          <ng-container *ngIf="v.fastestFee !== null"> Pay about <strong>{{ v.fastestFee | number:'1.0-1' }} sat/vB</strong> to get in.</ng-container>
           <span class="bm-info" ngbTooltip="Blocks arrive about every 10 minutes on average, but it is random: sometimes 1 minute, sometimes an hour. The fee is the rate that currently makes it into the next block." placement="bottom">?</span>
         </p>
-        <dl class="bm-pulse-stats">
+        <dl class="bm-stage-stats">
           <div class="bm-stat">
-            <dt>Height</dt>
-            <dd>{{ v.tip !== null ? (v.tip | number) : '…' }}</dd>
+            <dt>Last sealed</dt>
+            <dd><span *ngFor="let n of [v.tip]" class="bm-roll">{{ n !== null ? (n | number) : '…' }}</span></dd>
           </div>
           <div class="bm-stat">
-            <dt>Last block</dt>
+            <dt>Found</dt>
             <dd><app-time *ngIf="v.lastBlockTime; else dots" kind="since" [time]="v.lastBlockTime" [fastRender]="true"></app-time></dd>
           </div>
           <div class="bm-stat">
             <dt>Waiting</dt>
-            <dd>{{ v.waitingTxs !== null ? (v.waitingTxs | number) + ' tx' : '…' }}</dd>
+            <dd><span *ngFor="let n of [v.waitingTxs]" class="bm-roll">{{ n !== null ? (n | number) : '…' }}</span><small> tx</small></dd>
           </div>
           <div class="bm-stat">
             <dt ngbTooltip="How many full blocks it would take to clear everything waiting right now." placement="bottom" class="bm-tip">Backlog</dt>
-            <dd>{{ v.backlogBlocks !== null ? (v.backlogBlocks | number:'1.0-1') + ' blocks' : '…' }}</dd>
+            <dd>{{ v.backlogBlocks !== null ? (v.backlogBlocks | number:'1.0-1') : '…' }}<small> blocks</small></dd>
           </div>
         </dl>
+        <div class="bm-stage-actions">
+          <a class="bm-cta" [routerLink]="['/mempool-block/0' | relativeUrl]">See the next block <span aria-hidden="true">&rarr;</span></a>
+          <button type="button" class="bm-cta-quiet" (click)="scrollToFees()">What fee should I pay?</button>
+        </div>
       </div>
-      <a class="bm-pulse-vial" [routerLink]="['/mempool-block/0' | relativeUrl]" [style.--bm-level]="(v.nextFill ?? 0) + '%'"
-         [attr.aria-label]="'Next block is ' + ((v.nextFill ?? 0) | number:'1.0-0') + ' percent full. Open the next block preview.'">
-        <span class="bm-vial-hex" aria-hidden="true"><span class="bm-liquid-shimmer"></span></span>
-        <span class="bm-vial-label">
-          <strong>{{ v.nextFill !== null ? (v.nextFill | number:'1.0-0') + '%' : '…' }}</strong>
-          <span>next block full</span>
-        </span>
-      </a>
+      <app-bm-chain-scene class="bm-stage-scene"></app-bm-chain-scene>
     </section>
     <ng-template #dots>…</ng-template>
   `,
@@ -77,6 +78,17 @@ export function etaMinutes(lastBlockTimeSec: number, adjustedTimeAvgMs: number, 
 })
 export class BlockMasterPulseComponent implements OnInit {
   view$: Observable<PulseView>;
+  today = new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+
+  scrollToFees(): void {
+    const el = document.getElementById('fee-helper');
+    if (el) {
+      const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+      el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+      (el.querySelector('.card') as HTMLElement | null)?.classList.add('bm-attention');
+      setTimeout(() => (el.querySelector('.card') as HTMLElement | null)?.classList.remove('bm-attention'), 1600);
+    }
+  }
 
   constructor(private stateService: StateService) {}
 

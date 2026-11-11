@@ -16,7 +16,7 @@
         "Block Master is an independent fork of The Mempool Open Source Project (AGPL-3.0). It is not affiliated with mempool.space. It reads from your own Bitcoin Core and Electrum server: no third-party servers.",
         "Runs alongside myNode's built-in Mempool app (different port and data folder)."
     ],
-    "latest_version": "v2.0.0",
+    "latest_version": "v3.0.0",
     "linux_user": "blockmaster",
     "supported_archs": [
         "aarch64",

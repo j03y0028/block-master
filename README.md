@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/logos/logo-default.png" width="140" alt="Block Master logo: a hex gem block wearing a crown">
+  <img src="docs/logos/logo-default.png" width="140" alt="Block Master logo: a crowned hexagonal prism">
 </p>
 
 <h1 align="center">Block Master</h1>
@@ -14,9 +14,32 @@ A friendly, self-hosted Bitcoin block explorer and mempool visualizer with U.S. 
 > trademarks of their owners. Block Master doesn't use them. All Block Master names, logos and artwork in this repository are original.
 > The code is licensed under the **GNU AGPL-3.0**, the same as upstream. See [License & attribution](#license--attribution).
 
-![Block Master dashboard, Midnight palette](docs/screenshots/dashboard-midnight.png)
+![Block Master 3.0 hero, Midnight palette](docs/screenshots/hero-midnight.png)
 
-## New in 2.0
+## New in 3.0
+
+- **The chain as a living sculpture.** The dashboard opens on *Fig. 1*, a live scene drawn on a lightweight canvas:
+  - Sealed blocks are lit **hex prisms** that recede into the past toward a vanishing point. Each prism is as tall as the block is full, and a glowing hash-link thread with travelling pulses joins them.
+  - The next block is a **glass vial**. Fee drops fall into it at the live incoming rate (vB/s) and in the live fee colors. The liquid rises with how full the next block is and ripples where each drop lands.
+  - **When a block is found, the scene celebrates.** A flash, a shockwave, a burst of sparks, and the vial seals into a prism and slides onto the chain. An accessible toast announces the height, pool and transaction count. Add `?celebrate=1` to the URL to replay the latest block.
+  - The scene pauses when it is off screen or the tab is hidden, caps its pixel ratio and particle count, and draws a single still frame when reduced motion is on. Without canvas, the page simply shows the copy column.
+- **Editorial type.** Headlines use [Fraunces](https://github.com/undercasetype/Fraunces), a soft, wonky variable serif: "Block *975,393* is forming." Numbers roll when they change. Section heads are numbered (01, 02, …) with a hairline rule. The interface text stays in Inter.
+- **Immersive holidays.** Each holiday now dresses the scene, not just the colors: fireworks for New Year's, Juneteenth and the Fourth of July; a sunrise for MLK Day; poppies and searchlights for Memorial Day; stars and searchlights for Veterans Day; a moon and bats for Halloween; falling leaves for Thanksgiving; snow and string lights along the chain for Christmas. The figure caption changes with them.
+- **A new logo system.** The mark is the same hex prism the scene is built from, three-quarter view, crowned. Each holiday puts one motif on the front face and adds a small accent beside it (a sunrise, a poppy, fireworks, a gear, bats, leaves, snowflakes). On Christmas the prism becomes a wrapped gift.
+- **Micro-interactions.** Cards catch a soft light that follows your pointer. "What fee should I pay?" glides to the fee helper and highlights it.
+- **Version 3.0.0** across the app footer, Docker image, compose file and myNode package.
+
+| Aurora | Daylight |
+|---|---|
+| ![3.0 hero, Aurora](docs/screenshots/hero-aurora.png) | ![3.0 hero, Daylight](docs/screenshots/hero-daylight.png) |
+| **Veterans Day** | **Christmas** |
+| ![3.0 hero on Veterans Day: searchlights and stars](docs/screenshots/hero-midnight-veterans.png) | ![3.0 hero on Christmas: snow and string lights](docs/screenshots/hero-midnight-christmas.png) |
+
+Watch the scene celebrate a new block: [`docs/hero-3.0.mp4`](docs/hero-3.0.mp4) (9 s, recorded from a local build with `?celebrate=1`).
+
+<details><summary>New in 2.0</summary>
+
+
 
 - **Hex crystal blocks.** The square cubes are gone. Every block is an elongated hexagon, and the two kinds are easy to tell apart:
   - **Forming** (waiting, projected) blocks are **glass vials**: a thin accent rim, tinted glass, and a liquid fee fill that rises from the bottom with a bright meniscus line and a slow shimmer.
@@ -29,7 +52,9 @@ A friendly, self-hosted Bitcoin block explorer and mempool visualizer with U.S. 
 - **Labeled navigation.** The icon-only header is now a pill bar with words (*Live, Mining, Charts, Learn, About*). On phones the icons get small labels too.
 - **A new logo** to match: a crowned hex gem with six shaded facets and a flat table that carries each holiday's motif.
 - **Motion with manners.** Animations are gentle and short, and everything stops when your system asks for reduced motion (`prefers-reduced-motion`).
-- **Version fix.** The footer and About page show the Block Master version (2.0.0) instead of the upstream mempool version.
+- **Version fix.** The footer and About page show the Block Master version instead of the upstream mempool version.
+
+</details>
 
 ## Why Block Master?
 
@@ -38,9 +63,9 @@ Mempool is a great explorer. Block Master keeps its engine and makes the first s
 - **"What fee should I pay?" card**: four plain choices (*In a hurry*, *Normal*, *Patient*, *No rush*) with sat/vB, an estimate in sats for a typical payment, and the price in your currency.
 - **"What am I looking at?" explainer**: three short sentences about the waiting room, the blocks and the fees. You can collapse it.
 - **Plain-language tooltips**: anything with a dotted underline or a ⓘ explains itself when you hover over it.
-- **Cleaner first screen**: a pulse hero that answers "when is the next block and what does it cost?", hex blocks labeled *Forming* and *Sealed*, and the fee helper up top. The power-user cards are still there, in the grid below.
-- **A modern design system**: an original crowned hex-gem logo family, glass and gem hex blocks, six color palettes that all pass WCAG AA, Inter typography, and a bento dashboard.
-- **U.S. holiday themes**: the crowned-gem logo, accent colors and a small dismissible banner change automatically around 11 U.S. holidays. Everything stays readable in dark mode.
+- **Cleaner first screen**: an editorial hero that answers "when is the next block and what does it cost?" next to a live chain sculpture, hex blocks labeled *Forming* and *Sealed*, and the fee helper up top. The power-user cards are still there, in the grid below.
+- **A modern design system**: an original crowned-prism logo family, a live canvas chain scene, glass and gem hex blocks, six color palettes that all pass WCAG AA, Fraunces + Inter typography, and a bento dashboard.
+- **U.S. holiday themes**: the crowned-prism logo, accent colors, the live scene and a small dismissible banner change automatically around 11 U.S. holidays. Everything stays readable in dark mode.
 - **Self-hosted first**: no mempool.space branding, services, analytics or promo downloads. Footer links point to this repository.
 - **myNode package**: a one-command installer that uses your node's Bitcoin Core and Electrs.
 
@@ -48,11 +73,12 @@ Mempool is a great explorer. Block Master keeps its engine and makes the first s
 
 ![Block Master logo system and palettes](docs/logo-sheet.png)
 
-**The mark.** The same elongated hexagon the app uses for its blocks, cut like a gem. Six bevel facets are shaded from a top-left
-light and separated by hairline negative-space seams. A floating geometric crown sits above it, with its band and jewels cut out as
-negative space. Each holiday keeps the silhouette and puts one restrained motif on the gem's flat center "table": a flag with
-stripes and a canton for Independence Day, a star medallion and chevrons for Veterans Day, a carved face for Halloween, a ribbon
-for Christmas, and so on. The marks are generated as SVG by [`branding/build-logos.mjs`](branding/build-logos.mjs); the
+**The mark.** A hexagonal prism in three-quarter view: the same object the live chain sculpture is built from. Three side faces
+are shaded from a left light, the lid carries a negative-space inner hexagon, and hairline seams separate the planes. A floating
+geometric crown sits above it, with its band and jewels cut out as negative space. Each holiday keeps the silhouette, puts one
+motif on the front face, and adds a small scene accent in the open corner: a flag for Independence Day with fireworks, a star
+medallion and chevrons for Veterans Day, a carved face for Halloween with bats and a moon, a ribbon and bow that turn the prism into
+a gift for Christmas, and so on. The marks are generated as SVG by [`branding/build-logos.mjs`](branding/build-logos.mjs); the
 favicons, PNGs and this sheet come from [`branding/render-pngs.mjs`](branding/render-pngs.mjs) and [`branding/render-sheet.mjs`](branding/render-sheet.mjs).
 
 **Blocks.** Shared hex mixins live in [`frontend/src/app/shared/_bm-hex.scss`](frontend/src/app/shared/_bm-hex.scss). Blocks are painted
@@ -87,6 +113,8 @@ palette, Daylight included.
 - **Rendered-page audit.** Pages are rendered in every palette and the contrast of every visible text element is measured. The last run
   covered the dashboard, a block page, a transaction page, the footer, the About page and mobile, with 0 failures. Text inside the hex
   blocks is measured against every color in the block's fill. Other text drawn on gradients (the fee bars) is covered by the unit tests.
+  The 3.0 scene is decorative: it has a text alternative (`role="img"` with a live `aria-label`), every number it shows is also in the
+  copy column beside it, and the celebration toast has an opaque surface so its text is measured like any other.
 
 Holiday accents layer on top of the chosen palette: a holiday's colors are nudged lighter (dark palettes) or darker (Daylight) just
 enough to stay readable. Upstream's fee-level colors are darkened the same way so the white labels on projected blocks pass AA.
@@ -126,7 +154,7 @@ The theme is chosen from your browser's **local date**. Floating holidays are co
 |---|---|
 | ![Block detail page on Daylight](docs/screenshots/block-daylight.png) | ![Mobile dashboard](docs/screenshots/dashboard-midnight-veterans-mobile.png) |
 
-More screenshots: [About page](docs/screenshots/about-midnight-veterans.png), [footer with the Appearance settings](docs/screenshots/footer-midnight-veterans.png) ([Daylight](docs/screenshots/footer-daylight-veterans.png)), [mobile](docs/screenshots/dashboard-midnight-veterans-mobile.png).
+More screenshots: [About page](docs/screenshots/about-midnight-veterans.png), [footer with the Appearance settings](docs/screenshots/footer-midnight-veterans.png) ([Daylight](docs/screenshots/footer-daylight-veterans.png)), [mobile](docs/screenshots/dashboard-midnight-veterans-mobile.png), [a transaction page](docs/screenshots/tx-midnight-veterans.png), [Sunset hero](docs/screenshots/hero-sunset.png).
 
 The holiday rules live in [`frontend/src/app/shared/holidays.ts`](frontend/src/app/shared/holidays.ts) (pure TypeScript, with no Angular).
 
@@ -137,11 +165,11 @@ See **[docs/mynode-install.md](docs/mynode-install.md)** for the full guide. In 
 1. On myNode, make sure **Bitcoin** is synced and **Electrs** is installed and synced.
 2. Build the package on any computer with Docker (`scripts/package-mynode.sh`) or download a release tarball, then copy it to the node:
    ```bash
-   scp build/blockmaster-mynode-v2.0.0.tar.gz admin@mynode.local:~
+   scp build/blockmaster-mynode-v3.0.0.tar.gz admin@mynode.local:~
    ```
 3. On the myNode:
    ```bash
-   tar xzf blockmaster-mynode-v2.0.0.tar.gz && cd blockmaster-mynode-v2.0.0
+   tar xzf blockmaster-mynode-v3.0.0.tar.gz && cd blockmaster-mynode-v3.0.0
    sudo ./install-mynode.sh
    ```
 4. Open **http://mynode.local:4090** (or **https://mynode.local:4091**). Block Master also shows up in the myNode app list, where you can start, stop and uninstall it.
@@ -174,7 +202,7 @@ The backend is used as-is because Block Master's changes are all in the UI. To b
 ```bash
 cd frontend
 npm ci
-npm run test:design       # holiday dates + palette / WCAG contrast tests (node --test)
+npm run test:design       # holiday dates, palette / WCAG contrast, scene math and version tests (node --test)
 npm run logos             # regenerate the SVG logos after editing branding/build-logos.mjs
 npm run build             # production build (all locales) → dist/
 npm run lint
@@ -183,13 +211,14 @@ npm run lint
 To look at a production build against live data without a node, `node scripts/preview-server.js 4200` serves `dist/` and proxies
 `/api` to `PREVIEW_API` (by default the public mempool.space API; use your own backend URL if you have one). This is only for development; Block Master never calls third-party APIs when it runs on your node.
 
-CI (`.github/workflows/ci.yml`) runs the holiday and palette tests, checks that the logos are up to date, validates both compose files, runs `bash -n` on the scripts, and does the lint and production build.
+CI (`.github/workflows/ci.yml`) runs the holiday, palette, scene and version tests, checks that the logos are up to date, validates both compose files, runs `bash -n` on the scripts, and does the lint and production build.
 
 ## What changed from upstream
 
 - New name, logo family, favicons, social preview, page titles and meta tags. All mempool.space trademarks, logos and service links are removed from the UI.
+- Block Master 3.0: the live chain scene (`app-bm-chain-scene`, `shared/scene.ts`) with holiday scene accents and the new-block celebration, the editorial stage (`app-bm-pulse`), Fraunces display typography, numbered section heads, the pointer light on cards (`block-master-3.scss`), and the crowned-prism logo system.
 - Block Master 2.0: hex crystal blocks (glass "forming" vials and gem "sealed" blocks), the *Forming/Sealed* seam, the pulse hero (`app-bm-pulse`), the bento dashboard grid, the labeled pill navigation (`block-master-2.scss`), reduced-motion support, and Block Master versioning in the footer.
-- Design system: crowned hex-gem logo family, six WCAG AA palettes (`palettes.ts`, palette picker), Inter typography, the `block-master.scss` design layer, and AA-safe fee colors.
+- Design system: crowned-prism logo family, six WCAG AA palettes (`palettes.ts`, palette picker), Fraunces + Inter typography, the `block-master.scss` design layer, and AA-safe fee colors.
 - Holiday theme engine (`holidays.ts`, `HolidayThemeService`, banner, selector, logo component).
 - Fee helper card, explainer card, tooltips and dashboard layout. "Mempool Goggles" is renamed to "Next Block Preview".
 - About, Terms, Privacy and Trademark pages rewritten for a self-hosted fork.

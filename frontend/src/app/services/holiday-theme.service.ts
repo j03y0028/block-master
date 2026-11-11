@@ -1,4 +1,4 @@
-import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { Inject, Injectable, NgZone, PLATFORM_ID } from '@angular/core';
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { BehaviorSubject } from 'rxjs';
 import {
@@ -37,6 +37,7 @@ export class HolidayThemeService {
   constructor(
     @Inject(PLATFORM_ID) platformId: object,
     @Inject(DOCUMENT) private document: Document,
+    private zone: NgZone,
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
     if (this.isBrowser) {
@@ -57,7 +58,39 @@ export class HolidayThemeService {
     if (this.isBrowser) {
       // re-check hourly so an open tab rolls into (and out of) a holiday at local midnight
       setInterval(() => this.refresh(), 60 * 60 * 1000);
+      this.trackPointerLight();
     }
+  }
+
+  /** Block Master 3.0 micro-interaction: cards carry a soft light under the pointer (CSS reads --bm-mx / --bm-my). */
+  private trackPointerLight(): void {
+    this.zone.runOutsideAngular(() => {
+      let queued = false;
+      let last: PointerEvent | null = null;
+      let lit: HTMLElement | null = null;
+      this.document.addEventListener('pointermove', (e: PointerEvent) => {
+        last = e;
+        if (queued || e.pointerType === 'touch') {
+          return;
+        }
+        queued = true;
+        requestAnimationFrame(() => {
+          queued = false;
+          const target = last?.target as Element | null;
+          const card = (target && typeof target.closest === 'function' ? target.closest('.card') : null) as HTMLElement | null;
+          if (lit && lit !== card) {
+            lit.style.removeProperty('--bm-mx');
+            lit.style.removeProperty('--bm-my');
+          }
+          lit = card;
+          if (card && last) {
+            const r = card.getBoundingClientRect();
+            card.style.setProperty('--bm-mx', `${Math.round(last.clientX - r.left)}px`);
+            card.style.setProperty('--bm-my', `${Math.round(last.clientY - r.top)}px`);
+          }
+        });
+      }, { passive: true });
+    });
   }
 
   get preference(): HolidayPreference {

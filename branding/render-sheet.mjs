@@ -40,7 +40,7 @@ const html = `<!doctype html><html><head><style>
   .chips { display:flex; gap:5px; } .chips i { width:20px; height:20px; border-radius:50%; border:1px solid rgba(128,128,128,.4); }
   .pal-sample { font-size:15px; } .aa { font-size:11px; font-variant-numeric: tabular-nums; }
 </style></head><body><div class="wrap">
-  <header><img src="${uri(wordmarkSvg())}" height="96"><div class="sub">Design system · 12 marks · 6 palettes · AGPL-3.0</div></header>
+  <header><img src="${uri(wordmarkSvg())}" height="96"><div class="sub">Block Master 3.0 · 12 crowned prisms · 6 palettes · AGPL-3.0</div></header>
   <h2>On dark</h2><div class="grid">${VARIANTS.map((id) => tile(id, true)).join('')}</div>
   <h2>On light</h2><div class="grid">${VARIANTS.map((id) => tile(id, false)).join('')}</div>
   <h2>Color palettes · WCAG AA</h2><div class="pals">${PALETTES.map(pal).join('')}</div>

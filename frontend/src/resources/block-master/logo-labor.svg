@@ -1,41 +1,41 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="Block Master, Labor Day">
   <title>Block Master: Labor Day</title>
   <defs>
-    <linearGradient id="labor-top" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9fd8f7"/><stop offset="1" stop-color="#5fb2e3"/></linearGradient><linearGradient id="labor-left" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1f7fc0"/><stop offset="1" stop-color="#155b8d"/></linearGradient><linearGradient id="labor-right" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#14507a"/><stop offset="1" stop-color="#0c3452"/></linearGradient><linearGradient id="labor-crown" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe48a"/><stop offset="1" stop-color="#f0b414"/></linearGradient>
-    <linearGradient id="labor-table" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1f7fc0"/><stop offset="1" stop-color="#155b8d"/></linearGradient>
-    <linearGradient id="labor-sheen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity="0.5"/><stop offset="0.55" stop-color="#ffffff" stop-opacity="0"/></linearGradient>
-    <clipPath id="labor-tablec"><path d="M42.84,66.7 L85.16,66.7 L91.84,87 L85.16,107.3 L42.84,107.3 L36.16,87 Z"/></clipPath>
-    <clipPath id="labor-gemc"><path d="M27.52,52 L100.48,52 L112,87 L100.48,122 L27.52,122 L16,87 Z"/></clipPath>
+    <linearGradient id="labor-top" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9fd8f7"/><stop offset="1" stop-color="#5fb2e3"/></linearGradient><linearGradient id="labor-left" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1f7fc0"/><stop offset="1" stop-color="#155b8d"/></linearGradient><linearGradient id="labor-right" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#14507a"/><stop offset="1" stop-color="#0c3452"/></linearGradient><linearGradient id="labor-crown" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe48a"/><stop offset="1" stop-color="#f0b414"/></linearGradient>
+    <linearGradient id="labor-lid" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9fd8f7"/><stop offset="1" stop-color="#5fb2e3"/></linearGradient>
+    <linearGradient id="labor-sheen" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ffffff" stop-opacity="0.32"/><stop offset="0.6" stop-color="#ffffff" stop-opacity="0"/></linearGradient>
+    <clipPath id="labor-frontc"><path d="M84,77.55 L44,77.55 L44,121.55 L84,121.55 Z"/></clipPath>
+    <clipPath id="labor-lidc"><path d="M104,63 L84,77.55 L44,77.55 L24,63 L44,48.45 L84,48.45 Z"/></clipPath>
     <mask id="labor-gem" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128">
       <rect width="128" height="128" fill="white"/>
-      <path d="M27.52,52 L42.84,66.7 M100.48,52 L85.16,66.7 M112,87 L91.84,87 M100.48,122 L85.16,107.3 M27.52,122 L42.84,107.3 M16,87 L36.16,87 M42.84,66.7 L85.16,66.7 L91.84,87 L85.16,107.3 L42.84,107.3 L36.16,87 Z" stroke="black" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-      <g clip-path="url(#labor-tablec)"><g transform="matrix(0.56 0 0 0.56 36.16 66.7)"><path d="M50,9.5 L55.27,10.02 L58.06,17.04 L61.7,18.99 L69.09,17.41 L72.45,21.5 L69.46,28.44 L70.66,32.39 L77,36.5 L76.48,41.77 L69.46,44.56 L67.51,48.2 L69.09,55.59 L65,58.95 L58.06,55.96 L54.11,57.16 L50,63.5 L44.73,62.98 L41.94,55.96 L38.3,54.01 L30.91,55.59 L27.55,51.5 L30.54,44.56 L29.34,40.61 L23,36.5 L23.52,31.23 L30.54,28.44 L32.49,24.8 L30.91,17.41 L35,14.05 L41.94,17.04 L45.89,15.84 Z" fill="black"/></g></g>
+      <path d="M104,63 L84,77.55 L44,77.55 L24,63 M84,77.55 L84,121.55 M44,77.55 L44,121.55 M87.2,63 L75.6,71.44 L52.4,71.44 L40.8,63 L52.4,54.56 L75.6,54.56 Z" stroke="black" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <g clip-path="url(#labor-frontc)"><g transform="matrix(0.4 0 0 0.4 44 77.55)"><path d="M50,19 L57.02,19.69 L60.75,29.06 L65.6,31.65 L75.46,29.54 L79.93,35 L75.94,44.25 L77.54,49.52 L86,55 L85.31,62.02 L75.94,65.75 L73.35,70.6 L75.46,80.46 L70,84.93 L60.75,80.94 L55.48,82.54 L50,91 L42.98,90.31 L39.25,80.94 L34.4,78.35 L24.54,80.46 L20.07,75 L24.06,65.75 L22.46,60.48 L14,55 L14.69,47.98 L24.06,44.25 L26.65,39.4 L24.54,29.54 L30,25.07 L39.25,29.06 L44.52,27.46 Z" fill="black"/></g></g>
     </mask>
     <mask id="labor-crownm" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128">
       <rect width="128" height="128" fill="white"/>
-      <path d="M38,40 L90,40" stroke="black" stroke-width="2.6"/>
-      <circle cx="52" cy="44" r="1.7" fill="black"/><circle cx="64" cy="44" r="1.7" fill="black"/><circle cx="76" cy="44" r="1.7" fill="black"/>
+      <path d="M38,39 L90,39" stroke="black" stroke-width="2.6"/>
+      <circle cx="52" cy="43" r="1.7" fill="black"/><circle cx="64" cy="43" r="1.7" fill="black"/><circle cx="76" cy="43" r="1.7" fill="black"/>
     </mask>
     
   </defs>
   <path d="M104,82 L106.19,82.17 L107.37,85.61 L108.96,86.27 L112.23,84.67 L113.9,86.1 L112.83,89.58 L113.73,91.04 L117.31,91.67 L117.83,93.81 L114.92,96 L114.79,97.71 L117.31,100.33 L116.47,102.36 L112.83,102.42 L111.72,103.72 L112.23,107.33 L110.36,108.47 L107.37,106.39 L105.71,106.79 L104,110 L101.81,109.83 L100.63,106.39 L99.04,105.73 L95.77,107.33 L94.1,105.9 L95.17,102.42 L94.27,100.96 L90.69,100.33 L90.17,98.19 L93.08,96 L93.21,94.29 L90.69,91.67 L91.53,89.64 L95.17,89.58 L96.28,88.28 L95.77,84.67 L97.64,83.53 L100.63,85.61 L102.29,85.21 Z" fill="none" stroke="#f0b414" stroke-width="2" stroke-linejoin="round"/><circle cx="104" cy="96" r="5" fill="none" stroke="#f0b414" stroke-width="2"/>
+  <ellipse cx="64" cy="109" rx="44" ry="18.8" fill="#000000" opacity="0.18"/>
   <g mask="url(#labor-gem)" stroke-linejoin="round">
-    <path d="M27.52,52 L100.48,52 L85.16,66.7 L42.84,66.7 Z" fill="url(#labor-top)" stroke="url(#labor-top)" stroke-width="1.2"/><path d="M27.52,52 L100.48,52 L85.16,66.7 L42.84,66.7 Z" fill="#ffffff" opacity="0.16"/>
-    <path d="M16,87 L27.52,52 L42.84,66.7 L36.16,87 Z" fill="url(#labor-top)" stroke="url(#labor-top)" stroke-width="1.2"/><path d="M16,87 L27.52,52 L42.84,66.7 L36.16,87 Z" fill="#ffffff" opacity="0.04"/>
-    <path d="M100.48,52 L112,87 L91.84,87 L85.16,66.7 Z" fill="url(#labor-left)" stroke="url(#labor-left)" stroke-width="1.2"/><path d="M100.48,52 L112,87 L91.84,87 L85.16,66.7 Z" fill="#ffffff" opacity="0.1"/>
-    <path d="M27.52,122 L16,87 L36.16,87 L42.84,107.3 Z" fill="url(#labor-left)" stroke="url(#labor-left)" stroke-width="1.2"/><path d="M27.52,122 L16,87 L36.16,87 L42.84,107.3 Z" fill="#000000" opacity="0.04"/>
-    <path d="M112,87 L100.48,122 L85.16,107.3 L91.84,87 Z" fill="url(#labor-right)" stroke="url(#labor-right)" stroke-width="1.2"/>
-    <path d="M100.48,122 L27.52,122 L42.84,107.3 L85.16,107.3 Z" fill="url(#labor-right)" stroke="url(#labor-right)" stroke-width="1.2"/><path d="M100.48,122 L27.52,122 L42.84,107.3 L85.16,107.3 Z" fill="#000000" opacity="0.2"/>
-    <g clip-path="url(#labor-gemc)"></g>
-    <path d="M42.84,66.7 L85.16,66.7 L91.84,87 L85.16,107.3 L42.84,107.3 L36.16,87 Z" fill="url(#labor-table)"/>
-    <g clip-path="url(#labor-tablec)">
-      <g transform="matrix(0.56 0 0 0.56 36.16 66.7)"><circle cx="50" cy="36.5" r="8.5" fill="#f0b414"/></g>
-      <path d="M42.84,66.7 L68.84,66.7 L50.16,107.3 L36.16,107.3 Z" fill="url(#labor-sheen)" opacity="0.55"/>
+    <path d="M104,63 L84,77.55 L84,121.55 L104,107 Z" fill="url(#labor-right)" stroke="url(#labor-right)" stroke-width="1"/>
+    <path d="M84,77.55 L44,77.55 L44,121.55 L84,121.55 Z" fill="url(#labor-left)" stroke="url(#labor-left)" stroke-width="1"/>
+    <path d="M44,77.55 L24,63 L24,107 L44,121.55 Z" fill="url(#labor-top)" stroke="url(#labor-top)" stroke-width="1"/>
+    <path d="M44,77.55 L24,63 L24,107 L44,121.55 Z" fill="#ffffff" opacity="0.08"/>
+    <g clip-path="url(#labor-frontc)">
+      <g transform="matrix(0.4 0 0 0.4 44 77.55)"><circle cx="50" cy="55" r="11" fill="#f0b414"/></g>
+      <path d="M84,77.55 L44,77.55 L44,121.55 L84,121.55 Z" fill="url(#labor-sheen)" opacity="0.6"/>
     </g>
+    <path d="M104,63 L84,77.55 L44,77.55 L24,63 L44,48.45 L84,48.45 Z" fill="url(#labor-lid)"/>
+    <path d="M104,63 L84,77.55 L44,77.55 L24,63 L44,48.45 L84,48.45 Z" fill="#ffffff" opacity="0.22"/>
+    <g clip-path="url(#labor-lidc)"></g>
   </g>
   <g mask="url(#labor-crownm)" stroke-linejoin="round">
-    <path d="M42,47 L37,21 L52,33 L64,9 L76,33 L91,21 L86,47 Z" fill="url(#labor-crown)" stroke="url(#labor-crown)" stroke-width="2.4"/>
+    <path d="M42,46 L37,20 L52,32 L64,8 L76,32 L91,20 L86,46 Z" fill="url(#labor-crown)" stroke="url(#labor-crown)" stroke-width="2.4"/>
   </g>
-  <circle cx="37" cy="16" r="2.9" fill="#ffffff"/><circle cx="64" cy="3.6" r="3.1" fill="#ffffff"/><circle cx="91" cy="16" r="2.9" fill="#ffffff"/>
+  <circle cx="37" cy="15" r="2.9" fill="#ffffff"/><circle cx="64" cy="2.8" r="2.8" fill="#ffffff"/><circle cx="91" cy="15" r="2.9" fill="#ffffff"/>
   
 </svg>

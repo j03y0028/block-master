@@ -24,7 +24,7 @@ Nothing about bitcoind is changed and bitcoind is not restarted.
 
 **Option A: download a release** (when one is published) from
 [github.com/j03y0028/block-master/releases](https://github.com/j03y0028/block-master/releases):
-`blockmaster-mynode-v2.0.0.tar.gz`.
+`blockmaster-mynode-v3.0.0.tar.gz`.
 
 **Option B: build it yourself** on any Linux or macOS computer with Docker and buildx:
 
@@ -32,7 +32,7 @@ Nothing about bitcoind is changed and bitcoind is not restarted.
 git clone https://github.com/j03y0028/block-master.git && cd block-master
 docker run --privileged --rm tonistiigi/binfmt --install arm64   # only if you build arm64 on an x86 computer
 scripts/package-mynode.sh                 # amd64 + arm64;  ARCHS=arm64 scripts/package-mynode.sh for a Pi only
-ls build/blockmaster-mynode-v2.0.0.tar.gz
+ls build/blockmaster-mynode-v3.0.0.tar.gz
 ```
 
 The package contains the Block Master web image for each CPU type, so myNode doesn't need to build anything. The backend and
@@ -41,10 +41,10 @@ MariaDB images are pulled from Docker Hub during install and pinned by digest in
 ## 2. Copy it to the node and install
 
 ```bash
-scp build/blockmaster-mynode-v2.0.0.tar.gz admin@mynode.local:~
+scp build/blockmaster-mynode-v3.0.0.tar.gz admin@mynode.local:~
 ssh admin@mynode.local
-tar xzf blockmaster-mynode-v2.0.0.tar.gz
-cd blockmaster-mynode-v2.0.0
+tar xzf blockmaster-mynode-v3.0.0.tar.gz
+cd blockmaster-mynode-v3.0.0
 sudo ./install-mynode.sh            # add --yes to skip the question; --port=4095 to use another HTTP port
 ```
 
@@ -69,7 +69,7 @@ Download or build the new package and run `sudo ./install-mynode.sh` from it aga
 ## Uninstall
 
 ```bash
-cd blockmaster-mynode-v2.0.0
+cd blockmaster-mynode-v3.0.0
 sudo ./uninstall-mynode.sh           # removes containers, image and app registration; keeps your data
 sudo ./uninstall-mynode.sh --purge   # also deletes /mnt/hdd/mynode/blockmaster
 ```

@@ -1,6 +1,5 @@
 /* Block Master 2.0 layout layer: pill navigation, bento dashboard, pulse hero, motion rules.
    Loaded after block-master.scss. The hex block visuals live in app/shared/_bm-hex.scss. */
-@use './app/shared/bm-hex' as hex;
 
 /* ---------- navigation: labeled pill bar (desktop), labeled tab bar (mobile) ---------- */
 .navbar .navbar-nav li.nav-item,
@@ -100,11 +99,12 @@ html .navbar .navbar-nav li.nav-item.active .nav-link [fill] { fill: #fff !impor
 }
 @media (min-width: 1200px) {
   .bm-bento {
-    gap: 22px;
+    gap: 24px;
     grid-template-columns: repeat(12, minmax(0, 1fr));
     grid-template-areas:
-      "pulse pulse pulse pulse pulse pulse pulse pulse helper helper helper helper"
-      "fees fees fees fees fees diff diff diff diff diff diff diff"
+      "pulse pulse pulse pulse pulse pulse pulse pulse pulse pulse pulse pulse"
+      "helper helper helper helper fees fees fees fees fees fees fees fees"
+      "helper helper helper helper diff diff diff diff diff diff diff diff"
       "preview preview preview preview preview incoming incoming incoming incoming incoming incoming incoming"
       "blocks blocks blocks blocks blocks txs txs txs txs txs txs txs"
       "learn learn learn learn learn learn learn learn learn learn learn learn";
@@ -140,7 +140,6 @@ html .navbar .navbar-nav li.nav-item.active .nav-link [fill] { fill: #fff !impor
 }
 .bm-dashboard .bm-cell .main-title { margin-top: 0; }
 
-/* ---------- pulse hero ---------- */
 .bm-info {
   display: inline-flex;
   align-items: center;
@@ -152,116 +151,6 @@ html .navbar .navbar-nav li.nav-item.active .nav-link [fill] { fill: #fff !impor
   font-size: 11px;
   cursor: help;
   vertical-align: middle;
-}
-
-.bm-pulse {
-  background-color: var(--bm-surface) !important;
-  color: var(--fg);
-  text-align: left;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 24px;
-  padding: 28px 32px;
-  background-image:
-    radial-gradient(420px 260px at 100% 0%, color-mix(in srgb, var(--bm-glow) 60%, transparent), transparent 70%),
-    radial-gradient(360px 220px at 0% 100%, color-mix(in srgb, var(--bm-glow-2) 45%, transparent), transparent 70%) !important;
-}
-.bm-pulse-kicker {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--bm-muted);
-}
-.bm-live-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--green);
-  box-shadow: 0 0 0 0 color-mix(in srgb, var(--green) 60%, transparent);
-  animation: bm-live 2.4s ease-out infinite;
-}
-@keyframes bm-live {
-  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--green) 55%, transparent); }
-  80%, 100% { box-shadow: 0 0 0 9px color-mix(in srgb, var(--green) 0%, transparent); }
-}
-.bm-pulse-title {
-  margin: 10px 0 6px;
-  font-size: clamp(1.55rem, 2.4vw + 0.6rem, 2.45rem);
-  font-weight: 800;
-  letter-spacing: -0.025em;
-  line-height: 1.1;
-  color: var(--fg);
-}
-.bm-pulse-accent { color: var(--bm-accent); white-space: nowrap; }
-.bm-pulse-sub {
-  margin: 0 0 18px;
-  color: var(--bm-muted);
-  font-size: 1rem;
-  strong { color: var(--fg); }
-}
-.bm-pulse-stats {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px 30px;
-  margin: 0;
-  dt {
-    white-space: nowrap;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--bm-muted);
-    margin-bottom: 2px;
-  }
-  dd {
-    margin: 0;
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--fg);
-    font-variant-numeric: tabular-nums;
-    white-space: nowrap;
-  }
-}
-.bm-pulse-vial {
-  position: relative;
-  display: grid;
-  place-items: center;
-  width: 236px;
-  height: 168px;
-  text-decoration: none !important;
-  color: #fff !important;
-}
-.bm-vial-hex {
-  position: absolute;
-  inset: 0;
-  --bm-fill: linear-gradient(to top,
-    var(--primary) 0%,
-    var(--mainnet-alt) var(--bm-level, 0%),
-    var(--bm-glass) var(--bm-level, 0%),
-    var(--bm-glass) 100%);
-  @include hex.projected-glass;
-}
-.bm-vial-label {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-  strong { font-size: 2rem; font-weight: 800; line-height: 1; letter-spacing: -0.02em; }
-  span { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; margin-top: 4px; }
-}
-@media (max-width: 575px) {
-  .bm-pulse {
-    grid-template-columns: minmax(0, 1fr);
-    padding: 20px;
-  }
-  .bm-pulse-vial { justify-self: center; width: 180px; height: 126px; order: -1; }
 }
 
 /* ---------- motion: respect the user's setting everywhere ---------- */
