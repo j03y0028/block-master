@@ -20,3 +20,6 @@ Modifications (summary): rebranding, holiday theme engine and logos, fee
 helper and explainer cards, plain-language tooltips, rewritten About / Terms /
 Privacy / Trademark pages, removal of mempool.space services and promotional
 assets, Docker and myNode packaging. Full history: git log.
+
+Third-party font: Inter (https://rsms.me/inter/), Copyright (c) 2016 The Inter Project Authors,
+licensed under the SIL Open Font License 1.1, bundled via @fontsource-variable/inter.

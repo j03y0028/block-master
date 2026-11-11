@@ -59,24 +59,25 @@ export function feeChoices(fees: Recommendedfees, vbytes = TYPICAL_TX_VBYTES): F
   styles: [`
     :host { display: block; height: 100%; }
     .card { background-color: var(--bg); height: calc(100% - 14px); color: var(--fg); text-align: left; }
-    .main-title { position: relative; color: var(--fg); opacity: var(--opacity); margin-top: -13px; font-size: 10px;
-      text-transform: uppercase; font-weight: 500; text-align: center; padding-bottom: 3px; }
+    .main-title { position: relative; color: var(--bm-muted); margin-top: -13px; font-size: 11px; letter-spacing: 0.12em;
+      text-transform: uppercase; font-weight: 600; text-align: center; padding-bottom: 6px; }
     .main-title .info, .info {
       display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px; margin-left: 4px;
       border-radius: 50%; border: 1px solid currentColor; font-size: 11px; cursor: help; vertical-align: middle;
     }
     .fee-helper .card-body { padding: 0.75rem 1rem; }
-    .choice { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 7px 8px; border-radius: 8px; }
-    .choice + .choice { border-top: 1px solid rgba(255, 255, 255, 0.06); }
-    .choice.recommended { background: color-mix(in srgb, var(--bm-accent, #f7931a) 14%, transparent); border-top-color: transparent; }
+    .choice { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 8px 10px; border-radius: 12px; }
+    .choice + .choice { border-top: 1px solid var(--bm-border); }
+    .choice.recommended { background: color-mix(in srgb, var(--bm-accent, #f7931a) 12%, var(--bm-surface)); box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--bm-accent) 35%, transparent); border-top-color: transparent; }
+    .choice.recommended + .choice { border-top-color: transparent; }
     .label { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 8px; }
-    .label small { width: 100%; color: var(--transparent-fg, #ffffff66); }
-    .badge { background: var(--bm-accent, #f7931a); color: #111; font-size: 10px; }
+    .label small { width: 100%; color: var(--bm-muted); }
+    .badge { background: var(--bm-accent, #f7931a); color: var(--bm-on-accent, #111); font-size: 10px; font-weight: 700; letter-spacing: 0.02em; }
     .value { text-align: right; display: flex; flex-direction: column; }
-    .rate { font-size: 18px; font-weight: 700; color: var(--bm-accent, #f7931a); cursor: help; }
-    .rate small { font-weight: 400; color: var(--fg, #fff); opacity: 0.7; }
-    .total { font-size: 12px; opacity: 0.8; cursor: help; }
-    .hint { margin: 8px 0 0; font-size: 12px; color: var(--transparent-fg, #ffffff99); }
+    .rate { font-size: 19px; font-weight: 700; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; color: var(--bm-accent, #f7931a); cursor: help; }
+    .rate small { font-weight: 500; font-size: 12px; letter-spacing: 0; color: var(--bm-muted); }
+    .total { font-size: 12px; color: var(--bm-muted); font-variant-numeric: tabular-nums; cursor: help; }
+    .hint { margin: 10px 0 0; font-size: 12px; color: var(--bm-muted); }
   `],
   standalone: false,
   changeDetection: ChangeDetectionStrategy.OnPush,

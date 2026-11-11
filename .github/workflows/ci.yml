@@ -17,8 +17,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 24
-      - name: Holiday theme engine (node --test)
-        run: node --test frontend/tests/holidays.test.mts
+      - name: Holiday + palette engine tests (node --test)
+        run: node --test frontend/tests/holidays.test.mts frontend/tests/palettes.test.mts
       - name: Logos are up to date
         run: node branding/build-logos.mjs && git diff --exit-code -- frontend/src/resources/block-master
       - name: docker compose config

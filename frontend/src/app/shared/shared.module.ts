@@ -41,6 +41,7 @@ import { FiatSelectorComponent } from '@components/fiat-selector/fiat-selector.c
 import { RateUnitSelectorComponent } from '@components/rate-unit-selector/rate-unit-selector.component';
 import { BlockMasterLogoComponent } from '@components/block-master/block-master-logo.component';
 import { HolidaySelectorComponent } from '@components/block-master/holiday-selector.component';
+import { PaletteSelectorComponent } from '@components/block-master/palette-selector.component';
 import { HolidayBannerComponent } from '@components/block-master/holiday-banner.component';
 import { FeeHelperComponent } from '@components/block-master/fee-helper.component';
 import { BlockMasterExplainerComponent } from '@components/block-master/explainer.component';
@@ -142,6 +143,7 @@ import { GithubLogin } from '@components/github-login.component/github-login.com
   declarations: [
     BlockMasterLogoComponent,
     HolidaySelectorComponent,
+    PaletteSelectorComponent,
     HolidayBannerComponent,
     FeeHelperComponent,
     BlockMasterExplainerComponent,
@@ -294,6 +296,7 @@ import { GithubLogin } from '@components/github-login.component/github-login.com
   exports: [
     BlockMasterLogoComponent,
     HolidaySelectorComponent,
+    PaletteSelectorComponent,
     HolidayBannerComponent,
     FeeHelperComponent,
     BlockMasterExplainerComponent,

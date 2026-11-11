@@ -471,6 +471,7 @@
   color: var(--transparent-fg);
   span { cursor: help; }
   .legend-divider { width: 1px; height: 14px; border-left: 2px dashed var(--transparent-fg); }
+  @media (max-width: 767.98px) { margin: 8px 0 20px; }
 }
 .bm-first-row { margin-top: 4px; }
 .bm-info {

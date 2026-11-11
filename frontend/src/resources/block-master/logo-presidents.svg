@@ -1,24 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-labelledby="t">
-  <title id="t">Block Master - Presidents' Day</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="Block Master, Presidents' Day">
+  <title>Block Master: Presidents' Day</title>
+  <defs>
+    <linearGradient id="presidents-top" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f8fafc"/><stop offset="1" stop-color="#d5dceb"/></linearGradient><linearGradient id="presidents-left" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2747a8"/><stop offset="1" stop-color="#1a2f74"/></linearGradient><linearGradient id="presidents-right" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c0262d"/><stop offset="1" stop-color="#8a161c"/></linearGradient><linearGradient id="presidents-crown" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fde68a"/><stop offset="1" stop-color="#d9a521"/></linearGradient>
+    <linearGradient id="presidents-sheen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity="0.45"/><stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/></linearGradient>
+    <mask id="presidents-cube" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128">
+      <rect width="128" height="128" fill="white"/>
+      <path d="M32,68 L64,84 L96,68 M64,84 L64,120" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <g transform="matrix(0.32 -0.16 0 0.36 64 84)"><path d="M0,30 L100,30 M0,55 L100,55 M0,80 L100,80" stroke="black" stroke-width="7"/></g>
+    </mask>
+    <mask id="presidents-crownm" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128">
+      <rect width="128" height="128" fill="white"/>
+      <path d="M38,40 L90,40" stroke="black" stroke-width="2.6"/>
+      <circle cx="52" cy="44" r="1.7" fill="black"/><circle cx="64" cy="44" r="1.7" fill="black"/><circle cx="76" cy="44" r="1.7" fill="black"/>
+    </mask>
+    
+  </defs>
   
-  <g stroke="#16182a" stroke-width="2.6" stroke-linejoin="round">
-    <path d="M30,67 L64,84 L64,122 L30,105 Z" fill="#1e3a8a"/>
-    <path d="M64,84 L98,67 L98,105 L64,122 Z" fill="#b91c1c"/>
-    <path d="M64,50 L98,67 L64,84 L30,67 Z" fill="#f1f5f9"/>
+  <g mask="url(#presidents-cube)" stroke-linejoin="round">
+    <path d="M32,68 L64,52 L96,68 L64,84 Z" fill="url(#presidents-top)" stroke="url(#presidents-top)" stroke-width="3"/>
+    <path d="M32,68 L64,84 L64,120 L32,104 Z" fill="url(#presidents-left)" stroke="url(#presidents-left)" stroke-width="3"/>
+    <path d="M64,84 L96,68 L96,104 L64,120 Z" fill="url(#presidents-right)" stroke="url(#presidents-right)" stroke-width="3"/>
+    <g transform="matrix(0.32 0.16 0 0.36 32 68)"><polygon points="30,17 33.21,25.58 42.36,25.98 35.19,31.69 37.64,40.52 30,35.46 22.36,40.52 24.81,31.69 17.64,25.98 26.79,25.58" fill="#ffffff"/><polygon points="70,17 73.21,25.58 82.36,25.98 75.19,31.69 77.64,40.52 70,35.46 62.36,40.52 64.81,31.69 57.64,25.98 66.79,25.58" fill="#ffffff"/><polygon points="50,49 53.21,57.58 62.36,57.98 55.19,63.69 57.64,72.52 50,67.46 42.36,72.52 44.81,63.69 37.64,57.98 46.79,57.58" fill="#ffffff"/></g>
+    <path d="M44,62 L64,52 L84,62 L64,72 Z" fill="url(#presidents-sheen)"/>
   </g>
-  <g stroke="#16182a" stroke-opacity="0.22" stroke-width="1.4" fill="none">
-    <path d="M47,58.5 L81,75.5 M81,58.5 L47,75.5"/>
-    <path d="M47,75.5 L47,113.5 M30,86 L64,103"/>
-    <path d="M81,75.5 L81,113.5 M64,103 L98,86"/>
+  <g mask="url(#presidents-crownm)" stroke-linejoin="round">
+    <path d="M42,47 L37,21 L52,33 L64,9 L76,33 L91,21 L86,47 Z" fill="url(#presidents-crown)" stroke="url(#presidents-crown)" stroke-width="2.4"/>
   </g>
-  <polygon points="40,81.8 41.04,84.57 43.99,84.7 41.68,86.55 42.47,89.4 40,87.76 37.53,89.4 38.32,86.55 36.01,84.7 38.96,84.57" fill="#ffffff"/><polygon points="53,88.8 54.04,91.57 56.99,91.7 54.68,93.55 55.47,96.4 53,94.76 50.53,96.4 51.32,93.55 49.01,91.7 51.96,91.57" fill="#ffffff"/><polygon points="40,94.8 41.04,97.57 43.99,97.7 41.68,99.55 42.47,102.4 40,100.76 37.53,102.4 38.32,99.55 36.01,97.7 38.96,97.57" fill="#ffffff"/><polygon points="53,101.8 54.04,104.57 56.99,104.7 54.68,106.55 55.47,109.4 53,107.76 50.53,109.4 51.32,106.55 49.01,104.7 51.96,104.57" fill="#ffffff"/><g stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" opacity="0.9"><path d="M70,95 L92,84 M70,104 L92,93 M70,113 L92,102"/></g>
-  <path d="M64,50 L98,67 L64,84 L30,67 Z M30,67 L64,84 L64,122 L30,105 Z M64,84 L98,67 L98,105 L64,122 Z" fill="none" stroke="#16182a" stroke-width="2.6" stroke-linejoin="round"/>
-  <g transform="translate(0 6)"><g stroke="#16182a" stroke-width="2.4" stroke-linejoin="round">
-    <path d="M43,47 L39,21 L52.5,33 L64,11 L75.5,33 L89,21 L85,47 Z" fill="#fcd34d"/>
-    <rect x="42" y="41" width="44" height="8" rx="2.5" fill="#fcd34d"/>
-    <circle cx="39" cy="21" r="3.6" fill="#ffffff"/>
-    <circle cx="64" cy="11" r="3.8" fill="#ffffff"/>
-    <circle cx="89" cy="21" r="3.6" fill="#ffffff"/>
-  </g>
-  <circle cx="64" cy="45" r="2.3" fill="#ffffff" stroke="#16182a" stroke-width="1.4"/></g>
+  <circle cx="37" cy="16" r="2.9" fill="#ffffff"/><circle cx="64" cy="3.6" r="3.1" fill="#ffffff"/><circle cx="91" cy="16" r="2.9" fill="#ffffff"/>
+  
 </svg>

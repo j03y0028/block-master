@@ -20,15 +20,15 @@ import { HolidayThemeService, HolidayThemeState } from '@app/services/holiday-th
   `,
   styles: [`
     .holiday-banner {
-      display: flex; align-items: center; gap: 12px; margin: 12px 0 4px; padding: 8px 12px; border-radius: 10px;
+      display: flex; align-items: center; gap: 14px; margin: 14px 0 6px; padding: 10px 14px; border-radius: 16px; box-shadow: var(--bm-shadow);
       background: linear-gradient(90deg, color-mix(in srgb, var(--bm-accent) 18%, var(--bg, #11131f)), color-mix(in srgb, var(--bm-accent-2) 12%, var(--bg, #11131f)));
       border: 1px solid color-mix(in srgb, var(--bm-accent) 45%, transparent);
       color: var(--fg, #fff);
     }
     .text { flex: 1; display: flex; flex-wrap: wrap; gap: 2px 10px; align-items: baseline; }
     strong { color: var(--bm-accent); }
-    .off { color: var(--fg, #fff); opacity: 0.75; font-size: 12px; white-space: nowrap; }
-    .close { color: var(--fg, #fff); opacity: 0.75; text-shadow: none; font-size: 22px; }
+    .off { color: var(--bm-muted); font-size: 12px; font-weight: 600; white-space: nowrap; }
+    .close { color: var(--bm-muted); opacity: 1; text-shadow: none; font-size: 22px; }
     @media (max-width: 576px) { .off { display: none; } }
   `],
   standalone: false,

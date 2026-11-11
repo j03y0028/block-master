@@ -31,18 +31,18 @@ const KEY = 'block-master-explainer-collapsed';
   styles: [`
     :host { display: block; height: 100%; }
     .card { background-color: var(--bg); height: calc(100% - 14px); color: var(--fg); text-align: left; }
-    .main-title { position: relative; color: var(--fg); opacity: var(--opacity); margin-top: -13px; font-size: 10px;
-      text-transform: uppercase; font-weight: 500; text-align: center; padding-bottom: 3px; }
+    .main-title { position: relative; color: var(--bm-muted); margin-top: -13px; font-size: 11px; letter-spacing: 0.12em;
+      text-transform: uppercase; font-weight: 600; text-align: center; padding-bottom: 6px; }
     .toggle { font-size: 12px; padding: 0 4px; vertical-align: baseline; color: var(--bm-accent, #f7931a); }
-    .explainer .card-body { padding: 0.75rem 1rem; font-size: 14px; }
+    .explainer .card-body { padding: 0.9rem 1.1rem; font-size: 14px; line-height: 1.5; }
     .point { display: flex; gap: 10px; margin-bottom: 10px; line-height: 1.4; }
     .dot { flex: 0 0 12px; height: 12px; margin-top: 4px; border-radius: 3px; }
     .dot.waiting { background: linear-gradient(#5ecf68, #d6a32a); }
-    .dot.mined { background: linear-gradient(#9339f4, #105fb0); }
+    .dot.mined { background: linear-gradient(var(--mainnet-alt), var(--primary)); }
     .dot.fee { background: var(--bm-accent, #f7931a); border-radius: 50%; }
-    .more { margin: 0; font-size: 12px; color: var(--transparent-fg, #ffffff99); }
+    .more { margin: 0; font-size: 12px; color: var(--bm-muted); }
     .q { display: inline-flex; width: 14px; height: 14px; border: 1px solid currentColor; border-radius: 50%; font-size: 10px; align-items: center; justify-content: center; }
-    .small-body { font-size: 13px; color: var(--transparent-fg, #ffffffaa); }
+    .small-body { font-size: 13px; color: var(--bm-muted); }
   `],
   standalone: false,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -51,11 +51,11 @@ export class BlockMasterExplainerComponent {
   collapsed = false;
 
   constructor() {
-    try { this.collapsed = window.localStorage.getItem(KEY) === '1'; } catch (e) { /* ignore */ }
+    try { this.collapsed = window.localStorage.getItem(KEY) === '1'; } catch { /* ignore */ }
   }
 
   toggle(): void {
     this.collapsed = !this.collapsed;
-    try { window.localStorage.setItem(KEY, this.collapsed ? '1' : '0'); } catch (e) { /* ignore */ }
+    try { window.localStorage.setItem(KEY, this.collapsed ? '1' : '0'); } catch { /* ignore */ }
   }
 }

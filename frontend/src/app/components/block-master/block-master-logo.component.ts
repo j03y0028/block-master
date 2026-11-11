@@ -16,8 +16,8 @@ import { HolidayThemeService, HolidayThemeState } from '@app/services/holiday-th
   styles: [`
     :host { display: inline-flex; align-items: center; }
     .bm-logo { display: inline-flex; align-items: center; gap: 8px; line-height: 1; white-space: nowrap; }
-    .bm-logo-icon { display: block; filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.35)); }
-    .bm-wordmark { font-weight: 800; font-size: 24px; letter-spacing: -0.5px; color: #f1f5f9; }
+    .bm-logo-icon { display: block; filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.28)); }
+    .bm-wordmark { font-weight: 800; font-size: 23px; letter-spacing: -0.04em; color: var(--bm-fg, #eef0fb); }
     .bm-logo-large .bm-wordmark { font-size: 40px; }
     .bm-word-master {
       margin-left: 6px;

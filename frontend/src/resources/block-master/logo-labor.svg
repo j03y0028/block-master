@@ -1,24 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-labelledby="t">
-  <title id="t">Block Master - Labor Day</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="Block Master, Labor Day">
+  <title>Block Master: Labor Day</title>
+  <defs>
+    <linearGradient id="labor-top" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9fd8f7"/><stop offset="1" stop-color="#5fb2e3"/></linearGradient><linearGradient id="labor-left" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1f7fc0"/><stop offset="1" stop-color="#155b8d"/></linearGradient><linearGradient id="labor-right" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#14507a"/><stop offset="1" stop-color="#0c3452"/></linearGradient><linearGradient id="labor-crown" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe48a"/><stop offset="1" stop-color="#f0b414"/></linearGradient>
+    <linearGradient id="labor-sheen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity="0.45"/><stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/></linearGradient>
+    <mask id="labor-cube" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128">
+      <rect width="128" height="128" fill="white"/>
+      <path d="M32,68 L64,84 L96,68 M64,84 L64,120" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <g transform="matrix(0.32 0.16 0 0.36 32 68)"><path d="M50,26 L54.68,26.46 L57.16,32.7 L60.4,34.43 L66.97,33.03 L69.96,36.67 L67.3,42.84 L68.36,46.35 L74,50 L73.54,54.68 L67.3,57.16 L65.57,60.4 L66.97,66.97 L63.33,69.96 L57.16,67.3 L53.65,68.36 L50,74 L45.32,73.54 L42.84,67.3 L39.6,65.57 L33.03,66.97 L30.04,63.33 L32.7,57.16 L31.64,53.65 L26,50 L26.46,45.32 L32.7,42.84 L34.43,39.6 L33.03,33.03 L36.67,30.04 L42.84,32.7 L46.35,31.64 Z" fill="black"/></g>
+    </mask>
+    <mask id="labor-crownm" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128">
+      <rect width="128" height="128" fill="white"/>
+      <path d="M38,40 L90,40" stroke="black" stroke-width="2.6"/>
+      <circle cx="52" cy="44" r="1.7" fill="black"/><circle cx="64" cy="44" r="1.7" fill="black"/><circle cx="76" cy="44" r="1.7" fill="black"/>
+    </mask>
+    
+  </defs>
+  <path d="M104,82 L106.19,82.17 L107.37,85.61 L108.96,86.27 L112.23,84.67 L113.9,86.1 L112.83,89.58 L113.73,91.04 L117.31,91.67 L117.83,93.81 L114.92,96 L114.79,97.71 L117.31,100.33 L116.47,102.36 L112.83,102.42 L111.72,103.72 L112.23,107.33 L110.36,108.47 L107.37,106.39 L105.71,106.79 L104,110 L101.81,109.83 L100.63,106.39 L99.04,105.73 L95.77,107.33 L94.1,105.9 L95.17,102.42 L94.27,100.96 L90.69,100.33 L90.17,98.19 L93.08,96 L93.21,94.29 L90.69,91.67 L91.53,89.64 L95.17,89.58 L96.28,88.28 L95.77,84.67 L97.64,83.53 L100.63,85.61 L102.29,85.21 Z" fill="none" stroke="#f0b414" stroke-width="2" stroke-linejoin="round"/><circle cx="104" cy="96" r="5" fill="none" stroke="#f0b414" stroke-width="2"/>
+  <g mask="url(#labor-cube)" stroke-linejoin="round">
+    <path d="M32,68 L64,52 L96,68 L64,84 Z" fill="url(#labor-top)" stroke="url(#labor-top)" stroke-width="3"/>
+    <path d="M32,68 L64,84 L64,120 L32,104 Z" fill="url(#labor-left)" stroke="url(#labor-left)" stroke-width="3"/>
+    <path d="M64,84 L96,68 L96,104 L64,120 Z" fill="url(#labor-right)" stroke="url(#labor-right)" stroke-width="3"/>
+    <g transform="matrix(0.32 0.16 0 0.36 32 68)"><circle cx="50" cy="50" r="7" fill="#f0b414"/></g>
+    <path d="M44,62 L64,52 L84,62 L64,72 Z" fill="url(#labor-sheen)"/>
+  </g>
+  <g mask="url(#labor-crownm)" stroke-linejoin="round">
+    <path d="M42,47 L37,21 L52,33 L64,9 L76,33 L91,21 L86,47 Z" fill="url(#labor-crown)" stroke="url(#labor-crown)" stroke-width="2.4"/>
+  </g>
+  <circle cx="37" cy="16" r="2.9" fill="#ffffff"/><circle cx="64" cy="3.6" r="3.1" fill="#ffffff"/><circle cx="91" cy="16" r="2.9" fill="#ffffff"/>
   
-  <g stroke="#16182a" stroke-width="2.6" stroke-linejoin="round">
-    <path d="M30,67 L64,84 L64,122 L30,105 Z" fill="#0284c7"/>
-    <path d="M64,84 L98,67 L98,105 L64,122 Z" fill="#075985"/>
-    <path d="M64,50 L98,67 L64,84 L30,67 Z" fill="#7dd3fc"/>
-  </g>
-  <g stroke="#16182a" stroke-opacity="0.22" stroke-width="1.4" fill="none">
-    <path d="M47,58.5 L81,75.5 M81,58.5 L47,75.5"/>
-    <path d="M47,75.5 L47,113.5 M30,86 L64,103"/>
-    <path d="M81,75.5 L81,113.5 M64,103 L98,86"/>
-  </g>
-  <rect x="78.8" y="82.5" width="4.4" height="6" rx="1" fill="#facc15" transform="rotate(0 81 94)"/><rect x="78.8" y="82.5" width="4.4" height="6" rx="1" fill="#facc15" transform="rotate(45 81 94)"/><rect x="78.8" y="82.5" width="4.4" height="6" rx="1" fill="#facc15" transform="rotate(90 81 94)"/><rect x="78.8" y="82.5" width="4.4" height="6" rx="1" fill="#facc15" transform="rotate(135 81 94)"/><rect x="78.8" y="82.5" width="4.4" height="6" rx="1" fill="#facc15" transform="rotate(180 81 94)"/><rect x="78.8" y="82.5" width="4.4" height="6" rx="1" fill="#facc15" transform="rotate(225 81 94)"/><rect x="78.8" y="82.5" width="4.4" height="6" rx="1" fill="#facc15" transform="rotate(270 81 94)"/><rect x="78.8" y="82.5" width="4.4" height="6" rx="1" fill="#facc15" transform="rotate(315 81 94)"/><circle cx="81" cy="94" r="8.5" fill="#facc15"/><circle cx="81" cy="94" r="3.57" fill="#16182a" opacity="0.75"/><g stroke="#facc15" stroke-width="3" stroke-linecap="round"><path d="M38,104 L56,86"/></g><circle cx="57" cy="85" r="5" fill="none" stroke="#facc15" stroke-width="3"/>
-  <path d="M64,50 L98,67 L64,84 L30,67 Z M30,67 L64,84 L64,122 L30,105 Z M64,84 L98,67 L98,105 L64,122 Z" fill="none" stroke="#16182a" stroke-width="2.6" stroke-linejoin="round"/>
-  <g transform="translate(0 6)"><g stroke="#16182a" stroke-width="2.4" stroke-linejoin="round">
-    <path d="M43,47 L39,21 L52.5,33 L64,11 L75.5,33 L89,21 L85,47 Z" fill="#facc15"/>
-    <rect x="42" y="41" width="44" height="8" rx="2.5" fill="#facc15"/>
-    <circle cx="39" cy="21" r="3.6" fill="#ffffff"/>
-    <circle cx="64" cy="11" r="3.8" fill="#ffffff"/>
-    <circle cx="89" cy="21" r="3.6" fill="#ffffff"/>
-  </g>
-  <circle cx="64" cy="45" r="2.3" fill="#ffffff" stroke="#16182a" stroke-width="1.4"/></g>
 </svg>

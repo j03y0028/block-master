@@ -180,6 +180,8 @@
             ],
             "styles": [
               "src/styles.scss",
+              "src/block-master.scss",
+              "node_modules/@fontsource-variable/inter/index.css",
               "node_modules/@fortawesome/fontawesome-svg-core/styles.css"
             ],
             "vendorChunk": true,

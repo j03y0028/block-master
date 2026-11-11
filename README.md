@@ -14,7 +14,7 @@ A friendly, self-hosted Bitcoin block explorer and mempool visualizer with U.S. 
 > trademarks of their owners. Block Master doesn't use them. All Block Master names, logos and artwork in this repository are original.
 > The code is licensed under the **GNU AGPL-3.0**, the same as upstream. See [License & attribution](#license--attribution).
 
-![Block Master dashboard, default theme](docs/screenshots/dashboard-default.png)
+![Block Master dashboard, Midnight palette](docs/screenshots/dashboard-midnight.png)
 
 ## Why Block Master?
 
@@ -24,9 +24,53 @@ Mempool is a great explorer. Block Master keeps its engine and makes the first s
 - **"What am I looking at?" explainer**: three short sentences about the waiting room, the blocks and the fees. You can collapse it.
 - **Plain-language tooltips**: anything with a dotted underline or a ⓘ explains itself when you hover over it.
 - **Cleaner first screen**: a waiting/mined legend over the block strip, and the fee card plus Recent Blocks first. The power-user cards are still there, just lower on the page.
+- **A modern design system**: an original crowned-block logo family, six color palettes that all pass WCAG AA, Inter typography, soft depth and gradients, and a polished block strip.
 - **U.S. holiday themes**: the crowned-block logo, accent colors and a small dismissible banner change automatically around 11 U.S. holidays. Everything stays readable in dark mode.
 - **Self-hosted first**: no mempool.space branding, services, analytics or promo downloads. Footer links point to this repository.
 - **myNode package**: a one-command installer that uses your node's Bitcoin Core and Electrs.
+
+## Design system
+
+![Block Master logo system and palettes](docs/logo-sheet.png)
+
+**The mark.** An isometric block cut into three gradient planes by hairline negative-space seams, with a floating geometric crown
+(its band and jewels are cut out as negative space). Each holiday keeps the same silhouette and adds one restrained motif:
+stripes and stars on the faces for Independence Day, a star medallion and chevrons for Veterans Day, a carved face for Halloween,
+a ribbon for Christmas, and so on. The marks are generated as SVG by [`branding/build-logos.mjs`](branding/build-logos.mjs); the
+favicons, PNGs and this sheet come from [`branding/render-pngs.mjs`](branding/render-pngs.mjs) and [`branding/render-sheet.mjs`](branding/render-sheet.mjs).
+
+**Palettes.** Pick one in the footer under **Appearance** (or preview with `?palette=aurora`). The choice is saved in your browser.
+
+| Palette | Mood | |
+|---|---|---|
+| **Midnight** (default) | Deep indigo night, bitcoin-orange highlights | [screenshot](docs/screenshots/dashboard-midnight.png) |
+| **Aurora** | Northern lights: teal and violet over a polar night | [screenshot](docs/screenshots/dashboard-aurora.png) |
+| **Sunset** | Coral and amber over a warm dusk | [screenshot](docs/screenshots/dashboard-sunset.png) |
+| **Desert** | Sonoran evening: warm sand, terracotta and sage | [screenshot](docs/screenshots/dashboard-desert.png) |
+| **Ocean** | Deep sea blues with seafoam highlights | [screenshot](docs/screenshots/dashboard-ocean.png) |
+| **Daylight** | Light and airy, for bright rooms | [screenshot](docs/screenshots/dashboard-daylight.png) |
+
+| Aurora | Sunset |
+|---|---|
+| ![Aurora palette](docs/screenshots/dashboard-aurora.png) | ![Sunset palette](docs/screenshots/dashboard-sunset.png) |
+| **Desert** | **Ocean** |
+| ![Desert palette](docs/screenshots/dashboard-desert.png) | ![Ocean palette](docs/screenshots/dashboard-ocean.png) |
+| **Daylight** | **Daylight on a phone** |
+| ![Daylight palette](docs/screenshots/dashboard-daylight.png) | ![Daylight on mobile](docs/screenshots/dashboard-daylight-mobile.png) |
+
+**Accessibility.** Every palette is checked against WCAG 2.x AA (4.5:1 for text) in two ways:
+
+- **Unit tests** ([`frontend/tests/palettes.test.mts`](frontend/tests/palettes.test.mts)) check body text, secondary text, links, status
+  colors, button and block labels, and the accent colors on every surface of every palette. They also check each of the 11 holiday
+  accents layered on each palette.
+- **Rendered-page audit.** Pages are rendered in every palette and the contrast of every visible text element is measured. The last run
+  covered the dashboard, a block page, a transaction page, the footer, the About page and mobile, with 0 failures. Text drawn on gradients
+  (the block strip and fee bars) is covered by the unit tests instead.
+
+Holiday accents layer on top of the chosen palette: a holiday's colors are nudged lighter (dark palettes) or darker (Daylight) just
+enough to stay readable. Upstream's fee-level colors are darkened the same way so the white labels on projected blocks pass AA.
+The palette logic is pure TypeScript in [`frontend/src/app/shared/palettes.ts`](frontend/src/app/shared/palettes.ts), and the design layer is
+[`frontend/src/block-master.scss`](frontend/src/block-master.scss).
 
 ## Holiday themes
 
@@ -47,18 +91,19 @@ The theme is chosen from your browser's **local date**. Floating holidays are co
 | Christmas | Dec 25 | Dec 15 – 26 | <img src="docs/logos/logo-christmas.png" width="40"> |
 | *(no holiday)* | | rest of the year | <img src="docs/logos/logo-default.png" width="40"> |
 
-**Settings:** the **Holiday theme** selector in the footer lets you pick **Auto** (the default), any single holiday, or **Off** (always the default logo and colors). Your choice is saved in the browser. To preview a theme without saving it, add `?holiday=veterans` (or `christmas`, `independence`, `halloween`…) to any URL. Each holiday's banner can be dismissed once per year, and "Turn off theme" in the banner switches to **Off**.
+**Settings:** the **Holiday theme** selector in the footer (next to the palette picker) lets you pick **Auto** (the default), any single holiday, or **Off** (always the default logo and colors). Your choice is saved in the browser. To preview a theme without saving it, add `?holiday=veterans` (or `christmas`, `independence`, `halloween`…) to any URL. Each holiday's banner can be dismissed once per year, and "Turn off theme" in the banner switches to **Off**.
 
 | Veterans Day (Nov 11) | Independence Day (Jul 4) |
 |---|---|
-| ![Veterans Day theme](docs/screenshots/dashboard-veterans.png) | ![Independence Day theme](docs/screenshots/dashboard-independence.png) |
+| ![Veterans Day theme](docs/screenshots/dashboard-midnight-veterans.png) | ![Independence Day theme](docs/screenshots/dashboard-midnight-independence.png) |
 | **Christmas** | **Halloween** |
-| ![Christmas theme](docs/screenshots/dashboard-christmas.png) | ![Halloween theme](docs/screenshots/dashboard-halloween.png) |
+| ![Christmas theme](docs/screenshots/dashboard-midnight-christmas.png) | ![Halloween theme](docs/screenshots/dashboard-midnight-halloween.png) |
+| **Veterans Day on Daylight** | **Veterans Day on Desert** |
+| ![Veterans Day on Daylight](docs/screenshots/dashboard-daylight-veterans.png) | ![Veterans Day on Desert](docs/screenshots/dashboard-desert-veterans.png) |
 
-More screenshots: [About page](docs/screenshots/about.png), [footer with the theme selector](docs/screenshots/footer-settings.png), [mobile](docs/screenshots/mobile-veterans.png).
+More screenshots: [About page](docs/screenshots/about-midnight-veterans.png), [footer with the Appearance settings](docs/screenshots/footer-midnight-veterans.png) ([Daylight](docs/screenshots/footer-daylight-veterans.png)), [mobile](docs/screenshots/dashboard-midnight-veterans-mobile.png).
 
-The holiday rules live in [`frontend/src/app/shared/holidays.ts`](frontend/src/app/shared/holidays.ts) (pure TypeScript, with no Angular). The logos come from
-[`branding/build-logos.mjs`](branding/build-logos.mjs), and the favicons and PNGs from [`branding/render-pngs.mjs`](branding/render-pngs.mjs).
+The holiday rules live in [`frontend/src/app/shared/holidays.ts`](frontend/src/app/shared/holidays.ts) (pure TypeScript, with no Angular).
 
 ## Install on myNode
 
@@ -67,11 +112,11 @@ See **[docs/mynode-install.md](docs/mynode-install.md)** for the full guide. In 
 1. On myNode, make sure **Bitcoin** is synced and **Electrs** is installed and synced.
 2. Build the package on any computer with Docker (`scripts/package-mynode.sh`) or download a release tarball, then copy it to the node:
    ```bash
-   scp build/blockmaster-mynode-v1.0.0.tar.gz admin@mynode.local:~
+   scp build/blockmaster-mynode-v1.1.0.tar.gz admin@mynode.local:~
    ```
 3. On the myNode:
    ```bash
-   tar xzf blockmaster-mynode-v1.0.0.tar.gz && cd blockmaster-mynode-v1.0.0
+   tar xzf blockmaster-mynode-v1.1.0.tar.gz && cd blockmaster-mynode-v1.1.0
    sudo ./install-mynode.sh
    ```
 4. Open **http://mynode.local:4090** (or **https://mynode.local:4091**). Block Master also shows up in the myNode app list, where you can start, stop and uninstall it.
@@ -104,7 +149,7 @@ The backend is used as-is because Block Master's changes are all in the UI. To b
 ```bash
 cd frontend
 npm ci
-npm run test:holidays     # holiday date and contrast tests (node --test)
+npm run test:design       # holiday dates + palette / WCAG contrast tests (node --test)
 npm run logos             # regenerate the SVG logos after editing branding/build-logos.mjs
 npm run build             # production build (all locales) → dist/
 npm run lint
@@ -113,11 +158,12 @@ npm run lint
 To look at a production build against live data without a node, `node scripts/preview-server.js 4200` serves `dist/` and proxies
 `/api` to `PREVIEW_API` (by default the public mempool.space API; use your own backend URL if you have one). This is only for development; Block Master never calls third-party APIs when it runs on your node.
 
-CI (`.github/workflows/ci.yml`) runs the holiday tests, checks that the logos are up to date, validates both compose files, runs `bash -n` on the scripts, and does the lint and production build.
+CI (`.github/workflows/ci.yml`) runs the holiday and palette tests, checks that the logos are up to date, validates both compose files, runs `bash -n` on the scripts, and does the lint and production build.
 
 ## What changed from upstream
 
 - New name, logo family, favicons, social preview, page titles and meta tags. All mempool.space trademarks, logos and service links are removed from the UI.
+- Design system: crowned-block logo family, six WCAG AA palettes (`palettes.ts`, palette picker), Inter typography, the `block-master.scss` design layer, and AA-safe fee colors.
 - Holiday theme engine (`holidays.ts`, `HolidayThemeService`, banner, selector, logo component).
 - Fee helper card, explainer card, tooltips, dashboard legend and card order. "Mempool Goggles" is renamed to "Next Block Preview".
 - About, Terms, Privacy and Trademark pages rewritten for a self-hosted fork.
@@ -129,6 +175,7 @@ The upstream import is commit `9b75f724` (mempool v3.3.2). See [NOTICE](NOTICE).
 ## Known limitations
 
 - New strings are English only (other locales fall back to English for them).
+- The Daylight palette is audited on the main pages (dashboard, blocks, transactions, footer, About). Less-used upstream pages and charts may still have spots tuned for dark backgrounds; please report them.
 - Some FAQ / API-docs text still describes upstream's public infrastructure.
 - The myNode package is tested with a simulated myNode and myNode's real app loader, but it hasn't yet been installed on real hardware. Please report your results.
 

@@ -1,0 +1,182 @@
+/*
+ * Block Master design layer.
+ * Typography, surfaces, depth and the light-scheme bridge for Bootstrap 4's compiled colors.
+ * All colors come from the palette CSS variables set at runtime by HolidayThemeService (see app/shared/palettes.ts);
+ * the defaults below are Midnight so the very first paint already matches.
+ */
+
+:root {
+  --bm-bg: #0d0f1e; --bm-glow: #2b2470; --bm-glow-2: #3b1f4f; --bm-surface: #161a2f; --bm-inset: #10132a;
+  --bm-border: #262b4a; --bm-fg: #eef0fb; --bm-muted: #aab0cf; --bm-link: #8fb5ff; --bm-primary: #5146d8;
+  --bm-accent: #f7931a; --bm-accent-2: #ffd35c; --bm-on-accent: #0b0d19;
+  --bm-block-top: #272c47; --bm-block-side: #1a1e33; --bm-block-empty: #3f4360;
+  --bm-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 10px 30px -12px rgba(0, 0, 0, 0.65);
+  --bm-radius: 16px;
+  --bm-font: 'Inter Variable', Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* ---------- typography ---------- */
+html body {
+  font-family: var(--bm-font);
+  font-feature-settings: 'cv11', 'ss03';
+  letter-spacing: -0.006em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  color: var(--fg);
+}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: var(--bm-font);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--fg);
+}
+.btn, .form-control, .custom-select, input, select, button, .tooltip, .popover, .dropdown-menu { font-family: var(--bm-font); }
+.symbol, .fiat, .tnum, td, .card-text, .fee-span, .block-size, .transaction-count, .time-difference { font-variant-numeric: tabular-nums; }
+
+/* section titles above dashboard cards (mempool's .main-title lives in many component styles, hence !important) */
+.main-title {
+  color: var(--bm-muted) !important;
+  opacity: 1 !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.12em;
+  padding-bottom: 6px !important;
+}
+.card-title { font-weight: 600; letter-spacing: -0.01em; }
+
+a { color: var(--link-color); }
+a:hover { color: var(--link-hover-color); }
+
+/* ---------- page ---------- */
+html body {
+  background-color: var(--active-bg);
+  background-image:
+    radial-gradient(1100px 560px at 10% -10%, color-mix(in srgb, var(--bm-glow) 75%, transparent), transparent 70%),
+    radial-gradient(900px 520px at 100% -5%, color-mix(in srgb, var(--bm-glow-2) 70%, transparent), transparent 65%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* header: frosted glass over the glow, hairline + accent rule */
+.sticky-header .navbar, .navbar.navbar-expand-md {
+  background-color: color-mix(in srgb, var(--nav-bg) 82%, transparent) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  backdrop-filter: blur(16px) saturate(150%);
+  border-bottom: 1px solid var(--bm-border);
+}
+.sticky-header::after { height: 2px !important; opacity: 0.9; }
+body.bm-holiday-none .sticky-header::after { opacity: 0.5; }
+.navbar-nav .nav-link { border-radius: 10px; }
+
+/* ---------- surfaces ---------- */
+.card {
+  border-radius: var(--bm-radius) !important;
+  border: 1px solid var(--bm-border) !important;
+  box-shadow: var(--bm-shadow);
+  background-image: linear-gradient(180deg, color-mix(in srgb, var(--fg) 2.5%, transparent), transparent 120px);
+  overflow: hidden;
+}
+.card .card { box-shadow: none; }
+.box, .stat-box, .fee-estimation-container, .difficulty-adjustment-container {
+  border-radius: 12px;
+}
+.dropdown-menu, .modal-content, .popover {
+  background-color: var(--bm-surface);
+  color: var(--fg);
+  border: 1px solid var(--bm-border);
+  border-radius: 14px;
+  box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.55);
+}
+.dropdown-item { color: var(--fg); }
+.dropdown-item:hover, .dropdown-item:focus { background-color: var(--hover-bg); color: var(--fg); }
+.tooltip-inner { border-radius: 10px; padding: 8px 12px; font-size: 13px; line-height: 1.45; text-align: left; }
+
+/* controls */
+.form-control, .custom-select, .input-group-text {
+  border-radius: 10px;
+  border-color: var(--bm-border);
+}
+.form-control:focus, .custom-select:focus {
+  border-color: color-mix(in srgb, var(--bm-accent) 60%, var(--bm-border));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--bm-accent) 22%, transparent);
+}
+.btn { border-radius: 10px; font-weight: 600; letter-spacing: -0.01em; }
+.btn-primary, .btn-purple {
+  background-image: linear-gradient(180deg, color-mix(in srgb, #ffffff 10%, var(--bm-primary)), var(--bm-primary));
+  background-color: var(--bm-primary);
+  border-color: var(--bm-primary);
+  color: #fff;
+}
+.btn-primary:hover, .btn-purple:hover { filter: brightness(1.08); color: #fff; }
+.badge { font-weight: 600; letter-spacing: 0.01em; }
+
+/* AA fixes for Bootstrap's compiled colors (all palettes) */
+.btn-success, .badge-success { background-color: #13803a; border-color: #13803a; color: #fff; }
+.btn-danger, .badge-danger { background-color: #c62f2f; border-color: #c62f2f; color: #fff; }
+.btn-outline-info { color: var(--link-color); border-color: color-mix(in srgb, var(--link-color) 70%, transparent); }
+.btn-outline-info:hover, .btn-outline-info:focus, .btn-outline-info.active {
+  color: var(--bm-surface); background-color: var(--link-color); border-color: var(--link-color);
+}
+.page-item.disabled .page-link { color: var(--bm-muted); }
+
+/* ---------- block strip ---------- */
+.blockchain-wrapper .bitcoin-block, .mempool-blocks-container .bitcoin-block, .blocks-container .bitcoin-block {
+  border-radius: 3px;
+  box-shadow: 0 18px 30px -18px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+.blockchain-wrapper .block-body, .mempool-blocks-container .block-body {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+.blockchain-wrapper .block-link:hover .bitcoin-block, .mempool-blocks-container .bitcoin-block:hover {
+  filter: brightness(1.08) saturate(1.05);
+}
+
+/* appearance settings in the footer */
+.bm-appearance { gap: 10px; align-items: center; flex-wrap: wrap; justify-content: center; }
+
+/* ---------- light scheme (Daylight): Bootstrap 4 compiles white text and dark controls, bridge them ---------- */
+html.bm-scheme-light {
+  body, .table, .table th, .table td, .card, .card-body, .card-title, label, .text-light { color: var(--fg); }
+  .text-white { color: var(--fg) !important; }
+  .table td, .table th, .table thead th { border-color: var(--bm-border); }
+  .table-striped tbody tr:nth-of-type(odd) { background-color: color-mix(in srgb, var(--fg) 3.5%, transparent); }
+  .table-hover tbody tr:hover { background-color: color-mix(in srgb, var(--fg) 6%, transparent); color: var(--fg); }
+  .form-control, .custom-select, .input-group-text, .form-control:focus {
+    background-color: var(--bm-surface);
+    color: var(--fg);
+  }
+  .form-control::placeholder { color: var(--bm-muted); }
+  .btn-secondary, .btn-outline-secondary {
+    background-color: var(--bm-inset); border-color: var(--bm-border); color: var(--fg);
+  }
+  .btn-secondary:hover { background-color: var(--hover-bg); color: var(--fg); }
+  .nav-tabs .nav-link { color: var(--bm-muted); }
+  .nav-tabs .nav-link.active { background-color: var(--bm-surface); color: var(--fg); border-color: var(--bm-border); }
+  .pagination .page-link { background-color: var(--bm-surface); color: var(--link-color); border-color: var(--bm-border); }
+  .pagination .page-item.active .page-link { background-color: var(--bm-primary); border-color: var(--bm-primary); color: #fff; }
+  .pagination .page-item.disabled .page-link { background-color: var(--bm-inset); color: var(--bm-muted); }
+  .close { color: var(--fg); }
+  .btn:not(.btn-primary):not(.btn-success):not(.btn-danger):not(.btn-purple):not(.btn-warning):not(.btn-info):not(.btn-outline-info) { color: var(--fg); }
+  a.badge:not([class*="badge-"]), a.badge:not([class*="badge-"]) span { color: var(--fg); }
+  .navbar-dark .navbar-nav .nav-link { color: var(--fg); }
+  .navbar-dark .navbar-toggler-icon { filter: invert(1); }
+  .sticky-header .navbar .nav-link fa-icon, .sticky-header .navbar .nav-link svg { color: var(--fg); }
+  .tooltip-inner { background-color: #14182b; color: #f4f5fa; }
+  .card { background-image: none; }
+  .skeleton-loader { background-color: var(--skeleton-bg); }
+  .bitcoin-block { box-shadow: 0 16px 26px -18px rgba(20, 24, 43, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.25); }
+  .bitcoin-block .block-body, .bitcoin-block .block-body * { color: #fff; }
+  /* charts draw white labels on a transparent canvas: invert them so they read on light cards (hues are kept) */
+  .echarts canvas, .chart canvas, .graph-wrapper canvas, .incoming-transactions-graph canvas {
+    filter: invert(1) hue-rotate(180deg) saturate(1.2);
+  }
+  .main-title { color: var(--bm-muted) !important; }
+  /* white icons and labels drawn straight on the page */
+  .navbar [fill="white"], .navbar [fill="#fff"], .navbar [fill="#FFF"], .navbar [fill="#ffffff"], .navbar [fill="#FFFFFF"] { fill: var(--fg); }
+  .navbar [stroke="white"], .navbar [stroke="#fff"], .navbar [stroke="#FFF"] { stroke: var(--fg); }
+  .blockchain-blocks-container .badge, .blockchain-blocks-container .badge span { color: var(--fg); }
+  .progress { background-color: var(--bm-inset); }
+  .progress-text span { color: var(--fg) !important; }
+  hr { border-color: var(--bm-border); }
+}

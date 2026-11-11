@@ -1,24 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-labelledby="t">
-  <title id="t">Block Master - New Year's Day</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="Block Master, New Year's Day">
+  <title>Block Master: New Year's Day</title>
+  <defs>
+    <linearGradient id="new-years-top" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5a5f86"/><stop offset="1" stop-color="#3a3e63"/></linearGradient><linearGradient id="new-years-left" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a2e52"/><stop offset="1" stop-color="#1b1e3a"/></linearGradient><linearGradient id="new-years-right" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c1f3b"/><stop offset="1" stop-color="#111327"/></linearGradient><linearGradient id="new-years-crown" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff3c2"/><stop offset="1" stop-color="#e9b949"/></linearGradient>
+    <linearGradient id="new-years-sheen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity="0.45"/><stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/></linearGradient>
+    <mask id="new-years-cube" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128">
+      <rect width="128" height="128" fill="white"/>
+      <path d="M32,68 L64,84 L96,68 M64,84 L64,120" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      
+    </mask>
+    <mask id="new-years-crownm" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128">
+      <rect width="128" height="128" fill="white"/>
+      <path d="M38,40 L90,40" stroke="black" stroke-width="2.6"/>
+      <circle cx="52" cy="44" r="1.7" fill="black"/><circle cx="64" cy="44" r="1.7" fill="black"/><circle cx="76" cy="44" r="1.7" fill="black"/>
+    </mask>
+    
+  </defs>
+  <path d="M17,20 C18.2,28.8 18.2,28.8 27,30 C18.2,31.2 18.2,31.2 17,40 C15.8,31.2 15.8,31.2 7,30 C15.8,28.8 15.8,28.8 17,20 Z" fill="#f5c955" opacity="1"/><path d="M111,31 C111.84,37.16 111.84,37.16 118,38 C111.84,38.84 111.84,38.84 111,45 C110.16,38.84 110.16,38.84 104,38 C110.16,37.16 110.16,37.16 111,31 Z" fill="#9aa8d6" opacity="1"/><path d="M110,90 C110.96,97.04 110.96,97.04 118,98 C110.96,98.96 110.96,98.96 110,106 C109.04,98.96 109.04,98.96 102,98 C109.04,97.04 109.04,97.04 110,90 Z" fill="#f5c955" opacity="0.9"/><path d="M18,89 C18.6,93.4 18.6,93.4 23,94 C18.6,94.6 18.6,94.6 18,99 C17.4,94.6 17.4,94.6 13,94 C17.4,93.4 17.4,93.4 18,89 Z" fill="#9aa8d6" opacity="0.9"/><circle cx="104" cy="16" r="1.8" fill="#f5c955"/><circle cx="26" cy="56" r="1.5" fill="#9aa8d6"/>
+  <g mask="url(#new-years-cube)" stroke-linejoin="round">
+    <path d="M32,68 L64,52 L96,68 L64,84 Z" fill="url(#new-years-top)" stroke="url(#new-years-top)" stroke-width="3"/>
+    <path d="M32,68 L64,84 L64,120 L32,104 Z" fill="url(#new-years-left)" stroke="url(#new-years-left)" stroke-width="3"/>
+    <path d="M64,84 L96,68 L96,104 L64,120 Z" fill="url(#new-years-right)" stroke="url(#new-years-right)" stroke-width="3"/>
+    <g transform="matrix(0.32 -0.16 0.32 0.16 32 68)"><path d="M30,30 L70,30 L70,70 L30,70 Z" fill="none" stroke="#f5c955" stroke-width="2.4" opacity="0.7"/></g>
+    <path d="M44,62 L64,52 L84,62 L64,72 Z" fill="url(#new-years-sheen)"/>
+  </g>
+  <g mask="url(#new-years-crownm)" stroke-linejoin="round">
+    <path d="M42,47 L37,21 L52,33 L64,9 L76,33 L91,21 L86,47 Z" fill="url(#new-years-crown)" stroke="url(#new-years-crown)" stroke-width="2.4"/>
+  </g>
+  <circle cx="37" cy="16" r="2.9" fill="#f8fafc"/><circle cx="64" cy="3.6" r="3.1" fill="#f8fafc"/><circle cx="91" cy="16" r="2.9" fill="#f8fafc"/>
   
-  <g stroke="#16182a" stroke-width="2.6" stroke-linejoin="round">
-    <path d="M30,67 L64,84 L64,122 L30,105 Z" fill="#2b3050"/>
-    <path d="M64,84 L98,67 L98,105 L64,122 Z" fill="#1c1f35"/>
-    <path d="M64,50 L98,67 L64,84 L30,67 Z" fill="#4b5170"/>
-  </g>
-  <g stroke="#16182a" stroke-opacity="0.22" stroke-width="1.4" fill="none">
-    <path d="M47,58.5 L81,75.5 M81,58.5 L47,75.5"/>
-    <path d="M47,75.5 L47,113.5 M30,86 L64,103"/>
-    <path d="M81,75.5 L81,113.5 M64,103 L98,86"/>
-  </g>
-  <path d="M16,25 Q17.62,32.38 25,34 Q17.62,35.62 16,43 Q14.38,35.62 7,34 Q14.38,32.38 16,25 Z" fill="#ffd35c"/><path d="M112,33 Q113.26,38.74 119,40 Q113.26,41.26 112,47 Q110.74,41.26 105,40 Q110.74,38.74 112,33 Z" fill="#e5e7eb"/><path d="M110,87 Q111.62,94.38 119,96 Q111.62,97.62 110,105 Q108.38,97.62 101,96 Q108.38,94.38 110,87 Z" fill="#ffd35c"/><path d="M16,86 Q17.08,90.92 22,92 Q17.08,93.08 16,98 Q14.92,93.08 10,92 Q14.92,90.92 16,86 Z" fill="#e5e7eb"/><rect x="22" y="56" width="4" height="4" fill="#f472b6" transform="rotate(20 24 58)"/><rect x="102" y="62" width="4" height="4" fill="#60a5fa" transform="rotate(-25 104 64)"/><rect x="100" y="16" width="4" height="4" fill="#4ade80" transform="rotate(35 102 18)"/>
-  <path d="M64,50 L98,67 L64,84 L30,67 Z M30,67 L64,84 L64,122 L30,105 Z M64,84 L98,67 L98,105 L64,122 Z" fill="none" stroke="#16182a" stroke-width="2.6" stroke-linejoin="round"/>
-  <g transform="translate(0 6)"><g stroke="#16182a" stroke-width="2.4" stroke-linejoin="round">
-    <path d="M43,47 L39,21 L52.5,33 L64,11 L75.5,33 L89,21 L85,47 Z" fill="#ffd35c"/>
-    <rect x="42" y="41" width="44" height="8" rx="2.5" fill="#ffd35c"/>
-    <circle cx="39" cy="21" r="3.6" fill="#e5e7eb"/>
-    <circle cx="64" cy="11" r="3.8" fill="#e5e7eb"/>
-    <circle cx="89" cy="21" r="3.6" fill="#e5e7eb"/>
-  </g>
-  <circle cx="64" cy="45" r="2.3" fill="#e5e7eb" stroke="#16182a" stroke-width="1.4"/></g>
 </svg>

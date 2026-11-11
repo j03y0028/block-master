@@ -1,4 +1,7 @@
-export const defaultMempoolFeeColors = [
+import { readableFeeColors } from '@app/shared/palettes';
+
+/** Upstream fee-level colors; Block Master darkens the mid-range ones so white block text stays >= 4.5:1. */
+const upstreamMempoolFeeColors = [
   '007d3d',
   '557d00',
   '5d7d01',
@@ -39,6 +42,8 @@ export const defaultMempoolFeeColors = [
   'b00259',
   'ae005b',
 ];
+
+export const defaultMempoolFeeColors = readableFeeColors(upstreamMempoolFeeColors);
 
 export const contrastMempoolFeeColors = [
   '06adef',

@@ -17,7 +17,7 @@ const page = await browser.newPage();
 
 async function render(html, w, h, out, transparent = true) {
   await page.setViewport({ width: w, height: h, deviceScaleFactor: 1 });
-  await page.setContent(`<html><body style="margin:0;width:${w}px;height:${h}px;overflow:hidden;background:${transparent ? 'transparent' : '#11131f'}">${html}</body></html>`);
+  await page.setContent(`<html><body style="margin:0;width:${w}px;height:${h}px;overflow:hidden;background:${transparent ? 'transparent' : '#0d0f1e'}">${html}</body></html>`);
   await page.evaluate(() => Promise.all([...document.images].map((i) => i.decode().catch(() => {}))));
   const buf = await page.screenshot({ omitBackground: transparent, type: 'png' });
   mkdirSync(dirname(out), { recursive: true });
@@ -32,7 +32,7 @@ const def = join(LOGOS, 'logo-default.svg');
 const fav = join(RES, 'favicons');
 const pngs = {};
 for (const s of [16, 32, 48]) pngs[s] = await render(icon(def, s), s, s, join(fav, `favicon-${s}x${s}.png`));
-await render(icon(def, 180, 16, 'background:#1d1f31;'), 180, 180, join(fav, 'apple-touch-icon.png'), false);
+await render(icon(def, 180, 16, 'background:#0d0f1e;'), 180, 180, join(fav, 'apple-touch-icon.png'), false);
 await render(icon(def, 192, 12), 192, 192, join(fav, 'android-chrome-192x192.png'));
 await render(icon(def, 512, 32), 512, 512, join(fav, 'android-chrome-512x512.png'));
 await render(icon(def, 150, 20), 150, 150, join(fav, 'mstile-150x150.png'));
@@ -56,7 +56,7 @@ await render(icon(def, 150, 20), 150, 150, join(fav, 'mstile-150x150.png'));
 
 // social preview (1200x630)
 await render(`<div style="width:1200px;height:630px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;
-  background:radial-gradient(circle at 50% 35%, #2a2d4a, #11131f 70%);font-family:'Segoe UI',Roboto,Arial,sans-serif;color:#f1f5f9">
+  background:radial-gradient(900px 500px at 20% 0%, #2b2470, transparent 65%), radial-gradient(800px 480px at 100% 10%, #3b1f4f, transparent 60%), #0d0f1e;font-family:Inter,'Segoe UI',Roboto,Arial,sans-serif;color:#eef0fb;letter-spacing:-0.01em">
   <img src="${b64(join(LOGOS, 'wordmark.svg'))}" style="width:860px">
   <div style="font-size:34px;opacity:.85">Your node. Your explorer. Plain-language fees.</div></div>`, 1200, 630, join(RES, 'previews/block-master-preview.png'), false);
 

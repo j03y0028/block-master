@@ -10,7 +10,7 @@ set -e
 echo "==================== INSTALLING APP ===================="
 ARCH=$(uname -m)                       # aarch64 (Raspberry Pi / RockPro64) or x86_64
 IMG_TAR="app_data/blockmaster-image-${ARCH}.tar.gz"
-VERSION_TAG="${VERSION:-v1.0.0}"
+VERSION_TAG="${VERSION:-v1.1.0}"
 source app_data/images.env
 
 # The Block Master web image ships inside the app package (built by scripts/package-mynode.sh).

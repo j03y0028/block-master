@@ -1,211 +1,255 @@
 #!/usr/bin/env node
-// Block Master logo generator. Writes the default logo and one variant per U.S. holiday as SVG into
-// frontend/src/resources/block-master/. Original artwork (an isometric block wearing a crown), released with the
-// rest of this repository under AGPL-3.0. Run: node branding/build-logos.mjs
+// Block Master logo system, v2 ("Crowned Block").
+// Writes the default mark and one variant per U.S. holiday as SVG into frontend/src/resources/block-master/, plus the
+// wordmark. Original artwork released with the rest of this repository under AGPL-3.0.
+//
+// Design: an isometric block split into three gradient planes by hairline negative-space seams, a floating geometric
+// crown (negative-space band and jewels) above it, and one restrained holiday motif per variant drawn in the face planes
+// or in the open corners. No outlines, no clip art: flat planes, gradients and gaps.
+// Run: node branding/build-logos.mjs
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(root, 'frontend/src/resources/block-master');
-const INK = '#16182a';
-
 const f = (n) => Number(n.toFixed(2));
+
+// ---------- geometry (128 x 128) ----------
+// Cube: top rhombus L(32,68) A(64,52) R(96,68) B(64,84); faces drop 36.
+const TOP = 'M32,68 L64,52 L96,68 L64,84 Z';
+const LEFT = 'M32,68 L64,84 L64,120 L32,104 Z';
+const RIGHT = 'M64,84 L96,68 L96,104 L64,120 Z';
+// face coordinate systems: draw in a 100 x 100 square, mapped onto the plane
+const ON_LEFT = 'matrix(0.32 0.16 0 0.36 32 68)';
+const ON_RIGHT = 'matrix(0.32 -0.16 0 0.36 64 84)';
+const ON_TOP = 'matrix(0.32 -0.16 0.32 0.16 32 68)';
+const CROWN = 'M42,47 L37,21 L52,33 L64,9 L76,33 L91,21 L86,47 Z';
+const SEAMS = 'M32,68 L64,84 L96,68 M64,84 L64,120';
+
 function star(cx, cy, r, points = 5, inner = 0.42, rot = -90) {
   const pts = [];
   for (let i = 0; i < points * 2; i++) {
-    const rad = ((rot + (i * 180) / points) * Math.PI) / 180;
+    const a = ((rot + (i * 180) / points) * Math.PI) / 180;
     const rr = i % 2 === 0 ? r : r * inner;
-    pts.push(`${f(cx + rr * Math.cos(rad))},${f(cy + rr * Math.sin(rad))}`);
+    pts.push(`${f(cx + rr * Math.cos(a))},${f(cy + rr * Math.sin(a))}`);
   }
   return pts.join(' ');
 }
-const sparkle = (cx, cy, r, fill) =>
-  `<path d="M${cx},${cy - r} Q${cx + r * 0.18},${cy - r * 0.18} ${cx + r},${cy} Q${cx + r * 0.18},${cy + r * 0.18} ${cx},${cy + r} Q${cx - r * 0.18},${cy + r * 0.18} ${cx - r},${cy} Q${cx - r * 0.18},${cy - r * 0.18} ${cx},${cy - r} Z" fill="${fill}"/>`;
-const burst = (cx, cy, r, color, n = 10) => {
-  let s = '';
+const sparkle = (cx, cy, r, fill, o = 1) =>
+  `<path d="M${cx},${f(cy - r)} C${f(cx + r * 0.12)},${f(cy - r * 0.12)} ${f(cx + r * 0.12)},${f(cy - r * 0.12)} ${f(cx + r)},${cy} C${f(cx + r * 0.12)},${f(cy + r * 0.12)} ${f(cx + r * 0.12)},${f(cy + r * 0.12)} ${cx},${f(cy + r)} C${f(cx - r * 0.12)},${f(cy + r * 0.12)} ${f(cx - r * 0.12)},${f(cy + r * 0.12)} ${f(cx - r)},${cy} C${f(cx - r * 0.12)},${f(cy - r * 0.12)} ${f(cx - r * 0.12)},${f(cy - r * 0.12)} ${cx},${f(cy - r)} Z" fill="${fill}" opacity="${o}"/>`;
+const burst = (cx, cy, r, color, n = 12) => {
+  let s = `<g stroke="${color}" stroke-linecap="round">`;
   for (let i = 0; i < n; i++) {
     const a = (i * 2 * Math.PI) / n;
-    s += `<line x1="${f(cx + r * 0.35 * Math.cos(a))}" y1="${f(cy + r * 0.35 * Math.sin(a))}" x2="${f(cx + r * Math.cos(a))}" y2="${f(cy + r * Math.sin(a))}" stroke="${color}" stroke-width="2.2" stroke-linecap="round"/>`;
+    const r0 = i % 2 ? r * 0.45 : r * 0.3;
+    const r1 = i % 2 ? r * 0.8 : r;
+    s += `<line x1="${f(cx + r0 * Math.cos(a))}" y1="${f(cy + r0 * Math.sin(a))}" x2="${f(cx + r1 * Math.cos(a))}" y2="${f(cy + r1 * Math.sin(a))}" stroke-width="${i % 2 ? 1.2 : 1.8}"/>`;
   }
-  return s + `<circle cx="${cx}" cy="${cy}" r="1.8" fill="${color}"/>`;
+  return s + `</g><circle cx="${cx}" cy="${cy}" r="1.6" fill="${color}"/>`;
 };
-const snowflake = (cx, cy, r, color = '#e0f2fe') => {
-  let s = '';
-  for (let i = 0; i < 3; i++) {
+const snowflake = (cx, cy, r, color) => {
+  let s = `<g stroke="${color}" stroke-width="1.3" stroke-linecap="round" fill="none">`;
+  for (let i = 0; i < 6; i++) {
     const a = (i * Math.PI) / 3;
-    s += `<line x1="${f(cx - r * Math.cos(a))}" y1="${f(cy - r * Math.sin(a))}" x2="${f(cx + r * Math.cos(a))}" y2="${f(cy + r * Math.sin(a))}" stroke="${color}" stroke-width="1.8" stroke-linecap="round"/>`;
+    const x = (t) => f(cx + t * Math.cos(a));
+    const y = (t) => f(cy + t * Math.sin(a));
+    const tick = (t, side) => {
+      const b = a + side * 0.7;
+      return `M${x(t)},${y(t)} L${f(cx + t * Math.cos(a) + r * 0.28 * Math.cos(b))},${f(cy + t * Math.sin(a) + r * 0.28 * Math.sin(b))}`;
+    };
+    s += `<path d="M${cx},${cy} L${x(r)},${y(r)} ${tick(r * 0.55, 1)} ${tick(r * 0.55, -1)}"/>`;
   }
-  return s;
+  return s + '</g>';
 };
-const leaf = (cx, cy, s, rot, color) =>
-  `<g transform="translate(${cx} ${cy}) rotate(${rot}) scale(${s})"><path d="M0,-10 C6,-6 7,2 0,10 C-7,2 -6,-6 0,-10 Z" fill="${color}" stroke="${INK}" stroke-width="1"/><line x1="0" y1="-7" x2="0" y2="13" stroke="${INK}" stroke-width="1.1"/></g>`;
-const gear = (cx, cy, r, color) => {
-  let teeth = '';
-  for (let i = 0; i < 8; i++) {
-    teeth += `<rect x="${f(cx - 2.2)}" y="${f(cy - r - 3)}" width="4.4" height="6" rx="1" fill="${color}" transform="rotate(${i * 45} ${cx} ${cy})"/>`;
+const leaf = (cx, cy, s, rot, c1, c2, id) =>
+  `<g transform="translate(${cx} ${cy}) rotate(${rot}) scale(${s})"><path d="M0,-11 C7,-6 8,3 0,11 C-8,3 -7,-6 0,-11 Z" fill="url(#${id})"/><path d="M0,-7 L0,13" stroke="${c2}" stroke-width="1.1" stroke-linecap="round" opacity="0.9"/></g>`;
+const gearPath = (cx, cy, r, teeth = 10) => {
+  const pts = [];
+  for (let i = 0; i < teeth * 4; i++) {
+    const a = (i * Math.PI * 2) / (teeth * 4) - Math.PI / 2;
+    const rr = i % 4 < 2 ? r : r * 0.78;
+    pts.push(`${f(cx + rr * Math.cos(a))},${f(cy + rr * Math.sin(a))}`);
   }
-  return `${teeth}<circle cx="${cx}" cy="${cy}" r="${r}" fill="${color}"/><circle cx="${cx}" cy="${cy}" r="${f(r * 0.42)}" fill="${INK}" opacity="0.75"/>`;
+  return `M${pts.join(' L')} Z`;
 };
 
-// Geometry (128 x 128): isometric block, crown resting on its top face.
-const TOP = 'M64,50 L98,67 L64,84 L30,67 Z';
-const LEFT = 'M30,67 L64,84 L64,122 L30,105 Z';
-const RIGHT = 'M64,84 L98,67 L98,105 L64,122 Z';
-const GRID = `<g stroke="${INK}" stroke-opacity="0.22" stroke-width="1.4" fill="none">
-    <path d="M47,58.5 L81,75.5 M81,58.5 L47,75.5"/>
-    <path d="M47,75.5 L47,113.5 M30,86 L64,103"/>
-    <path d="M81,75.5 L81,113.5 M64,103 L98,86"/>
-  </g>`;
-const CROWN = (c) => `<g transform="translate(0 6)"><g stroke="${INK}" stroke-width="2.4" stroke-linejoin="round">
-    <path d="M43,47 L39,21 L52.5,33 L64,11 L75.5,33 L89,21 L85,47 Z" fill="${c.crown}"/>
-    <rect x="42" y="41" width="44" height="8" rx="2.5" fill="${c.band || c.crown}"/>
-    <circle cx="39" cy="21" r="3.6" fill="${c.jewel}"/>
-    <circle cx="64" cy="11" r="3.8" fill="${c.jewel}"/>
-    <circle cx="89" cy="21" r="3.6" fill="${c.jewel}"/>
-  </g>
-  <circle cx="64" cy="45" r="2.3" fill="${c.jewel}" stroke="${INK}" stroke-width="1.4"/></g>`;
-
+// ---------- variants ----------
+// faces: [light, dark] gradient stops for top / left / right; crown: [light, dark]; jewel; motif hooks:
+//   back(): behind the mark, face(): drawn over the faces, cut(): black shapes added to the faces' mask (negative space),
+//   front(): over everything.
 const V = {
   default: {
     name: 'Block Master',
-    top: '#ffb347', left: '#f7931a', right: '#c96f0c', crown: '#ffd35c', jewel: '#fff3c4',
+    top: ['#ffcf70', '#ffa43a'], left: ['#f7931a', '#d9700a'], right: ['#c25f06', '#8f3f02'],
+    crown: ['#fff0b8', '#f5b829'], jewel: '#fff6d6',
   },
   'new-years': {
     name: "New Year's Day",
-    top: '#4b5170', left: '#2b3050', right: '#1c1f35', crown: '#ffd35c', jewel: '#e5e7eb',
-    over: () => sparkle(16, 34, 9, '#ffd35c') + sparkle(112, 40, 7, '#e5e7eb') + sparkle(110, 96, 9, '#ffd35c') +
-      sparkle(16, 92, 6, '#e5e7eb') + `<rect x="22" y="56" width="4" height="4" fill="#f472b6" transform="rotate(20 24 58)"/>` +
-      `<rect x="102" y="62" width="4" height="4" fill="#60a5fa" transform="rotate(-25 104 64)"/>` +
-      `<rect x="100" y="16" width="4" height="4" fill="#4ade80" transform="rotate(35 102 18)"/>`,
+    top: ['#5a5f86', '#3a3e63'], left: ['#2a2e52', '#1b1e3a'], right: ['#1c1f3b', '#111327'],
+    crown: ['#fff3c2', '#e9b949'], jewel: '#f8fafc',
+    back: () => sparkle(17, 30, 10, '#f5c955') + sparkle(111, 38, 7, '#9aa8d6') + sparkle(110, 98, 8, '#f5c955', 0.9) +
+      sparkle(18, 94, 5, '#9aa8d6', 0.9) + `<circle cx="104" cy="16" r="1.8" fill="#f5c955"/><circle cx="26" cy="56" r="1.5" fill="#9aa8d6"/>`,
+    face: () => `<g transform="${ON_TOP}"><path d="M30,30 L70,30 L70,70 L30,70 Z" fill="none" stroke="#f5c955" stroke-width="2.4" opacity="0.7"/></g>`,
   },
   mlk: {
     name: 'Martin Luther King Jr. Day',
-    top: '#a598ff', left: '#6d5bd0', right: '#4c3d9e', crown: '#fbbf24', jewel: '#fef3c7',
-    under: () => {
-      let s = '';
-      for (let i = 0; i <= 8; i++) {
-        const a = Math.PI + (i * Math.PI) / 8;
-        s += `<line x1="${f(64 + 50 * Math.cos(a))}" y1="${f(66 + 50 * Math.sin(a))}" x2="${f(64 + 62 * Math.cos(a))}" y2="${f(66 + 62 * Math.sin(a))}" stroke="#fbbf24" stroke-width="3" stroke-linecap="round" opacity="0.9"/>`;
-      }
-      return s;
-    },
+    top: ['#a78bfa', '#7c5ce0'], left: ['#5b3fc4', '#3f2a92'], right: ['#3a2780', '#24185a'],
+    crown: ['#fde9a8', '#e8b13a'], jewel: '#fff7dd',
+    back: () => [44, 52, 60].map((r, i) => {
+      const a0 = (200 * Math.PI) / 180;
+      const a1 = (340 * Math.PI) / 180;
+      return `<path d="M${f(64 + r * Math.cos(a0))},${f(78 + r * Math.sin(a0))} A${r},${r} 0 0 1 ${f(64 + r * Math.cos(a1))},${f(78 + r * Math.sin(a1))}" fill="none" stroke="#f0b94a" stroke-width="${2.2 - i * 0.5}" stroke-linecap="round" opacity="${0.85 - i * 0.25}"/>`;
+    }).join(''),
   },
   presidents: {
     name: "Presidents' Day",
-    top: '#f1f5f9', left: '#1e3a8a', right: '#b91c1c', crown: '#fcd34d', jewel: '#ffffff',
-    over: () => [[40, 86], [53, 93], [40, 99], [53, 106]].map(([x, y]) =>
-      `<polygon points="${star(x, y, 4.2)}" fill="#ffffff"/>`).join('') +
-      `<g stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" opacity="0.9"><path d="M70,95 L92,84 M70,104 L92,93 M70,113 L92,102"/></g>`,
+    top: ['#f8fafc', '#d5dceb'], left: ['#2747a8', '#1a2f74'], right: ['#c0262d', '#8a161c'],
+    crown: ['#fde68a', '#d9a521'], jewel: '#ffffff',
+    face: () => `<g transform="${ON_LEFT}">${[[30, 30], [70, 30], [50, 62]].map(([x, y]) => `<polygon points="${star(x, y, 13)}" fill="#ffffff"/>`).join('')}</g>`,
+    cut: () => `<g transform="${ON_RIGHT}"><path d="M0,30 L100,30 M0,55 L100,55 M0,80 L100,80" stroke="black" stroke-width="7"/></g>`,
   },
   memorial: {
     name: 'Memorial Day',
-    top: '#cbd5e1', left: '#1e3a8a', right: '#334155', crown: '#d4af37', jewel: '#f8fafc',
-    over: () => `<g transform="translate(104 104)">
-      <path d="M-3,10 Q-1,18 -6,24" stroke="#166534" stroke-width="2.4" fill="none"/>
-      ${[0, 72, 144, 216, 288].map((a) => `<ellipse cx="0" cy="-7" rx="6.5" ry="8" fill="#dc2626" stroke="${INK}" stroke-width="1.2" transform="rotate(${a})"/>`).join('')}
-      <circle r="4.2" fill="#111827"/></g>` +
-      `<polygon points="${star(47, 96, 7)}" fill="#ffffff" stroke="${INK}" stroke-width="1"/>`,
+    top: ['#dbe3ef', '#aab6c9'], left: ['#2b3a67', '#1b2546'], right: ['#3b4558', '#252c3a'],
+    crown: ['#f1d98a', '#c79a2e'], jewel: '#f8fafc',
+    front: () => `<g transform="translate(107 99)">
+      <path d="M-2,9 C0,15 -2,20 -7,24" stroke="#3f7d4e" stroke-width="2" fill="none" stroke-linecap="round"/>
+      ${[0, 72, 144, 216, 288].map((a) => `<ellipse cx="0" cy="-6.4" rx="5.6" ry="7" fill="url(#poppy)" transform="rotate(${a})"/>`).join('')}
+      <circle r="3.4" fill="#1a1c22"/></g>`,
+    face: () => `<g transform="${ON_LEFT}"><polygon points="${star(50, 48, 22)}" fill="#ffffff" opacity="0.92"/></g>`,
+    defs: () => `<linearGradient id="poppy" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff5a4e"/><stop offset="1" stop-color="#c81e1e"/></linearGradient>`,
   },
   juneteenth: {
     name: 'Juneteenth',
-    top: '#f8fafc', left: '#1d4ed8', right: '#dc2626', crown: '#fcd34d', jewel: '#ffffff',
-    over: () => `<polygon points="${star(47, 95, 12, 12, 0.62)}" fill="none" stroke="#ffffff" stroke-width="1.8"/>
-      <polygon points="${star(47, 95, 6.5)}" fill="#ffffff"/>
-      <path d="M64,104 Q80,88 98,92" stroke="#ffffff" stroke-width="2.4" fill="none" opacity="0.9"/>`,
+    top: ['#4f7ff0', '#2c5ad6'], left: ['#d73232', '#a31d1d'], right: ['#a31d1d', '#701313'],
+    crown: ['#fff1c1', '#e7b53b'], jewel: '#ffffff',
+    face: () => `<g transform="${ON_TOP}"><polygon points="${star(50, 50, 34, 12, 0.62)}" fill="none" stroke="#ffffff" stroke-width="3.2"/><polygon points="${star(50, 50, 17)}" fill="#ffffff"/></g>`,
+    back: () => `<path d="M8,98 Q30,84 22,62" fill="none" stroke="#7f9cf0" stroke-width="1.8" stroke-linecap="round" opacity="0.9"/>` + sparkle(110, 32, 6, '#7f9cf0'),
   },
   independence: {
     name: 'Independence Day',
-    top: '#e2e8f0', left: '#ffffff', right: '#1e3a8a', crown: '#fcd34d', jewel: '#ffffff',
-    over: () => {
-      let stripes = '';
-      for (let i = 0; i < 4; i++) {
-        const y0 = 67 + i * 9.5;
-        stripes += `<path d="M30,${f(y0)} L64,${f(y0 + 17)} L64,${f(y0 + 21.75)} L30,${f(y0 + 4.75)} Z" fill="#dc2626"/>`;
-      }
-      const stars = [[74, 88], [86, 82], [74, 101], [86, 95], [80, 108], [92, 102]].map(([x, y]) =>
-        `<polygon points="${star(x, y, 3.6)}" fill="#ffffff"/>`).join('');
-      return stripes + stars + burst(16, 30, 12, '#f87171') + burst(112, 34, 10, '#60a5fa') + burst(110, 100, 8, '#fcd34d');
-    },
+    top: ['#3f63d8', '#2445a8'], left: ['#ffffff', '#e7ecf5'], right: ['#2445a8', '#172e75'],
+    crown: ['#fff1c1', '#e7b53b'], jewel: '#ffffff',
+    face: () => `<g transform="${ON_LEFT}">${[0, 2, 4, 6].map((i) => `<rect x="0" y="${f(i * 14.3)}" width="100" height="14.3" fill="#d42a2a"/>`).join('')}</g>` +
+      `<g transform="${ON_RIGHT}">${[[25, 25], [55, 25], [85, 25], [40, 50], [70, 50], [25, 75], [55, 75], [85, 75]].map(([x, y]) => `<polygon points="${star(x, y, 8)}" fill="#ffffff"/>`).join('')}</g>`,
+    back: () => burst(17, 30, 13, '#ff6b6b') + burst(112, 30, 11, '#7aa2ff') + burst(110, 96, 8, '#f5c955', 10),
   },
   labor: {
     name: 'Labor Day',
-    top: '#7dd3fc', left: '#0284c7', right: '#075985', crown: '#facc15', jewel: '#ffffff',
-    over: () => gear(81, 94, 8.5, '#facc15') +
-      `<g stroke="#facc15" stroke-width="3" stroke-linecap="round"><path d="M38,104 L56,86"/></g><circle cx="57" cy="85" r="5" fill="none" stroke="#facc15" stroke-width="3"/>`,
+    top: ['#9fd8f7', '#5fb2e3'], left: ['#1f7fc0', '#155b8d'], right: ['#14507a', '#0c3452'],
+    crown: ['#ffe48a', '#f0b414'], jewel: '#ffffff',
+    back: () => `<path d="${gearPath(104, 96, 14)}" fill="none" stroke="#f0b414" stroke-width="2" stroke-linejoin="round"/><circle cx="104" cy="96" r="5" fill="none" stroke="#f0b414" stroke-width="2"/>`,
+    cut: () => `<g transform="${ON_LEFT}"><path d="${gearPath(50, 50, 24, 8)}" fill="black"/></g>`,
+    face: () => `<g transform="${ON_LEFT}"><circle cx="50" cy="50" r="7" fill="#f0b414"/></g>`,
   },
   halloween: {
     name: 'Halloween',
-    top: '#fdba74', left: '#f97316', right: '#c2410c', crown: '#7c3aed', jewel: '#a3e635',
-    over: () => `<g fill="#2a1200">
-      <polygon points="40,94 52,92 44,82"/>
-      <polygon points="76,92 88,94 84,82"/>
-      <path d="M40,104 L46,108 L50,103 L56,109 L62,106 L64,112 L66,106 L72,109 L78,103 L82,108 L88,104 L88,110 L64,119 L40,110 Z"/>
-    </g>
-    <path d="M100,22 q5,-6 8,0 q3,-6 8,0 q-3,1 -4,5 q-2,-2 -4,0 q-2,-2 -4,0 q-1,-4 -4,-5 Z" fill="#c084fc" stroke="${INK}" stroke-width="1"/>
-    <path d="M10,40 q5,-6 8,0 q3,-6 8,0 q-3,1 -4,5 q-2,-2 -4,0 q-2,-2 -4,0 q-1,-4 -4,-5 Z" fill="#c084fc" stroke="${INK}" stroke-width="1" transform="scale(0.85) translate(4 8)"/>`,
+    top: ['#ffb066', '#f68a2e'], left: ['#f47a1f', '#c95a0c'], right: ['#b8500b', '#7f3405'],
+    crown: ['#b28cff', '#6d3fd6'], jewel: '#c4f06a',
+    cut: () => `<g transform="${ON_LEFT}"><polygon points="20,32 40,32 30,14" fill="black"/><polygon points="60,32 80,32 70,14" fill="black"/>
+      <path d="M14,56 L26,66 L38,56 L50,66 L62,56 L74,66 L86,56 L80,78 L20,78 Z" fill="black"/></g>`,
+    face: () => `<g transform="${ON_RIGHT}" stroke="#7f3405" stroke-width="3" opacity="0.55"><path d="M33,0 L33,100 M66,0 L66,100"/></g>`,
+    back: () => `<mask id="moon"><rect width="128" height="128" fill="white"/><circle cx="114" cy="22" r="10" fill="black"/></mask>
+      <circle cx="106" cy="26" r="11" fill="#c4a8ff" mask="url(#moon)"/>
+      <path d="M12,40 L18,36 L21,39 L24,36 L30,40 L25,40 L21,44 L17,40 Z" fill="#b28cff"/>`,
   },
   veterans: {
     name: 'Veterans Day',
-    top: '#b5c39a', left: '#4b5d3a', right: '#1e3a8a', crown: '#fcd34d', jewel: '#ffffff',
-    over: () => `<circle cx="47" cy="95" r="10" fill="none" stroke="#ffffff" stroke-width="2"/>
-      <polygon points="${star(47, 95.5, 8.2)}" fill="#ffffff"/>
-      <g stroke="#fcd34d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none">
-        <path d="M71,94 L81,84 L91,86"/><path d="M71,102 L81,92 L91,94"/><path d="M71,110 L81,100 L91,102"/>
-      </g>`,
+    top: ['#5b74b8', '#3a5394'], left: ['#24376e', '#17254d'], right: ['#5f6b3c', '#414a27'],
+    crown: ['#fff1c1', '#e2ad35'], jewel: '#ffffff',
+    face: () => `<g transform="${ON_LEFT}"><circle cx="50" cy="48" r="30" fill="#ffffff"/><polygon points="${star(50, 49, 25)}" fill="#24376e"/></g>` +
+      `<g transform="${ON_RIGHT}" fill="none" stroke="#f5d27a" stroke-width="7" stroke-linejoin="round"><path d="M25,30 L50,48 L75,30"/><path d="M25,52 L50,70 L75,52"/></g>`,
+    back: () => `<g opacity="0.95">${[[16, 30], [112, 30]].map(([x, y]) => `<polygon points="${star(x, y, 6)}" fill="#8fa3dc"/>`).join('')}</g>`,
   },
   thanksgiving: {
     name: 'Thanksgiving',
-    top: '#fcd34d', left: '#d97706', right: '#92400e', crown: '#f59e0b', band: '#b45309', jewel: '#fef3c7',
-    over: () => leaf(16, 40, 1.1, -30, '#ea580c') + leaf(112, 36, 1, 25, '#dc2626') + leaf(110, 98, 1.2, 60, '#facc15') +
-      leaf(18, 96, 0.9, -70, '#b91c1c') + `<g transform="translate(81 96)"><ellipse rx="9" ry="7" fill="#f97316" stroke="${INK}" stroke-width="1.3"/>
-      <ellipse rx="3.5" ry="7" fill="none" stroke="${INK}" stroke-width="1"/><path d="M0,-7 q1,-4 4,-5" stroke="#166534" stroke-width="2" fill="none"/></g>`,
+    top: ['#f6c46e', '#e79a3a'], left: ['#c4612a', '#96441a'], right: ['#8a3a17', '#5e260e'],
+    crown: ['#fff0c0', '#e5a92d'], jewel: '#fff7e0',
+    defs: () => `<linearGradient id="lf1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f59e0b"/><stop offset="1" stop-color="#c2410c"/></linearGradient>
+      <linearGradient id="lf2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e86a3c"/><stop offset="1" stop-color="#9b2c1b"/></linearGradient>
+      <linearGradient id="lf3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d9b44a"/><stop offset="1" stop-color="#8a6a17"/></linearGradient>`,
+    back: () => leaf(18, 34, 1.05, -30, null, '#7a2e0e', 'lf2') + leaf(110, 30, 0.85, 35, null, '#7a3e0e', 'lf1') + leaf(108, 98, 0.95, 120, null, '#5f4a0f', 'lf3') +
+      leaf(20, 96, 0.7, -110, null, '#7a3e0e', 'lf1'),
   },
   christmas: {
-    name: 'Christmas Day',
-    top: '#f8fafc', left: '#dc2626', right: '#15803d', crown: '#fcd34d', jewel: '#ef4444',
-    over: () => `<path d="M30,67 L64,84 L98,67 L98,71 Q92,76 88,73 Q84,80 78,76 Q72,85 64,88 Q56,85 50,76 Q44,80 40,73 Q36,76 30,71 Z" fill="#f8fafc"/>
-      <path d="M47,75.5 L47,113.5" stroke="#fcd34d" stroke-width="5"/>
-      <path d="M81,75.5 L81,113.5" stroke="#fcd34d" stroke-width="5"/>
-      <path d="M47,58.5 L81,75.5" stroke="#fcd34d" stroke-width="4" opacity="0.95"/>` +
-      snowflake(16, 34, 7) + snowflake(112, 40, 6) + snowflake(110, 98, 7) + snowflake(18, 96, 5),
+    name: 'Christmas',
+    top: ['#2fae6a', '#1a8a4e'], left: ['#16774a', '#0e5434'], right: ['#0e5434', '#083a23'],
+    crown: ['#fff1c1', '#e2ad35'], jewel: '#ffffff',
+    face: () => `<g transform="${ON_TOP}" fill="#e23b3b"><rect x="42" y="0" width="16" height="100"/><rect x="0" y="42" width="100" height="16"/></g>` +
+      `<g transform="${ON_LEFT}" fill="#c92a2a"><rect x="42" y="0" width="16" height="100"/></g>` +
+      `<g transform="${ON_RIGHT}" fill="#a61e1e"><rect x="42" y="0" width="16" height="100"/></g>`,
+    back: () => snowflake(17, 32, 9, '#7cc0e8') + snowflake(111, 36, 7, '#7cc0e8') + snowflake(110, 98, 6, '#7cc0e8') +
+      `<circle cx="22" cy="92" r="1.6" fill="#7cc0e8"/><circle cx="102" cy="16" r="1.4" fill="#7cc0e8"/>`,
   },
 };
-
 export const VARIANTS = Object.keys(V);
 
-export function logoSvg(id) {
-  const c = V[id];
-  const hideGrid = id === 'christmas' || id === 'independence';
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-labelledby="t">
-  <title id="t">Block Master${id === 'default' ? '' : ' - ' + c.name}</title>
-  ${c.under ? c.under() : ''}
-  <g stroke="${INK}" stroke-width="2.6" stroke-linejoin="round">
-    <path d="${LEFT}" fill="${c.left}"/>
-    <path d="${RIGHT}" fill="${c.right}"/>
-    <path d="${TOP}" fill="${c.top}"/>
+function grad(id, [a, b], x2 = 0, y2 = 1) {
+  return `<linearGradient id="${id}" x1="0" y1="0" x2="${x2}" y2="${y2}"><stop offset="0" stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient>`;
+}
+
+/** The mark only (no text). `prefix` keeps ids unique when several logos are inlined in one page. */
+export function markSvgBody(id, prefix = id) {
+  const v = V[id];
+  const p = (s) => `${prefix}-${s}`;
+  const sub = (s) => (s || '').replace(/id="([^"]+)"/g, (_, x) => `id="${p(x)}"`).replace(/url\(#([^)]+)\)/g, (_, x) => `url(#${p(x)})`);
+  return `<defs>
+    ${grad(p('top'), v.top, 1, 1)}${grad(p('left'), v.left)}${grad(p('right'), v.right)}${grad(p('crown'), v.crown)}
+    <linearGradient id="${p('sheen')}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity="0.45"/><stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/></linearGradient>
+    <mask id="${p('cube')}" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128">
+      <rect width="128" height="128" fill="white"/>
+      <path d="${SEAMS}" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      ${v.cut ? v.cut() : ''}
+    </mask>
+    <mask id="${p('crownm')}" maskUnits="userSpaceOnUse" x="0" y="0" width="128" height="128">
+      <rect width="128" height="128" fill="white"/>
+      <path d="M38,40 L90,40" stroke="black" stroke-width="2.6"/>
+      <circle cx="52" cy="44" r="1.7" fill="black"/><circle cx="64" cy="44" r="1.7" fill="black"/><circle cx="76" cy="44" r="1.7" fill="black"/>
+    </mask>
+    ${sub(v.defs ? v.defs() : '')}
+  </defs>
+  ${sub(v.back ? v.back() : '')}
+  <g mask="url(#${p('cube')})" stroke-linejoin="round">
+    <path d="${TOP}" fill="url(#${p('top')})" stroke="url(#${p('top')})" stroke-width="3"/>
+    <path d="${LEFT}" fill="url(#${p('left')})" stroke="url(#${p('left')})" stroke-width="3"/>
+    <path d="${RIGHT}" fill="url(#${p('right')})" stroke="url(#${p('right')})" stroke-width="3"/>
+    ${sub(v.face ? v.face() : '')}
+    <path d="M44,62 L64,52 L84,62 L64,72 Z" fill="url(#${p('sheen')})"/>
   </g>
-  ${hideGrid ? '' : GRID}
-  ${c.over ? c.over() : ''}
-  <path d="${TOP} ${LEFT} ${RIGHT}" fill="none" stroke="${INK}" stroke-width="2.6" stroke-linejoin="round"/>
-  ${CROWN(c)}
+  <g mask="url(#${p('crownm')})" stroke-linejoin="round">
+    <path d="${CROWN}" fill="url(#${p('crown')})" stroke="url(#${p('crown')})" stroke-width="2.4"/>
+  </g>
+  <circle cx="37" cy="16" r="2.9" fill="${v.jewel}"/><circle cx="64" cy="3.6" r="3.1" fill="${v.jewel}"/><circle cx="91" cy="16" r="2.9" fill="${v.jewel}"/>
+  ${sub(v.front ? v.front() : '')}`;
+}
+
+export function logoSvg(id) {
+  const v = V[id];
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="${v.name === 'Block Master' ? 'Block Master' : 'Block Master, ' + v.name}">
+  <title>${v.name === 'Block Master' ? 'Block Master' : 'Block Master: ' + v.name}</title>
+  ${markSvgBody(id)}
 </svg>
 `;
 }
 
-export function wordmarkSvg(id = 'default') {
-  const icon = logoSvg(id).replace(/^<svg[^>]*>/, '').replace(/<\/svg>\s*$/, '').replace(/<title[^<]*<\/title>/, '');
+export function wordmarkSvg(id = 'default', textColor = '#eef0fb') {
+  const v = V[id];
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 128" width="520" height="128" role="img" aria-label="Block Master">
-  <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#ffd35c"/><stop offset="1" stop-color="#f7931a"/></linearGradient></defs>
-  <g>${icon}</g>
-  <text x="140" y="84" font-family="'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="54" font-weight="800" fill="#f1f5f9" stroke="#16182a" stroke-width="1" paint-order="stroke">Block<tspan fill="url(#g)" dx="10">Master</tspan></text>
+  <title>Block Master</title>
+  <defs><linearGradient id="wm" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="${v.crown[0]}"/><stop offset="1" stop-color="${v.left[0]}"/></linearGradient></defs>
+  <g transform="translate(4 4) scale(0.94)">${markSvgBody(id, 'wm-' + id)}</g>
+  <text x="136" y="84" font-family="Inter, 'Inter Tight', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="58" font-weight="800" letter-spacing="-2" fill="${textColor}">Block<tspan dx="12" fill="url(#wm)">Master</tspan></text>
 </svg>
 `;
 }
 
-if (process.argv[1] === fileURLToPath(import.meta.url)) {
+export const NAMES = Object.fromEntries(Object.entries(V).map(([k, v]) => [k, v.name]));
+
+if (import.meta.url === `file://${process.argv[1]}`) {
   mkdirSync(OUT, { recursive: true });
   for (const id of VARIANTS) writeFileSync(join(OUT, `logo-${id}.svg`), logoSvg(id));
   writeFileSync(join(OUT, 'wordmark.svg'), wordmarkSvg());
-  console.log(`wrote ${VARIANTS.length} logos + wordmark to ${OUT}`);
+  writeFileSync(join(OUT, 'wordmark-light.svg'), wordmarkSvg('default', '#14182b'));
+  console.log(`wrote ${VARIANTS.length} logos + wordmarks to ${OUT}`);
 }

@@ -16,12 +16,12 @@ Thanks for helping! Block Master is a small, independent fork of the Mempool Ope
 ```bash
 cd frontend
 npm ci
-npm run test:holidays
+npm run test:design
 npm run build
 npm run lint
 ```
 
-- Holiday rules: `frontend/src/app/shared/holidays.ts`. Add tests in `frontend/tests/holidays.test.mts`. Every accent color must pass the contrast test against the dark background.
+- Holiday rules: `frontend/src/app/shared/holidays.ts`; palettes: `frontend/src/app/shared/palettes.ts`. Tests live in `frontend/tests/`. Every palette color and every holiday accent must pass WCAG AA (the tests enforce it).
 - Logos: edit `branding/build-logos.mjs`, then run `npm run logos` (CI checks that the SVGs are up to date). Favicons and PNGs come from `node branding/render-pngs.mjs` (needs puppeteer and Chrome).
 - myNode packaging: `mynode/` and `scripts/package-mynode.sh`. Test the installer with `MYNODE_SIM=1 MYNODE_ROOT=/tmp/fake ./mynode/install-mynode.sh --yes`.
 
